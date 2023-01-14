@@ -175,7 +175,6 @@ int _1028A::odom::sign (int num) {
     return -1;
 }
 
-// finds the minimum angle to turn between two angles
 double _1028A::odom::find_min_angle (double target_angle, double current_heading) {
   double min_angle = target_angle - current_heading;
 
