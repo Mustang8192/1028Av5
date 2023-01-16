@@ -18,7 +18,6 @@ _1028A::PurePursuitTriangle _1028A::PurePursuit::run( const Pose &ipose, const s
             findPath( iid );
     }
 
-//    findNearestPose( ipose );
     findGoalPose();
     return findPurePursuitTriangle();
 }
