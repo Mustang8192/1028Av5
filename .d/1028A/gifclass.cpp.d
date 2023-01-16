@@ -204,7 +204,19 @@ bin/1028A/gifclass.cpp.o: src/1028A/gifclass.cpp include/1028A/init.h \
  include/okapi/api/units/QTorque.hpp include/okapi/api/units/QVolume.hpp \
  include/okapi/impl/util/configurableTimeUtilFactory.hpp \
  include/okapi/impl/util/rate.hpp include/1028A/gifdec.h \
- include/1028A/vars.h include/1028A/robot.h include/1028A/json.hpp
+ include/1028A/vars.h include/1028A/robot.h include/1028A/json.hpp \
+ /Users/samychirumamilla/Documents/1028Av5/include/okapi/pathfinder/include/pathfinder.h \
+ include/okapi/pathfinder/include/pathfinder/mathutil.h \
+ include/okapi/pathfinder/include/pathfinder/lib.h \
+ include/okapi/pathfinder/include/pathfinder/structs.h \
+ include/okapi/pathfinder/include/pathfinder/fit.h \
+ include/okapi/pathfinder/include/pathfinder/spline.h \
+ include/okapi/pathfinder/include/pathfinder/trajectory.h \
+ include/okapi/pathfinder/include/pathfinder/modifiers/tank.h \
+ include/okapi/pathfinder/include/pathfinder/modifiers/swerve.h \
+ include/okapi/pathfinder/include/pathfinder/followers/encoder.h \
+ include/okapi/pathfinder/include/pathfinder/followers/distance.h \
+ include/okapi/pathfinder/include/pathfinder/io.h
 include/1028A/init.h:
 include/main.h:
 include/api.h:
@@ -506,3 +518,15 @@ include/1028A/gifdec.h:
 include/1028A/vars.h:
 include/1028A/robot.h:
 include/1028A/json.hpp:
+/Users/samychirumamilla/Documents/1028Av5/include/okapi/pathfinder/include/pathfinder.h:
+include/okapi/pathfinder/include/pathfinder/mathutil.h:
+include/okapi/pathfinder/include/pathfinder/lib.h:
+include/okapi/pathfinder/include/pathfinder/structs.h:
+include/okapi/pathfinder/include/pathfinder/fit.h:
+include/okapi/pathfinder/include/pathfinder/spline.h:
+include/okapi/pathfinder/include/pathfinder/trajectory.h:
+include/okapi/pathfinder/include/pathfinder/modifiers/tank.h:
+include/okapi/pathfinder/include/pathfinder/modifiers/swerve.h:
+include/okapi/pathfinder/include/pathfinder/followers/encoder.h:
+include/okapi/pathfinder/include/pathfinder/followers/distance.h:
+include/okapi/pathfinder/include/pathfinder/io.h:

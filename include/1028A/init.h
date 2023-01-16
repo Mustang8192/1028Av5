@@ -3,6 +3,18 @@
 #include "1028A/vars.h"
 #include "1028A/robot.h"
 #include "1028A/json.hpp"
+#include <cmath>
+#include <memory>
+#include <utility>
+#include <vector>
+#include "okapi/api/control/util/pathfinderUtil.hpp"
+#include "okapi/api/units/QLength.hpp"
+#include "okapi/api/util/logging.hpp"
+#include "okapi/api/util/mathUtil.hpp"
+#include "/Users/samychirumamilla/Documents/1028Av5/include/okapi/pathfinder/include/pathfinder.h"
+#include <initializer_list>
+#include <vector>
+#include <cmath>
 
 namespace _1028A{
     namespace robot{
@@ -60,21 +72,6 @@ namespace _1028A{
         void startFlywheelTask (void *ptr);
     }
 
-    namespace odom{
-        static void Refresh(void *ptr);
-        static void Record (void *ptr);
-        int sign(double x);
-        double get_degrees(std::vector<double> p1, std::vector<double> p2);
-        double distance(std::vector<double> p1, std::vector<double> p2);
-        void Drive(int power, int turn);
-        std::vector<double> get_intersection(std::vector<double> start, std::vector<double> end, std::vector<double> cur, double radius);
-        void move_to(std::vector<double> pose, double stop_threshold, bool pure_pursuit, std::vector<double> speeds);
-        void move_to_pure_pursuit(std::vector<std::vector<double>> points, std::vector<double> final_point, std::vector<double> speeds);
-        int sign (int num);
-        double find_min_angle (double target_angle, double current_heading);
-        std::vector<std::vector<double>> smoothing (std::vector<std::vector<double>> path, double weight_data, double weight_smooth, double tolerance);
-        std::vector<std::vector<double>> auto_smooth (std::vector<std::vector<double>> path, double max_angle = 10);
-    }
     class OdomDebug {
             public:
                 struct state_t {
@@ -324,4 +321,177 @@ namespace _1028A{
                 static void _render_task(void* arg);
 
             };
+
+        struct Pose{
+            okapi::QLength x;
+            okapi::QLength y;
+            okapi::QAngle yaw;
+        };
+
+        struct InternalPose{
+            double x;
+            double y;
+            double yaw;
+        };
+
+        struct PurePursuitTriangle{
+            InternalPose currentPose;
+            InternalPose localGoalPose;
+            double l;
+            double r;
+        };
+
+        struct InternalPoseIndexed{
+            InternalPose pose;
+            int index;
+        };
+
+        struct InternalDistancePoseIndexed{
+            InternalPose pose;
+            int index;
+            double distance;
+        };
+
+        struct PosePath{
+            std::string id;
+            std::vector<InternalPose> path;
+        };
+
+        struct IndexedPosePath{
+            std::string id;
+            std::vector<InternalPoseIndexed> path;
+        };
+
+        struct IndexedDistancePosePath{
+            std::string id;
+            std::vector<InternalDistancePoseIndexed> path;
+        };
+
+        class PathGenerator{
+
+            public:
+            /**
+            * PathGenerator class constructor
+            * 
+            * @param  {okapi::PathfinderLimits} ilimits : 
+            */
+            PathGenerator( const okapi::PathfinderLimits &ilimits );
+            
+            /**
+            * generatePath will simply generate a path. It generates a path via a Hermite Spline.
+            * For more information about what a Hermite Spline is and what it does see: 
+            *      Pathfinder  : https://github.com/JacisNonsense/Pathfinder/issues
+            *      Desmos      : https://www.desmos.com/calculator/bulcgjwydy
+            * 
+            * @param  {std::initializer_list<Pose>} iwaypoints : 
+            * @param  {std::string} iid                        : 
+            */
+            void generatePath(const std::initializer_list<Pose> &iwaypoints, const std::string &iid);
+
+            /**
+            * generatePath will simply generate a path. It generates a path via a Hermite Spline.
+            * For more information about what a Hermite Spline is and what it does see: 
+            *      Pathfinder  : https://github.com/JacisNonsense/Pathfinder/issues
+            *      Desmos      : https://www.desmos.com/calculator/bulcgjwydy
+            * 
+            * @param  {std::initializer_list<Pose>} iwaypoints : 
+            * @param  {std::string} iid                        : 
+            * @param  {okapi::PathfinderLimits} ilimits        : 
+            */
+            void generatePath(  const std::initializer_list<Pose> &iwaypoints, 
+                                const std::string &iid,
+                                const okapi::PathfinderLimits &ilimits);
+            /**
+            * This will show the path in the PROS Terminal. Willing to accept PRs for showing the 
+            * path on the brain's screen.
+            */
+            void showPath();
+            
+            /**
+            * This is used to get the paths. It should be used to initialize the PurePursuit class.
+            * 
+            * @return {std::vector<IndexedDistancePosePath>}  : 
+            */
+            std::vector<IndexedDistancePosePath> &getPaths();
+
+            protected:
+            std::vector<IndexedDistancePosePath> paths;
+            std::shared_ptr<okapi::Logger> logger;
+            okapi::PathfinderLimits limits;
+        };
+
+        class PurePursuit {
+            public:
+            /**
+            * PurePursuit Class's Constructor
+            * 
+            * This is the constructor for PurePursuit. The first param is an InternalPath which should be generated by
+            * PathGenerator's getPath() method. The second param is the lookaheadDistance of the Pure Pursuit algorithm.
+            * 
+            * @param  {std::vector<IndexedDistancePosePath>} ipaths : 
+            * @param  {okapi::QLength} ilookaheadDistance           : 
+            */
+            PurePursuit( const std::vector<IndexedDistancePosePath> &ipaths, const okapi::QLength &ilookaheadDistance );
+
+            /**
+            * This should be run in a loop during your autonomous. The input is the x, y, and theta in global coordinates 
+            * of where your robot is currently located. This can be calculated using okapi's odometry feature. To access
+            * that feature go the the feature/odometry branch on github until the official release of it. It will return
+            * what the requested X, Y, Yaw, radius, and length to get to the Goal Point.
+            * 
+            * @param  {okapi::OdomState} or {Pose} ipose : 
+            * @param  {std::string} iid        : 
+            * @return {PurePursuitTriangle}    : 
+            */
+            PurePursuitTriangle run( const okapi::OdomState &ipose, const std::string &iid );
+            PurePursuitTriangle run( const Pose &ipose, const std::string &iid );
+
+            /**
+            * This should be used in a loop during your autonomous. It is static, but is meant for the PurePursuit class.
+            * It is recommended to use motion profiling for the first parameter. The second parameter should be from your
+            * run method from the PurePursuit class. The third method should be from you okapi's ChassisControllerBuilder.
+            * 
+            * Note: Using this method is optional. You can and probably should create your own controller to use the triangle
+            * motor output This is only meant for users of okapi >= v4.0.0.
+            * 
+            * @param  {double} reqVelocity                                : 
+            * @param  {PurePursuitTriangle} triangle                      : 
+            * @param  {std::shared_ptr<OdomChassisController>} controller : 
+            */
+            static void updateChassis( const double &reqVelocity, const PurePursuitTriangle &triangle, const std::shared_ptr<okapi::OdomChassisController> &controller );
+
+            static double findDistanceBetweenStateAndPose( const okapi::OdomState &state, const InternalPose &pose2 ){
+                InternalPose pose1{ state.x.convert(okapi::meter), state.y.convert(okapi::meter), state.theta.convert(okapi::radian) };
+                return findDistanceBetweenPoses( pose1, pose2 );
+            }
+
+            InternalPose getLastPoseInPath( const std::string &id ){
+                for( const auto &ipath: paths ){
+                    if( ipath.id == id ){
+                        return ipath.path.at(ipath.path.size() - 1).pose;
+                    }
+                }
+            }
+
+            protected:
+            const std::vector<IndexedDistancePosePath> paths;
+            IndexedDistancePosePath path;
+            double avgDistanceBetweenPoses;
+
+            IndexedDistancePosePath nearestPoses;
+            PosePath currentPoses;
+            IndexedPosePath goalPoses;
+            std::vector<PurePursuitTriangle> triangles;
+
+            double lookaheadDistance;
+
+            void findPath( const std::string & );
+            void findNearestPose( const Pose & );
+            static double findDistanceBetweenPoses( const InternalPose &, const InternalPose & );
+
+            void findGoalPose();
+            PurePursuitTriangle findPurePursuitTriangle();
+            bool isPoseWithinCircle( const InternalPose &point, const InternalPose &centerPose, const double &lookaheadDistance );
+
+        };
 }
