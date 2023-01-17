@@ -205,7 +205,7 @@ bin/1028A/autons.cpp.o: src/1028A/autons.cpp include/1028A/init.h \
  include/okapi/impl/util/configurableTimeUtilFactory.hpp \
  include/okapi/impl/util/rate.hpp include/1028A/gifdec.h \
  include/1028A/vars.h include/1028A/robot.h include/1028A/json.hpp \
- /Users/samychirumamilla/Documents/1028Av5/include/okapi/pathfinder/include/pathfinder.h \
+ include/okapi/pathfinder/include/pathfinder.h \
  include/okapi/pathfinder/include/pathfinder/mathutil.h \
  include/okapi/pathfinder/include/pathfinder/lib.h \
  include/okapi/pathfinder/include/pathfinder/structs.h \
@@ -518,7 +518,7 @@ include/1028A/gifdec.h:
 include/1028A/vars.h:
 include/1028A/robot.h:
 include/1028A/json.hpp:
-/Users/samychirumamilla/Documents/1028Av5/include/okapi/pathfinder/include/pathfinder.h:
+include/okapi/pathfinder/include/pathfinder.h:
 include/okapi/pathfinder/include/pathfinder/mathutil.h:
 include/okapi/pathfinder/include/pathfinder/lib.h:
 include/okapi/pathfinder/include/pathfinder/structs.h:
