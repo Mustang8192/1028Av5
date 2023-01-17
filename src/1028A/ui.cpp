@@ -45,6 +45,30 @@ lv_res_t _1028A::ui::do_nothingBtnAction(lv_obj_t *btn){
 * @return lv_res_t 
 */
 
+lv_res_t _1028A::ui::soloWPBtnAction(lv_obj_t *btn){
+	autonSelect = 3;
+	return LV_RES_OK;
+}
+
+/**
+* @brief 
+*  This function is a callback function for auton selector
+* @param btn 
+* @return lv_res_t 
+*/
+
+lv_res_t _1028A::ui::skillsBtnAction(lv_obj_t *btn){
+	autonSelect = 8;
+	return LV_RES_OK;
+}
+
+/**
+* @brief 
+*  This function is a callback function for auton selector
+* @param btn 
+* @return lv_res_t 
+*/
+
 lv_res_t _1028A::ui::Flywheelbeastmode(lv_obj_t *btn){
 	flywheelMode = 2;
 	return LV_RES_OK;
@@ -122,11 +146,11 @@ void _1028A::Grafana::grafanaInit (void *ptr){
 lv_res_t _1028A::ui::FlywheelGRCB(lv_obj_t * btn){
     std::shared_ptr<_1028A::AsyncGrapher> grapher  (new _1028A::AsyncGrapher("Flywheel Velocity vs. Time"));
     grapher->addDataType("Actual Vel", COLOR_AQUAMARINE);
+    grapher->addDataType("Desired Vel", COLOR_ORANGE);
     grapher->startTask();
     while (1){
-      grapher->update("Desired Vel", 0.73);
-      grapher->update("Actual Vel", pros::FlyWheel.get_actual_velocity()/-120);
-      grapher->update("Threshold", 0.075);
+      grapher->update("Desired Vel", 1);
+      grapher->update("Actual Vel", pros::FlyWheel.get_actual_velocity()/200);
       pros::delay(10);
     }
     return LV_RES_OK;
@@ -253,7 +277,7 @@ void _1028A::ui::init(int hue){
   _1028A::ui::createBtn(Tab2, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 0,0, 100, 100, "_");
 	_1028A::ui::createBtn(Tab2, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 120,0, 100, 100, "_");
 	_1028A::ui::createBtn(Tab2, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 240,0, 100, 100, "_");
-	_1028A::ui::createBtn(Tab2, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 360, 0, 100, 100, "_");
+	_1028A::ui::createBtn(Tab2, _1028A::ui::skillsBtnAction, LV_ALIGN_IN_LEFT_MID, 360, 0, 100, 100, "Skills");
 	_1028A::ui::createBtn(Tab4, _1028A::ui::Flywheelbeastmode, LV_ALIGN_IN_LEFT_MID, 240,0, 100, 100, "Flywheel \n  Big Boy \n  Mode");
     _1028A::ui::createBtn(Tab3, _1028A::ui::FlywheelGRCB, LV_ALIGN_IN_LEFT_MID, 0,0, 100, 100, "Flywheel");
 	_1028A::ui::createBtn(Tab3, _1028A::ui::IntakeGRCB, LV_ALIGN_IN_LEFT_MID, 120,0, 100, 100, "Intake");

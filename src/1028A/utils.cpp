@@ -544,7 +544,15 @@ void _1028A::time::turn(double spd, double time){
     pros::RightBack.move((0 * spd) + (-1 * spd));
     pros::RightMid.move((0 * spd) + (1 * spd));
 
+    pros::LeftFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    pros::LeftMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    pros::LeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    pros::RightFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    pros::RightMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    pros::RightBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+
     pros::delay(time);
+
     pros::LeftFront.brake();
     pros::LeftMid.brake();
     pros::LeftBack.brake();
@@ -561,6 +569,13 @@ void _1028A::time::forward(double spd, double time){
     pros::RightFront.move((1 * spd) + (0 * spd));
     pros::RightBack.move((1 * spd) + (0 * spd));
     pros::RightMid.move((-1 * spd) + (0 * spd));
+
+    pros::LeftFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    pros::LeftMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    pros::LeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    pros::RightFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    pros::RightMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    pros::RightBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
 
     pros::delay(time);
     pros::LeftFront.brake();

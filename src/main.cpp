@@ -20,10 +20,7 @@ void autonomous() {
 }
 
 void opcontrol() {
-	if(task::exists("fw")){
-		task::kill("fw");
-		pros::FlyWheel.move(0);
-	}
+	FWcontinueTask = 0;
 	task::start("FlywheelCTRL", driver::FlywheelCTRL);
 	task::start("DriveCTRL", driver::DriveCTRL);
 	task::start("IntakeCTRL", driver::IntakeCTRL);
