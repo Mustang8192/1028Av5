@@ -21,7 +21,6 @@ void autonomous() {
 }
 
 void opcontrol() {
-	FWcontinueTask = 0;
 	task::start("FlywheelCTRL", driver::FlywheelCTRL);
 	task::start("DriveCTRL", driver::DriveCTRL);
 	task::start("IntakeCTRL", driver::IntakeCTRL);

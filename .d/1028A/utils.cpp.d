@@ -79,144 +79,148 @@ bin/1028A/utils.cpp.o: src/1028A/utils.cpp include/1028A/init.h \
  include/sylib/sylib.hpp include/sylib/addrled.hpp include/sylib/env.hpp \
  include/sylib/pros_includes.h include/api.h \
  include/sylib/sylib_apitypes.hpp include/sylib/system.hpp \
- include/sylib/math.hpp include/sylib/motor.hpp include/okapi/api.hpp \
- include/okapi/api/chassis/controller/chassisControllerIntegrated.hpp \
- include/okapi/api/chassis/controller/chassisController.hpp \
- include/okapi/api/chassis/controller/chassisScales.hpp \
- include/okapi/api/units/QAngle.hpp include/okapi/api/units/RQuantity.hpp \
- include/okapi/api/units/QLength.hpp include/okapi/api/util/logging.hpp \
- include/okapi/api/coreProsAPI.hpp include/pros/apix.h \
+ include/sylib/math.hpp include/sylib/motor.hpp \
+ include/1028A/okapi/api.hpp \
+ include/1028A/okapi/api/chassis/controller/chassisControllerIntegrated.hpp \
+ include/1028A/okapi/api/chassis/controller/chassisController.hpp \
+ include/1028A/okapi/api/chassis/controller/chassisScales.hpp \
+ include/1028A/okapi/api/units/QAngle.hpp \
+ include/1028A/okapi/api/units/RQuantity.hpp \
+ include/1028A/okapi/api/units/QLength.hpp \
+ include/1028A/okapi/api/util/logging.hpp \
+ include/1028A/okapi/api/coreProsAPI.hpp include/pros/apix.h \
  include/pros/serial.h include/pros/serial.hpp \
- include/okapi/api/util/abstractTimer.hpp \
- include/okapi/api/units/QFrequency.hpp include/okapi/api/units/QTime.hpp \
- include/okapi/api/util/mathUtil.hpp \
- include/okapi/api/device/motor/abstractMotor.hpp \
- include/okapi/api/control/controllerOutput.hpp \
- include/okapi/api/device/rotarysensor/continuousRotarySensor.hpp \
- include/okapi/api/device/rotarysensor/rotarySensor.hpp \
- include/okapi/api/control/controllerInput.hpp \
- include/okapi/impl/util/timer.hpp \
- include/okapi/api/chassis/model/chassisModel.hpp \
- include/okapi/api/chassis/model/readOnlyChassisModel.hpp \
- include/okapi/api/control/async/asyncPosIntegratedController.hpp \
- include/okapi/api/control/async/asyncPositionController.hpp \
- include/okapi/api/control/async/asyncController.hpp \
- include/okapi/api/control/closedLoopController.hpp \
- include/okapi/api/util/timeUtil.hpp \
- include/okapi/api/control/util/settledUtil.hpp \
- include/okapi/api/util/abstractRate.hpp \
- include/okapi/api/util/supplier.hpp \
- include/okapi/api/chassis/controller/chassisControllerPid.hpp \
- include/okapi/api/control/iterative/iterativePosPidController.hpp \
- include/okapi/api/control/iterative/iterativePositionController.hpp \
- include/okapi/api/control/iterative/iterativeController.hpp \
- include/okapi/api/filter/filter.hpp \
- include/okapi/api/filter/passthroughFilter.hpp \
- include/okapi/api/chassis/controller/defaultOdomChassisController.hpp \
- include/okapi/api/chassis/controller/odomChassisController.hpp \
- include/okapi/api/chassis/model/skidSteerModel.hpp \
- include/okapi/api/odometry/odometry.hpp \
- include/okapi/api/odometry/odomState.hpp \
- include/okapi/api/units/RQuantityName.hpp \
- include/okapi/api/units/QSpeed.hpp \
- include/okapi/api/odometry/stateMode.hpp \
- include/okapi/api/odometry/point.hpp \
- include/okapi/api/chassis/model/hDriveModel.hpp \
- include/okapi/api/chassis/model/threeEncoderSkidSteerModel.hpp \
- include/okapi/api/chassis/model/threeEncoderXDriveModel.hpp \
- include/okapi/api/chassis/model/xDriveModel.hpp \
- include/okapi/impl/chassis/controller/chassisControllerBuilder.hpp \
- include/okapi/impl/device/motor/motor.hpp \
- include/okapi/impl/device/motor/motorGroup.hpp \
- include/okapi/impl/device/rotarysensor/adiEncoder.hpp \
- include/okapi/impl/device/rotarysensor/integratedEncoder.hpp \
- include/okapi/impl/device/rotarysensor/rotationSensor.hpp \
- include/okapi/impl/util/timeUtilFactory.hpp \
- include/okapi/api/control/async/asyncLinearMotionProfileController.hpp \
- include/okapi/api/control/util/pathfinderUtil.hpp \
- include/okapi/api/units/QAngularSpeed.hpp \
- include/okapi/squiggles/squiggles.hpp \
- include/okapi/squiggles/geometry/controlvector.hpp \
- include/okapi/squiggles/geometry/pose.hpp \
- include/okapi/squiggles/math/utils.hpp \
- include/okapi/squiggles/geometry/pose.hpp \
- include/okapi/squiggles/geometry/profilepoint.hpp \
- include/okapi/squiggles/geometry/controlvector.hpp \
- include/okapi/squiggles/physicalmodel/passthroughmodel.hpp \
- include/okapi/squiggles/physicalmodel/physicalmodel.hpp \
- include/okapi/squiggles/constraints.hpp \
- include/okapi/squiggles/geometry/pose.hpp \
- include/okapi/squiggles/physicalmodel/physicalmodel.hpp \
- include/okapi/squiggles/physicalmodel/tankmodel.hpp \
- include/okapi/squiggles/constraints.hpp include/okapi/squiggles/io.hpp \
- include/okapi/squiggles/spline.hpp \
- include/okapi/squiggles/math/quinticpolynomial.hpp \
- include/okapi/api/control/async/asyncMotionProfileController.hpp \
- include/okapi/api/control/async/asyncPosPidController.hpp \
- include/okapi/api/control/async/asyncWrapper.hpp \
- include/okapi/api/control/offsettableControllerInput.hpp \
- include/okapi/api/control/async/asyncVelIntegratedController.hpp \
- include/okapi/api/control/async/asyncVelocityController.hpp \
- include/okapi/api/control/async/asyncVelPidController.hpp \
- include/okapi/api/control/iterative/iterativeVelPidController.hpp \
- include/okapi/api/control/iterative/iterativeVelocityController.hpp \
- include/okapi/api/filter/velMath.hpp \
- include/okapi/api/filter/composableFilter.hpp \
- include/okapi/api/units/QAngularAcceleration.hpp \
- include/okapi/api/control/iterative/iterativeMotorVelocityController.hpp \
- include/okapi/api/control/util/controllerRunner.hpp \
- include/okapi/api/control/util/flywheelSimulator.hpp \
- include/okapi/api/control/util/pidTuner.hpp \
- include/okapi/impl/control/async/asyncMotionProfileControllerBuilder.hpp \
- include/okapi/impl/control/async/asyncPosControllerBuilder.hpp \
- include/okapi/impl/control/async/asyncVelControllerBuilder.hpp \
- include/okapi/impl/control/iterative/iterativeControllerFactory.hpp \
- include/okapi/impl/filter/velMathFactory.hpp \
- include/okapi/impl/control/util/controllerRunnerFactory.hpp \
- include/okapi/impl/control/util/pidTunerFactory.hpp \
- include/okapi/api/odometry/odomMath.hpp \
- include/okapi/api/odometry/threeEncoderOdometry.hpp \
- include/okapi/api/odometry/twoEncoderOdometry.hpp \
- include/okapi/impl/device/adiUltrasonic.hpp \
- include/okapi/impl/device/button/adiButton.hpp \
- include/okapi/api/device/button/buttonBase.hpp \
- include/okapi/api/device/button/abstractButton.hpp \
- include/okapi/impl/device/button/controllerButton.hpp \
- include/okapi/impl/device/controllerUtil.hpp \
- include/okapi/impl/device/controller.hpp \
- include/okapi/impl/device/distanceSensor.hpp \
- include/okapi/impl/device/motor/adiMotor.hpp \
- include/okapi/impl/device/opticalSensor.hpp \
- include/okapi/impl/device/rotarysensor/IMU.hpp \
- include/okapi/impl/device/rotarysensor/adiGyro.hpp \
- include/okapi/impl/device/rotarysensor/potentiometer.hpp \
- include/okapi/api/filter/averageFilter.hpp \
- include/okapi/api/filter/demaFilter.hpp \
- include/okapi/api/filter/ekfFilter.hpp \
- include/okapi/api/filter/emaFilter.hpp \
- include/okapi/api/filter/filteredControllerInput.hpp \
- include/okapi/api/filter/medianFilter.hpp \
- include/okapi/api/units/QAcceleration.hpp \
- include/okapi/api/units/QAngularJerk.hpp \
- include/okapi/api/units/QArea.hpp include/okapi/api/units/QForce.hpp \
- include/okapi/api/units/QMass.hpp include/okapi/api/units/QJerk.hpp \
- include/okapi/api/units/QPressure.hpp \
- include/okapi/api/units/QTorque.hpp include/okapi/api/units/QVolume.hpp \
- include/okapi/impl/util/configurableTimeUtilFactory.hpp \
- include/okapi/impl/util/rate.hpp include/1028A/gifdec.h \
+ include/1028A/okapi/api/util/abstractTimer.hpp \
+ include/1028A/okapi/api/units/QFrequency.hpp \
+ include/1028A/okapi/api/units/QTime.hpp \
+ include/1028A/okapi/api/util/mathUtil.hpp \
+ include/1028A/okapi/api/device/motor/abstractMotor.hpp \
+ include/1028A/okapi/api/control/controllerOutput.hpp \
+ include/1028A/okapi/api/device/rotarysensor/continuousRotarySensor.hpp \
+ include/1028A/okapi/api/device/rotarysensor/rotarySensor.hpp \
+ include/1028A/okapi/api/control/controllerInput.hpp \
+ include/1028A/okapi/impl/util/timer.hpp \
+ include/1028A/okapi/api/chassis/model/chassisModel.hpp \
+ include/1028A/okapi/api/chassis/model/readOnlyChassisModel.hpp \
+ include/1028A/okapi/api/control/async/asyncPosIntegratedController.hpp \
+ include/1028A/okapi/api/control/async/asyncPositionController.hpp \
+ include/1028A/okapi/api/control/async/asyncController.hpp \
+ include/1028A/okapi/api/control/closedLoopController.hpp \
+ include/1028A/okapi/api/util/timeUtil.hpp \
+ include/1028A/okapi/api/control/util/settledUtil.hpp \
+ include/1028A/okapi/api/util/abstractRate.hpp \
+ include/1028A/okapi/api/util/supplier.hpp \
+ include/1028A/okapi/api/chassis/controller/chassisControllerPid.hpp \
+ include/1028A/okapi/api/control/iterative/iterativePosPidController.hpp \
+ include/1028A/okapi/api/control/iterative/iterativePositionController.hpp \
+ include/1028A/okapi/api/control/iterative/iterativeController.hpp \
+ include/1028A/okapi/api/filter/filter.hpp \
+ include/1028A/okapi/api/filter/passthroughFilter.hpp \
+ include/1028A/okapi/api/chassis/controller/defaultOdomChassisController.hpp \
+ include/1028A/okapi/api/chassis/controller/odomChassisController.hpp \
+ include/1028A/okapi/api/chassis/model/skidSteerModel.hpp \
+ include/1028A/okapi/api/odometry/odometry.hpp \
+ include/1028A/okapi/api/odometry/odomState.hpp \
+ include/1028A/okapi/api/units/RQuantityName.hpp \
+ include/1028A/okapi/api/units/QSpeed.hpp \
+ include/1028A/okapi/api/odometry/stateMode.hpp \
+ include/1028A/okapi/api/odometry/point.hpp \
+ include/1028A/okapi/api/chassis/model/hDriveModel.hpp \
+ include/1028A/okapi/api/chassis/model/threeEncoderSkidSteerModel.hpp \
+ include/1028A/okapi/api/chassis/model/threeEncoderXDriveModel.hpp \
+ include/1028A/okapi/api/chassis/model/xDriveModel.hpp \
+ include/1028A/okapi/impl/chassis/controller/chassisControllerBuilder.hpp \
+ include/1028A/okapi/impl/device/motor/motor.hpp \
+ include/1028A/okapi/impl/device/motor/motorGroup.hpp \
+ include/1028A/okapi/impl/device/rotarysensor/adiEncoder.hpp \
+ include/1028A/okapi/impl/device/rotarysensor/integratedEncoder.hpp \
+ include/1028A/okapi/impl/device/rotarysensor/rotationSensor.hpp \
+ include/1028A/okapi/impl/util/timeUtilFactory.hpp \
+ include/1028A/okapi/api/control/async/asyncLinearMotionProfileController.hpp \
+ include/1028A/okapi/api/control/util/pathfinderUtil.hpp \
+ include/1028A/okapi/api/units/QAngularSpeed.hpp \
+ include/1028A/okapi/squiggles/squiggles.hpp \
+ include/1028A/okapi/squiggles/geometry/controlvector.hpp \
+ include/1028A/okapi/squiggles/geometry/pose.hpp \
+ include/1028A/okapi/squiggles/math/utils.hpp \
+ include/1028A/okapi/squiggles/geometry/profilepoint.hpp \
+ include/1028A/okapi/squiggles/geometry/controlvector.hpp \
+ include/1028A/okapi/squiggles/physicalmodel/passthroughmodel.hpp \
+ include/1028A/okapi/squiggles/physicalmodel/physicalmodel.hpp \
+ include/1028A/okapi/squiggles/constraints.hpp \
+ include/1028A/okapi/squiggles/physicalmodel/tankmodel.hpp \
+ include/1028A/okapi/squiggles/io.hpp \
+ include/1028A/okapi/squiggles/spline.hpp \
+ include/1028A/okapi/squiggles/math/quinticpolynomial.hpp \
+ include/1028A/okapi/api/control/async/asyncMotionProfileController.hpp \
+ include/1028A/okapi/api/control/async/asyncPosPidController.hpp \
+ include/1028A/okapi/api/control/async/asyncWrapper.hpp \
+ include/1028A/okapi/api/control/offsettableControllerInput.hpp \
+ include/1028A/okapi/api/control/async/asyncVelIntegratedController.hpp \
+ include/1028A/okapi/api/control/async/asyncVelocityController.hpp \
+ include/1028A/okapi/api/control/async/asyncVelPidController.hpp \
+ include/1028A/okapi/api/control/iterative/iterativeVelPidController.hpp \
+ include/1028A/okapi/api/control/iterative/iterativeVelocityController.hpp \
+ include/1028A/okapi/api/filter/velMath.hpp \
+ include/1028A/okapi/api/filter/composableFilter.hpp \
+ include/1028A/okapi/api/units/QAngularAcceleration.hpp \
+ include/1028A/okapi/api/control/iterative/iterativeMotorVelocityController.hpp \
+ include/1028A/okapi/api/control/util/controllerRunner.hpp \
+ include/1028A/okapi/api/control/util/flywheelSimulator.hpp \
+ include/1028A/okapi/api/control/util/pidTuner.hpp \
+ include/1028A/okapi/impl/control/async/asyncMotionProfileControllerBuilder.hpp \
+ include/1028A/okapi/impl/control/async/asyncPosControllerBuilder.hpp \
+ include/1028A/okapi/impl/control/async/asyncVelControllerBuilder.hpp \
+ include/1028A/okapi/impl/control/iterative/iterativeControllerFactory.hpp \
+ include/1028A/okapi/impl/filter/velMathFactory.hpp \
+ include/1028A/okapi/impl/control/util/controllerRunnerFactory.hpp \
+ include/1028A/okapi/impl/control/util/pidTunerFactory.hpp \
+ include/1028A/okapi/api/odometry/odomMath.hpp \
+ include/1028A/okapi/api/odometry/threeEncoderOdometry.hpp \
+ include/1028A/okapi/api/odometry/twoEncoderOdometry.hpp \
+ include/1028A/okapi/impl/device/adiUltrasonic.hpp \
+ include/1028A/okapi/impl/device/button/adiButton.hpp \
+ include/1028A/okapi/api/device/button/buttonBase.hpp \
+ include/1028A/okapi/api/device/button/abstractButton.hpp \
+ include/1028A/okapi/impl/device/button/controllerButton.hpp \
+ include/1028A/okapi/impl/device/controllerUtil.hpp \
+ include/1028A/okapi/impl/device/controller.hpp \
+ include/1028A/okapi/impl/device/distanceSensor.hpp \
+ include/1028A/okapi/impl/device/motor/adiMotor.hpp \
+ include/1028A/okapi/impl/device/opticalSensor.hpp \
+ include/1028A/okapi/impl/device/rotarysensor/IMU.hpp \
+ include/1028A/okapi/impl/device/rotarysensor/adiGyro.hpp \
+ include/1028A/okapi/impl/device/rotarysensor/potentiometer.hpp \
+ include/1028A/okapi/api/filter/averageFilter.hpp \
+ include/1028A/okapi/api/filter/demaFilter.hpp \
+ include/1028A/okapi/api/filter/ekfFilter.hpp \
+ include/1028A/okapi/api/filter/emaFilter.hpp \
+ include/1028A/okapi/api/filter/filteredControllerInput.hpp \
+ include/1028A/okapi/api/filter/medianFilter.hpp \
+ include/1028A/okapi/api/units/QAcceleration.hpp \
+ include/1028A/okapi/api/units/QAngularJerk.hpp \
+ include/1028A/okapi/api/units/QArea.hpp \
+ include/1028A/okapi/api/units/QForce.hpp \
+ include/1028A/okapi/api/units/QMass.hpp \
+ include/1028A/okapi/api/units/QJerk.hpp \
+ include/1028A/okapi/api/units/QPressure.hpp \
+ include/1028A/okapi/api/units/QTorque.hpp \
+ include/1028A/okapi/api/units/QVolume.hpp \
+ include/1028A/okapi/impl/util/configurableTimeUtilFactory.hpp \
+ include/1028A/okapi/impl/util/rate.hpp include/1028A/gifdec.h \
  include/1028A/vars.h include/1028A/robot.h include/1028A/json.hpp \
- include/okapi/pathfinder/include/pathfinder.h \
- include/okapi/pathfinder/include/pathfinder/mathutil.h \
- include/okapi/pathfinder/include/pathfinder/lib.h \
- include/okapi/pathfinder/include/pathfinder/structs.h \
- include/okapi/pathfinder/include/pathfinder/fit.h \
- include/okapi/pathfinder/include/pathfinder/spline.h \
- include/okapi/pathfinder/include/pathfinder/trajectory.h \
- include/okapi/pathfinder/include/pathfinder/modifiers/tank.h \
- include/okapi/pathfinder/include/pathfinder/modifiers/swerve.h \
- include/okapi/pathfinder/include/pathfinder/followers/encoder.h \
- include/okapi/pathfinder/include/pathfinder/followers/distance.h \
- include/okapi/pathfinder/include/pathfinder/io.h
+ include/1028A/okapi/pathfinder/include/pathfinder.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/mathutil.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/lib.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/structs.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/fit.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/spline.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/trajectory.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/modifiers/tank.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/modifiers/swerve.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/followers/encoder.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/followers/distance.h \
+ include/1028A/okapi/pathfinder/include/pathfinder/io.h
 include/1028A/init.h:
 include/main.h:
 include/api.h:
@@ -380,153 +384,149 @@ include/sylib/sylib_apitypes.hpp:
 include/sylib/system.hpp:
 include/sylib/math.hpp:
 include/sylib/motor.hpp:
-include/okapi/api.hpp:
-include/okapi/api/chassis/controller/chassisControllerIntegrated.hpp:
-include/okapi/api/chassis/controller/chassisController.hpp:
-include/okapi/api/chassis/controller/chassisScales.hpp:
-include/okapi/api/units/QAngle.hpp:
-include/okapi/api/units/RQuantity.hpp:
-include/okapi/api/units/QLength.hpp:
-include/okapi/api/util/logging.hpp:
-include/okapi/api/coreProsAPI.hpp:
+include/1028A/okapi/api.hpp:
+include/1028A/okapi/api/chassis/controller/chassisControllerIntegrated.hpp:
+include/1028A/okapi/api/chassis/controller/chassisController.hpp:
+include/1028A/okapi/api/chassis/controller/chassisScales.hpp:
+include/1028A/okapi/api/units/QAngle.hpp:
+include/1028A/okapi/api/units/RQuantity.hpp:
+include/1028A/okapi/api/units/QLength.hpp:
+include/1028A/okapi/api/util/logging.hpp:
+include/1028A/okapi/api/coreProsAPI.hpp:
 include/pros/apix.h:
 include/pros/serial.h:
 include/pros/serial.hpp:
-include/okapi/api/util/abstractTimer.hpp:
-include/okapi/api/units/QFrequency.hpp:
-include/okapi/api/units/QTime.hpp:
-include/okapi/api/util/mathUtil.hpp:
-include/okapi/api/device/motor/abstractMotor.hpp:
-include/okapi/api/control/controllerOutput.hpp:
-include/okapi/api/device/rotarysensor/continuousRotarySensor.hpp:
-include/okapi/api/device/rotarysensor/rotarySensor.hpp:
-include/okapi/api/control/controllerInput.hpp:
-include/okapi/impl/util/timer.hpp:
-include/okapi/api/chassis/model/chassisModel.hpp:
-include/okapi/api/chassis/model/readOnlyChassisModel.hpp:
-include/okapi/api/control/async/asyncPosIntegratedController.hpp:
-include/okapi/api/control/async/asyncPositionController.hpp:
-include/okapi/api/control/async/asyncController.hpp:
-include/okapi/api/control/closedLoopController.hpp:
-include/okapi/api/util/timeUtil.hpp:
-include/okapi/api/control/util/settledUtil.hpp:
-include/okapi/api/util/abstractRate.hpp:
-include/okapi/api/util/supplier.hpp:
-include/okapi/api/chassis/controller/chassisControllerPid.hpp:
-include/okapi/api/control/iterative/iterativePosPidController.hpp:
-include/okapi/api/control/iterative/iterativePositionController.hpp:
-include/okapi/api/control/iterative/iterativeController.hpp:
-include/okapi/api/filter/filter.hpp:
-include/okapi/api/filter/passthroughFilter.hpp:
-include/okapi/api/chassis/controller/defaultOdomChassisController.hpp:
-include/okapi/api/chassis/controller/odomChassisController.hpp:
-include/okapi/api/chassis/model/skidSteerModel.hpp:
-include/okapi/api/odometry/odometry.hpp:
-include/okapi/api/odometry/odomState.hpp:
-include/okapi/api/units/RQuantityName.hpp:
-include/okapi/api/units/QSpeed.hpp:
-include/okapi/api/odometry/stateMode.hpp:
-include/okapi/api/odometry/point.hpp:
-include/okapi/api/chassis/model/hDriveModel.hpp:
-include/okapi/api/chassis/model/threeEncoderSkidSteerModel.hpp:
-include/okapi/api/chassis/model/threeEncoderXDriveModel.hpp:
-include/okapi/api/chassis/model/xDriveModel.hpp:
-include/okapi/impl/chassis/controller/chassisControllerBuilder.hpp:
-include/okapi/impl/device/motor/motor.hpp:
-include/okapi/impl/device/motor/motorGroup.hpp:
-include/okapi/impl/device/rotarysensor/adiEncoder.hpp:
-include/okapi/impl/device/rotarysensor/integratedEncoder.hpp:
-include/okapi/impl/device/rotarysensor/rotationSensor.hpp:
-include/okapi/impl/util/timeUtilFactory.hpp:
-include/okapi/api/control/async/asyncLinearMotionProfileController.hpp:
-include/okapi/api/control/util/pathfinderUtil.hpp:
-include/okapi/api/units/QAngularSpeed.hpp:
-include/okapi/squiggles/squiggles.hpp:
-include/okapi/squiggles/geometry/controlvector.hpp:
-include/okapi/squiggles/geometry/pose.hpp:
-include/okapi/squiggles/math/utils.hpp:
-include/okapi/squiggles/geometry/pose.hpp:
-include/okapi/squiggles/geometry/profilepoint.hpp:
-include/okapi/squiggles/geometry/controlvector.hpp:
-include/okapi/squiggles/physicalmodel/passthroughmodel.hpp:
-include/okapi/squiggles/physicalmodel/physicalmodel.hpp:
-include/okapi/squiggles/constraints.hpp:
-include/okapi/squiggles/geometry/pose.hpp:
-include/okapi/squiggles/physicalmodel/physicalmodel.hpp:
-include/okapi/squiggles/physicalmodel/tankmodel.hpp:
-include/okapi/squiggles/constraints.hpp:
-include/okapi/squiggles/io.hpp:
-include/okapi/squiggles/spline.hpp:
-include/okapi/squiggles/math/quinticpolynomial.hpp:
-include/okapi/api/control/async/asyncMotionProfileController.hpp:
-include/okapi/api/control/async/asyncPosPidController.hpp:
-include/okapi/api/control/async/asyncWrapper.hpp:
-include/okapi/api/control/offsettableControllerInput.hpp:
-include/okapi/api/control/async/asyncVelIntegratedController.hpp:
-include/okapi/api/control/async/asyncVelocityController.hpp:
-include/okapi/api/control/async/asyncVelPidController.hpp:
-include/okapi/api/control/iterative/iterativeVelPidController.hpp:
-include/okapi/api/control/iterative/iterativeVelocityController.hpp:
-include/okapi/api/filter/velMath.hpp:
-include/okapi/api/filter/composableFilter.hpp:
-include/okapi/api/units/QAngularAcceleration.hpp:
-include/okapi/api/control/iterative/iterativeMotorVelocityController.hpp:
-include/okapi/api/control/util/controllerRunner.hpp:
-include/okapi/api/control/util/flywheelSimulator.hpp:
-include/okapi/api/control/util/pidTuner.hpp:
-include/okapi/impl/control/async/asyncMotionProfileControllerBuilder.hpp:
-include/okapi/impl/control/async/asyncPosControllerBuilder.hpp:
-include/okapi/impl/control/async/asyncVelControllerBuilder.hpp:
-include/okapi/impl/control/iterative/iterativeControllerFactory.hpp:
-include/okapi/impl/filter/velMathFactory.hpp:
-include/okapi/impl/control/util/controllerRunnerFactory.hpp:
-include/okapi/impl/control/util/pidTunerFactory.hpp:
-include/okapi/api/odometry/odomMath.hpp:
-include/okapi/api/odometry/threeEncoderOdometry.hpp:
-include/okapi/api/odometry/twoEncoderOdometry.hpp:
-include/okapi/impl/device/adiUltrasonic.hpp:
-include/okapi/impl/device/button/adiButton.hpp:
-include/okapi/api/device/button/buttonBase.hpp:
-include/okapi/api/device/button/abstractButton.hpp:
-include/okapi/impl/device/button/controllerButton.hpp:
-include/okapi/impl/device/controllerUtil.hpp:
-include/okapi/impl/device/controller.hpp:
-include/okapi/impl/device/distanceSensor.hpp:
-include/okapi/impl/device/motor/adiMotor.hpp:
-include/okapi/impl/device/opticalSensor.hpp:
-include/okapi/impl/device/rotarysensor/IMU.hpp:
-include/okapi/impl/device/rotarysensor/adiGyro.hpp:
-include/okapi/impl/device/rotarysensor/potentiometer.hpp:
-include/okapi/api/filter/averageFilter.hpp:
-include/okapi/api/filter/demaFilter.hpp:
-include/okapi/api/filter/ekfFilter.hpp:
-include/okapi/api/filter/emaFilter.hpp:
-include/okapi/api/filter/filteredControllerInput.hpp:
-include/okapi/api/filter/medianFilter.hpp:
-include/okapi/api/units/QAcceleration.hpp:
-include/okapi/api/units/QAngularJerk.hpp:
-include/okapi/api/units/QArea.hpp:
-include/okapi/api/units/QForce.hpp:
-include/okapi/api/units/QMass.hpp:
-include/okapi/api/units/QJerk.hpp:
-include/okapi/api/units/QPressure.hpp:
-include/okapi/api/units/QTorque.hpp:
-include/okapi/api/units/QVolume.hpp:
-include/okapi/impl/util/configurableTimeUtilFactory.hpp:
-include/okapi/impl/util/rate.hpp:
+include/1028A/okapi/api/util/abstractTimer.hpp:
+include/1028A/okapi/api/units/QFrequency.hpp:
+include/1028A/okapi/api/units/QTime.hpp:
+include/1028A/okapi/api/util/mathUtil.hpp:
+include/1028A/okapi/api/device/motor/abstractMotor.hpp:
+include/1028A/okapi/api/control/controllerOutput.hpp:
+include/1028A/okapi/api/device/rotarysensor/continuousRotarySensor.hpp:
+include/1028A/okapi/api/device/rotarysensor/rotarySensor.hpp:
+include/1028A/okapi/api/control/controllerInput.hpp:
+include/1028A/okapi/impl/util/timer.hpp:
+include/1028A/okapi/api/chassis/model/chassisModel.hpp:
+include/1028A/okapi/api/chassis/model/readOnlyChassisModel.hpp:
+include/1028A/okapi/api/control/async/asyncPosIntegratedController.hpp:
+include/1028A/okapi/api/control/async/asyncPositionController.hpp:
+include/1028A/okapi/api/control/async/asyncController.hpp:
+include/1028A/okapi/api/control/closedLoopController.hpp:
+include/1028A/okapi/api/util/timeUtil.hpp:
+include/1028A/okapi/api/control/util/settledUtil.hpp:
+include/1028A/okapi/api/util/abstractRate.hpp:
+include/1028A/okapi/api/util/supplier.hpp:
+include/1028A/okapi/api/chassis/controller/chassisControllerPid.hpp:
+include/1028A/okapi/api/control/iterative/iterativePosPidController.hpp:
+include/1028A/okapi/api/control/iterative/iterativePositionController.hpp:
+include/1028A/okapi/api/control/iterative/iterativeController.hpp:
+include/1028A/okapi/api/filter/filter.hpp:
+include/1028A/okapi/api/filter/passthroughFilter.hpp:
+include/1028A/okapi/api/chassis/controller/defaultOdomChassisController.hpp:
+include/1028A/okapi/api/chassis/controller/odomChassisController.hpp:
+include/1028A/okapi/api/chassis/model/skidSteerModel.hpp:
+include/1028A/okapi/api/odometry/odometry.hpp:
+include/1028A/okapi/api/odometry/odomState.hpp:
+include/1028A/okapi/api/units/RQuantityName.hpp:
+include/1028A/okapi/api/units/QSpeed.hpp:
+include/1028A/okapi/api/odometry/stateMode.hpp:
+include/1028A/okapi/api/odometry/point.hpp:
+include/1028A/okapi/api/chassis/model/hDriveModel.hpp:
+include/1028A/okapi/api/chassis/model/threeEncoderSkidSteerModel.hpp:
+include/1028A/okapi/api/chassis/model/threeEncoderXDriveModel.hpp:
+include/1028A/okapi/api/chassis/model/xDriveModel.hpp:
+include/1028A/okapi/impl/chassis/controller/chassisControllerBuilder.hpp:
+include/1028A/okapi/impl/device/motor/motor.hpp:
+include/1028A/okapi/impl/device/motor/motorGroup.hpp:
+include/1028A/okapi/impl/device/rotarysensor/adiEncoder.hpp:
+include/1028A/okapi/impl/device/rotarysensor/integratedEncoder.hpp:
+include/1028A/okapi/impl/device/rotarysensor/rotationSensor.hpp:
+include/1028A/okapi/impl/util/timeUtilFactory.hpp:
+include/1028A/okapi/api/control/async/asyncLinearMotionProfileController.hpp:
+include/1028A/okapi/api/control/util/pathfinderUtil.hpp:
+include/1028A/okapi/api/units/QAngularSpeed.hpp:
+include/1028A/okapi/squiggles/squiggles.hpp:
+include/1028A/okapi/squiggles/geometry/controlvector.hpp:
+include/1028A/okapi/squiggles/geometry/pose.hpp:
+include/1028A/okapi/squiggles/math/utils.hpp:
+include/1028A/okapi/squiggles/geometry/profilepoint.hpp:
+include/1028A/okapi/squiggles/geometry/controlvector.hpp:
+include/1028A/okapi/squiggles/physicalmodel/passthroughmodel.hpp:
+include/1028A/okapi/squiggles/physicalmodel/physicalmodel.hpp:
+include/1028A/okapi/squiggles/constraints.hpp:
+include/1028A/okapi/squiggles/physicalmodel/tankmodel.hpp:
+include/1028A/okapi/squiggles/io.hpp:
+include/1028A/okapi/squiggles/spline.hpp:
+include/1028A/okapi/squiggles/math/quinticpolynomial.hpp:
+include/1028A/okapi/api/control/async/asyncMotionProfileController.hpp:
+include/1028A/okapi/api/control/async/asyncPosPidController.hpp:
+include/1028A/okapi/api/control/async/asyncWrapper.hpp:
+include/1028A/okapi/api/control/offsettableControllerInput.hpp:
+include/1028A/okapi/api/control/async/asyncVelIntegratedController.hpp:
+include/1028A/okapi/api/control/async/asyncVelocityController.hpp:
+include/1028A/okapi/api/control/async/asyncVelPidController.hpp:
+include/1028A/okapi/api/control/iterative/iterativeVelPidController.hpp:
+include/1028A/okapi/api/control/iterative/iterativeVelocityController.hpp:
+include/1028A/okapi/api/filter/velMath.hpp:
+include/1028A/okapi/api/filter/composableFilter.hpp:
+include/1028A/okapi/api/units/QAngularAcceleration.hpp:
+include/1028A/okapi/api/control/iterative/iterativeMotorVelocityController.hpp:
+include/1028A/okapi/api/control/util/controllerRunner.hpp:
+include/1028A/okapi/api/control/util/flywheelSimulator.hpp:
+include/1028A/okapi/api/control/util/pidTuner.hpp:
+include/1028A/okapi/impl/control/async/asyncMotionProfileControllerBuilder.hpp:
+include/1028A/okapi/impl/control/async/asyncPosControllerBuilder.hpp:
+include/1028A/okapi/impl/control/async/asyncVelControllerBuilder.hpp:
+include/1028A/okapi/impl/control/iterative/iterativeControllerFactory.hpp:
+include/1028A/okapi/impl/filter/velMathFactory.hpp:
+include/1028A/okapi/impl/control/util/controllerRunnerFactory.hpp:
+include/1028A/okapi/impl/control/util/pidTunerFactory.hpp:
+include/1028A/okapi/api/odometry/odomMath.hpp:
+include/1028A/okapi/api/odometry/threeEncoderOdometry.hpp:
+include/1028A/okapi/api/odometry/twoEncoderOdometry.hpp:
+include/1028A/okapi/impl/device/adiUltrasonic.hpp:
+include/1028A/okapi/impl/device/button/adiButton.hpp:
+include/1028A/okapi/api/device/button/buttonBase.hpp:
+include/1028A/okapi/api/device/button/abstractButton.hpp:
+include/1028A/okapi/impl/device/button/controllerButton.hpp:
+include/1028A/okapi/impl/device/controllerUtil.hpp:
+include/1028A/okapi/impl/device/controller.hpp:
+include/1028A/okapi/impl/device/distanceSensor.hpp:
+include/1028A/okapi/impl/device/motor/adiMotor.hpp:
+include/1028A/okapi/impl/device/opticalSensor.hpp:
+include/1028A/okapi/impl/device/rotarysensor/IMU.hpp:
+include/1028A/okapi/impl/device/rotarysensor/adiGyro.hpp:
+include/1028A/okapi/impl/device/rotarysensor/potentiometer.hpp:
+include/1028A/okapi/api/filter/averageFilter.hpp:
+include/1028A/okapi/api/filter/demaFilter.hpp:
+include/1028A/okapi/api/filter/ekfFilter.hpp:
+include/1028A/okapi/api/filter/emaFilter.hpp:
+include/1028A/okapi/api/filter/filteredControllerInput.hpp:
+include/1028A/okapi/api/filter/medianFilter.hpp:
+include/1028A/okapi/api/units/QAcceleration.hpp:
+include/1028A/okapi/api/units/QAngularJerk.hpp:
+include/1028A/okapi/api/units/QArea.hpp:
+include/1028A/okapi/api/units/QForce.hpp:
+include/1028A/okapi/api/units/QMass.hpp:
+include/1028A/okapi/api/units/QJerk.hpp:
+include/1028A/okapi/api/units/QPressure.hpp:
+include/1028A/okapi/api/units/QTorque.hpp:
+include/1028A/okapi/api/units/QVolume.hpp:
+include/1028A/okapi/impl/util/configurableTimeUtilFactory.hpp:
+include/1028A/okapi/impl/util/rate.hpp:
 include/1028A/gifdec.h:
 include/1028A/vars.h:
 include/1028A/robot.h:
 include/1028A/json.hpp:
-include/okapi/pathfinder/include/pathfinder.h:
-include/okapi/pathfinder/include/pathfinder/mathutil.h:
-include/okapi/pathfinder/include/pathfinder/lib.h:
-include/okapi/pathfinder/include/pathfinder/structs.h:
-include/okapi/pathfinder/include/pathfinder/fit.h:
-include/okapi/pathfinder/include/pathfinder/spline.h:
-include/okapi/pathfinder/include/pathfinder/trajectory.h:
-include/okapi/pathfinder/include/pathfinder/modifiers/tank.h:
-include/okapi/pathfinder/include/pathfinder/modifiers/swerve.h:
-include/okapi/pathfinder/include/pathfinder/followers/encoder.h:
-include/okapi/pathfinder/include/pathfinder/followers/distance.h:
-include/okapi/pathfinder/include/pathfinder/io.h:
+include/1028A/okapi/pathfinder/include/pathfinder.h:
+include/1028A/okapi/pathfinder/include/pathfinder/mathutil.h:
+include/1028A/okapi/pathfinder/include/pathfinder/lib.h:
+include/1028A/okapi/pathfinder/include/pathfinder/structs.h:
+include/1028A/okapi/pathfinder/include/pathfinder/fit.h:
+include/1028A/okapi/pathfinder/include/pathfinder/spline.h:
+include/1028A/okapi/pathfinder/include/pathfinder/trajectory.h:
+include/1028A/okapi/pathfinder/include/pathfinder/modifiers/tank.h:
+include/1028A/okapi/pathfinder/include/pathfinder/modifiers/swerve.h:
+include/1028A/okapi/pathfinder/include/pathfinder/followers/encoder.h:
+include/1028A/okapi/pathfinder/include/pathfinder/followers/distance.h:
+include/1028A/okapi/pathfinder/include/pathfinder/io.h:

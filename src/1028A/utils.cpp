@@ -85,6 +85,7 @@ void _1028A::driver::checkBrakeType(void *ptr) {
 */
 
 void _1028A::driver::FlywheelCTRL(void *ptr) {
+  FWcontinueTask = 0;
   while (1) {
     if (flywheelMode == 1) {
       

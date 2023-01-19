@@ -1,4 +1,5 @@
 #include "main.h"
+#include "1028A/okapi/api.hpp"
 #include "1028A/gifdec.h"
 #include "1028A/vars.h"
 #include "1028A/robot.h"
