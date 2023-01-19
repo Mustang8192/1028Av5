@@ -5,7 +5,7 @@
  */
 #pragma once
 
-#include "okapi/api/chassis/model/skidSteerModel.hpp"
+#include "1028A/okapi/api/chassis/model/skidSteerModel.hpp"
 
 namespace okapi {
 class ThreeEncoderSkidSteerModel : public SkidSteerModel {

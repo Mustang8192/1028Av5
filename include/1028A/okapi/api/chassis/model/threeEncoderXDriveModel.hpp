@@ -5,7 +5,7 @@
  */
 #pragma once
 
-#include "okapi/api/chassis/model/xDriveModel.hpp"
+#include "1028A/okapi/api/chassis/model/xDriveModel.hpp"
 
 namespace okapi {
 class ThreeEncoderXDriveModel : public XDriveModel {

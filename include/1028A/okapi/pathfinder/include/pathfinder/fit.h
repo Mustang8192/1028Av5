@@ -1,8 +1,8 @@
 #ifndef PATHFINDER_FIT_H_DEF
 #define PATHFINDER_FIT_H_DEF
 
-#include "okapi/pathfinder/include/pathfinder/lib.h"
-#include "okapi/pathfinder/include/pathfinder/structs.h"
+#include "1028A/okapi/pathfinder/include/pathfinder/lib.h"
+#include "1028A/okapi/pathfinder/include/pathfinder/structs.h"
 
 CAPI void pf_fit_hermite_pre(Waypoint a, Waypoint b, Spline *s);
 CAPI void pf_fit_hermite_cubic(Waypoint a, Waypoint b, Spline *s);

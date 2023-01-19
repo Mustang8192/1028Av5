@@ -1,8 +1,8 @@
 #ifndef PATHFINDER_FOL_DISTANCE_H_DEF
 #define PATHFINDER_FOL_DISTANCE_H_DEF
 
-#include "okapi/pathfinder/include/pathfinder/lib.h"
-#include "okapi/pathfinder/include/pathfinder/structs.h"
+#include "1028A/okapi/pathfinder/include/pathfinder/lib.h"
+#include "1028A/okapi/pathfinder/include/pathfinder/structs.h"
 
 CAPI typedef struct {
     double kp, ki, kd, kv, ka;

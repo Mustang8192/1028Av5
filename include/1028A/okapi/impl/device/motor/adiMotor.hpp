@@ -6,8 +6,8 @@
 #pragma once
 
 #include "api.h"
-#include "okapi/api/control/controllerOutput.hpp"
-#include "okapi/api/util/logging.hpp"
+#include "1028A/okapi/api/control/controllerOutput.hpp"
+#include "1028A/okapi/api/util/logging.hpp"
 
 namespace okapi {
 class ADIMotor : public ControllerOutput<double> {

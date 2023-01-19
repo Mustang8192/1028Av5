@@ -10,7 +10,7 @@
 #include <cmath>
 #include <string>
 
-#include "math/utils.hpp"
+#include "1028A/okapi/squiggles/math/utils.hpp"
 
 namespace squiggles {
 class Pose {

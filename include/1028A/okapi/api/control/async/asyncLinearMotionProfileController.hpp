@@ -5,17 +5,17 @@
  */
 #pragma once
 
-#include "okapi/api/control/async/asyncPositionController.hpp"
-#include "okapi/api/control/util/pathfinderUtil.hpp"
-#include "okapi/api/device/motor/abstractMotor.hpp"
-#include "okapi/api/units/QAngularSpeed.hpp"
-#include "okapi/api/units/QSpeed.hpp"
-#include "okapi/api/util/logging.hpp"
-#include "okapi/api/util/timeUtil.hpp"
+#include "1028A/okapi/api/control/async/asyncPositionController.hpp"
+#include "1028A/okapi/api/control/util/pathfinderUtil.hpp"
+#include "1028A/okapi/api/device/motor/abstractMotor.hpp"
+#include "1028A/okapi/api/units/QAngularSpeed.hpp"
+#include "1028A/okapi/api/units/QSpeed.hpp"
+#include "1028A/okapi/api/util/logging.hpp"
+#include "1028A/okapi/api/util/timeUtil.hpp"
 #include <atomic>
 #include <map>
 
-#include "squiggles.hpp"
+#include "1028A/okapi/squiggles/squiggles.hpp"
 
 namespace okapi {
 class AsyncLinearMotionProfileController : public AsyncPositionController<std::string, double> {

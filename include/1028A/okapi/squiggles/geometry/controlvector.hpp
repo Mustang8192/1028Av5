@@ -10,7 +10,7 @@
 #include <cmath>
 #include <string>
 
-#include "pose.hpp"
+#include "1028A/okapi/squiggles/geometry/pose.hpp"
 
 namespace squiggles {
 class ControlVector {

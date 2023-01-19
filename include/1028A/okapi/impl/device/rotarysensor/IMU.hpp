@@ -6,8 +6,8 @@
 #pragma once
 
 #include "api.h"
-#include "okapi/api/control/controllerInput.hpp"
-#include "okapi/api/device/rotarysensor/continuousRotarySensor.hpp"
+#include "1028A/okapi/api/control/controllerInput.hpp"
+#include "1028A/okapi/api/device/rotarysensor/continuousRotarySensor.hpp"
 
 namespace okapi {
 enum class IMUAxes {

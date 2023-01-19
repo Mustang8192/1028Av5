@@ -6,8 +6,8 @@
 #pragma once
 
 #include "api.h"
-#include "okapi/api/device/motor/abstractMotor.hpp"
-#include "okapi/api/util/logging.hpp"
+#include "1028A/okapi/api/device/motor/abstractMotor.hpp"
+#include "1028A/okapi/api/util/logging.hpp"
 
 namespace okapi {
 class Motor : public AbstractMotor {

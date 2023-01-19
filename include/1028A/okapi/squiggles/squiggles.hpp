@@ -7,16 +7,16 @@
 #ifndef _ROBOT_SQUIGGLES_H_
 #define _ROBOT_SQUIGGLES_H_
 
-#include "geometry/controlvector.hpp"
-#include "geometry/pose.hpp"
-#include "geometry/profilepoint.hpp"
+#include "1028A/okapi/squiggles/geometry/controlvector.hpp"
+#include "1028A/okapi/squiggles/geometry/pose.hpp"
+#include "1028A/okapi/squiggles/geometry/profilepoint.hpp"
 
-#include "physicalmodel/passthroughmodel.hpp"
-#include "physicalmodel/physicalmodel.hpp"
-#include "physicalmodel/tankmodel.hpp"
+#include "1028A/okapi/squiggles/physicalmodel/passthroughmodel.hpp"
+#include "1028A/okapi/squiggles/physicalmodel/physicalmodel.hpp"
+#include "1028A/okapi/squiggles/physicalmodel/tankmodel.hpp"
 
-#include "constraints.hpp"
-#include "io.hpp"
-#include "spline.hpp"
+#include "1028A/okapi/squiggles/constraints.hpp"
+#include "1028A/okapi/squiggles/io.hpp"
+#include "1028A/okapi/squiggles/spline.hpp"
 
 #endif

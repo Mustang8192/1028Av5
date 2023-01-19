@@ -6,8 +6,8 @@
 #pragma once
 
 #include "api.h"
-#include "okapi/impl/device/button/controllerButton.hpp"
-#include "okapi/impl/device/controllerUtil.hpp"
+#include "1028A/okapi/impl/device/button/controllerButton.hpp"
+#include "1028A/okapi/impl/device/controllerUtil.hpp"
 #include <array>
 
 namespace okapi {

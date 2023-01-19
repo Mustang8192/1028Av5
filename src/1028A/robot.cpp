@@ -29,6 +29,7 @@ namespace pros{
   Controller mainController(CONTROLLER_MASTER);
   ADIDigitalOut expansion('e');
 };
+
 namespace okapi{
   Motor LeftFrontok(LeftFrontpt);
   Motor LeftMidok (LeftMidpt);
@@ -39,6 +40,7 @@ namespace okapi{
   Motor Flywheelok (Flywheelpt);
   Motor Intakeok (Intakept);
 };
+
 namespace sylib{
   Motor LeftFrontsy(LeftFrontpt);
   Motor LeftMidsy (LeftMidpt);

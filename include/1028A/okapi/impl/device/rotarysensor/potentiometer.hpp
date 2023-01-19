@@ -6,7 +6,7 @@
 #pragma once
 
 #include "api.h"
-#include "okapi/api/device/rotarysensor/rotarySensor.hpp"
+#include "1028A/okapi/api/device/rotarysensor/rotarySensor.hpp"
 
 namespace okapi {
 class Potentiometer : public RotarySensor {

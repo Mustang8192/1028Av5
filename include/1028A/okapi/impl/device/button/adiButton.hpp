@@ -6,7 +6,7 @@
 #pragma once
 
 #include "api.h"
-#include "okapi/api/device/button/buttonBase.hpp"
+#include "1028A/okapi/api/device/button/buttonBase.hpp"
 
 namespace okapi {
 class ADIButton : public ButtonBase {

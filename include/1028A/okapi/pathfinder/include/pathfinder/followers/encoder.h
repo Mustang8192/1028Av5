@@ -1,7 +1,7 @@
 #ifndef PATHFINDER_FOL_ENCODER_H_DEF
 #define PATHFINDER_FOL_ENCODER_H_DEF
 
-#include "okapi/pathfinder/include/pathfinder/structs.h"
+#include "1028A/okapi/pathfinder/include/pathfinder/structs.h"
 
 typedef struct {
     int initial_position, ticks_per_revolution;

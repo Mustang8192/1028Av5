@@ -6,8 +6,8 @@
 #pragma once
 
 #include "api.h"
-#include "okapi/api/device/rotarysensor/continuousRotarySensor.hpp"
-#include "okapi/impl/device/motor/motor.hpp"
+#include "1028A/okapi/api/device/rotarysensor/continuousRotarySensor.hpp"
+#include "1028A/okapi/impl/device/motor/motor.hpp"
 
 namespace okapi {
 class IntegratedEncoder : public ContinuousRotarySensor {

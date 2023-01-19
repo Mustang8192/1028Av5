@@ -1,4 +1,5 @@
 #include "main.h"
+#include "okapi/impl/device/motor/motor.hpp"
 
 #ifndef Config
 #define Config
