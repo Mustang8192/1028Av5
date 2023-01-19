@@ -2,6 +2,7 @@
 #include "1028A/robot.h"
 #include "1028A/vars.h"
 
+int done = 0;
 /**
 * @brief 
 *  This function is a callback function for auton selector
@@ -11,6 +12,7 @@
 
 lv_res_t _1028A::ui::station_sideBtnAction(lv_obj_t *btn){
 	autonSelect = 1;
+  done = 1;
 	return LV_RES_OK;
 }
 
@@ -23,6 +25,7 @@ lv_res_t _1028A::ui::station_sideBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::right_sideBtnAction(lv_obj_t *btn){
 	autonSelect = 2;
+  done = 1;
 	return LV_RES_OK;
 }
 
@@ -35,6 +38,7 @@ lv_res_t _1028A::ui::right_sideBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::do_nothingBtnAction(lv_obj_t *btn){
 	autonSelect = 0;
+  done = 1;
 	return LV_RES_OK;
 }
 
@@ -47,6 +51,7 @@ lv_res_t _1028A::ui::do_nothingBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::soloWPBtnAction(lv_obj_t *btn){
 	autonSelect = 3;
+  done = 1;
 	return LV_RES_OK;
 }
 
@@ -59,6 +64,7 @@ lv_res_t _1028A::ui::soloWPBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::skillsBtnAction(lv_obj_t *btn){
 	autonSelect = 8;
+  done = 1;
 	return LV_RES_OK;
 }
 
@@ -255,7 +261,7 @@ void _1028A::ui::createBtn (lv_obj_t *location, lv_res_t callback(lv_obj_t *btn)
 * @param default_auton 
 */
 
-void _1028A::ui::init(int hue){
+void _1028A::ui::init(int hue, bool comp){
 
 	// lvgl theme
 	lv_theme_t *th = lv_theme_alien_init(hue, NULL); //Set a HUE value and keep font default RED
@@ -286,4 +292,12 @@ void _1028A::ui::init(int hue){
     _1028A::ui::createBtn(Tab4, _1028A::ui::OdomDebugAction, LV_ALIGN_IN_LEFT_MID, 0, 0, 100, 100, "Odom \nDebug");
     _1028A::ui::createBtn(Tab4, _1028A::ui::GrafanaAction, LV_ALIGN_IN_LEFT_MID, 120, 0, 100, 100, "Start \nGrafana");
 
+    if (comp){
+      while (1){
+        if (done){
+          break;
+        }
+        pros::delay(200);
+      }
+    }
 }

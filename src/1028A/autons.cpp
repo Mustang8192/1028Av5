@@ -2,7 +2,7 @@
 #include "1028A/robot.h"
 
 void _1028A::robot::auton(){
-    autonSelect = 2;
+    autonSelect = 8;
     flywheelMode = 2;
     FWcontinueTask = 1;
     if (autonSelect == 1){
@@ -123,6 +123,45 @@ void _1028A::robot::auton(){
     }
     else if (autonSelect == 8){
         //Skills
-
+        //Roller Turn
+        pros::Intake.move(127);
+        time::forward(-100, 100);
+        pros::delay(100);
+        time::forward(127, 500);
+        pros::delay(400);
+        //Turn toward 2nd Roller
+        pid::turn(280, 127, 1, 1000);
+        pid::turn(280, 127, 1, 500);
+        pid::turn(280, 127, 1, 100);
+        pid::turn(280, 127, 1, 50);
+        //Spinning 2nd Roller
+        time::forward(-100, 315);
+        pros::delay(175);
+        time::forward(127, 200);
+        //Turning toward goal
+        fwtarget = 102;
+        task::start("fw", flywheel::startFlywheelTask);
+        pros::delay(250);
+        pid::turn(195, 127, 1, 1150);
+        pid::turn(195, 127, 1, 250);
+        pid::turn(195, 127, 1, 100);
+        pros::Intake.move(0);
+        pros::delay(200);
+        time::forward(127, 700);
+        pros::delay(500);
+        //Shooting 1st Volley
+        pros::Intake.move(-127);
+        pros::delay(140);
+        pros::Intake.brake();
+        pros::delay(500);
+        pros::Intake.move(-127);
+        pros::delay(140);
+        pros::Intake.brake();
+        pros::delay(500);
+        pros::Intake.move(-127);
+        pros::delay(140);
+        pros::Intake.brake();
+        pros::delay(500);
+        
     }
 }

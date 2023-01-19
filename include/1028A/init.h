@@ -31,7 +31,7 @@ namespace _1028A{
     }
 
     namespace ui{
-        void init(int hue = 190);
+        void init(int hue = 190, bool comp = false);
         lv_res_t station_sideBtnAction(lv_obj_t *btn);
         lv_res_t right_sideBtnAction(lv_obj_t *btn);
         lv_res_t do_nothingBtnAction(lv_obj_t *btn);

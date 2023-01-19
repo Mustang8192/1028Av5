@@ -12,7 +12,8 @@ void disabled() {
 }
 
 void competition_initialize() {
-
+	ui::init(true);
+	pros::Inertial.reset(true);
 }
 
 void autonomous() {
