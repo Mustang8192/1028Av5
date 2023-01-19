@@ -4,7 +4,6 @@
       "name": "PROS Project",
       "includePath": [
         "${workspaceFolder}/**",
-        "/Users/samychirumamilla/Documents/1028Av4/include",
         "/Users/samychirumamilla/Documents/1028Av5/include"
       ],
       "defines": [

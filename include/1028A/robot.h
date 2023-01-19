@@ -31,6 +31,7 @@ namespace okapi{
   extern Motor Flywheelok;
   extern Motor Intakeok;
 };
+/*
 namespace sylib{
   extern Motor LeftFrontsy;
   extern Motor LeftMidsy;
@@ -41,5 +42,6 @@ namespace sylib{
   extern Motor Flywheelsy;
   extern Motor Intakesy;
 };
+*/
 
 #endif

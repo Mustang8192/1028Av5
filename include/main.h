@@ -35,7 +35,6 @@
 #define PROS_USE_LITERALS
 
 #include "api.h"
-#include "sylib/sylib.hpp"
 
 /**
  * You should add more #includes here
