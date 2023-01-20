@@ -19,7 +19,9 @@ namespace pros{
   extern Rotation HorizontalRotation;
   extern GPS GPS1;
   extern Controller mainController;
-  extern ADIDigitalOut expansion;
+  extern ADIDigitalOut expansionLeft;
+  extern ADIDigitalOut expansionRight;
+  extern ADIDigitalOut expansionMid;
 };
 namespace okapi{
   extern Motor LeftFrontok;

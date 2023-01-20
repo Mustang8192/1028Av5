@@ -27,7 +27,9 @@ namespace pros{
   Rotation HorizontalRotation(HorizontalRotationpt);
   GPS GPS1(1);
   Controller mainController(CONTROLLER_MASTER);
-  ADIDigitalOut expansion('e');
+  ADIDigitalOut expansionLeft('a');
+  ADIDigitalOut expansionRight('c');
+  ADIDigitalOut expansionMid('b');
 };
 
 namespace okapi{
