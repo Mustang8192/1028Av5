@@ -2,6 +2,7 @@
 #include "1028A/init.h"
 
 using namespace _1028A;
+using namespace okapi;
 
 void initialize() {
 	ui::init();

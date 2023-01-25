@@ -2,7 +2,6 @@
 #include "1028A/robot.h"
 
 void _1028A::robot::auton(){
-    autonSelect = 8;
     flywheelMode = 2;
     FWcontinueTask = 1;
     if (autonSelect == 1){
@@ -22,20 +21,20 @@ void _1028A::robot::auton(){
     else if (autonSelect == 2){
         //Right Side
         if(flywheelMode == 2){
-            fwtarget = 104;
+            fwtarget = 108;
             task::start("fw", flywheel::startFlywheelTask);
             pros::Intake.move(127);
             time::forward(45, 850);
             pros::delay(2300);
             pros::Intake.move(-127);
             pros::delay(165);
-            fwtarget = 106;
+            fwtarget = 110;
             pros::Intake.brake();
             pros::delay(1200);
             pros::Intake.move(-127);
             pros::delay(165);
             pros::Intake.brake();
-            fwtarget = 110;
+            fwtarget = 112;
             pros::delay(1400);
             pros::Intake.move(-127);
             pros::delay(165);
