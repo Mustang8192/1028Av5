@@ -32,7 +32,13 @@ namespace _1028A{
     }
 
     namespace ui{
-        void init(int hue = 190, bool comp = false);
+        void init(int hue = 190, bool repeated = false);
+        static void uiWatcher(void *ptr);
+        static lv_fs_res_t pcfs_open( void * file_p, const char * fn, lv_fs_mode_t mode);
+        static lv_fs_res_t pcfs_close( void * file_p);
+        static lv_fs_res_t pcfs_read( void * file_p, void * buf, uint32_t btr, uint32_t * br);
+        static lv_fs_res_t pcfs_seek( void * file_p, uint32_t pos);
+        static lv_fs_res_t pcfs_tell( void * file_p, uint32_t * pos_p);
         lv_res_t station_sideBtnAction(lv_obj_t *btn);
         lv_res_t right_sideBtnAction(lv_obj_t *btn);
         lv_res_t do_nothingBtnAction(lv_obj_t *btn);
