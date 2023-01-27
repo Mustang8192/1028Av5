@@ -1,5 +1,6 @@
 #include "1028A/init.h"
 #include "1028A/robot.h"
+#include "pros/misc.h"
 
 /**
  * @brief 
@@ -99,8 +100,6 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
         flywheelstate = 4;
       } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
         flywheelstate = 0;
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X)){
-        flywheelstate = 5;
       }
 
       if (flywheelstate == 0) {
@@ -113,8 +112,6 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
         flywheel::startFlywheel(100);
       } else if (flywheelstate == 4) {
         flywheel::startFlywheel(77.5);
-      } else if (flywheelstate == 5){
-        pros::FlyWheel.brake();
       }
     }
     else if (flywheelMode == 2){
@@ -128,8 +125,6 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
         flywheelstate = 4;
       } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
         flywheelstate = 0;
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X)){
-        flywheelstate = 5;
       }
 
       if (flywheelstate == 0) {
@@ -142,8 +137,6 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
         flywheel::startFlywheel(85);
       } else if (flywheelstate == 4) {
         flywheel::startFlywheel(77.5);
-      } else if (flywheelstate == 5){
-        flywheel::startFlywheel(120);
       }
     }
   pros::delay(20);
@@ -248,13 +241,13 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
 
 void _1028A::driver::ModeCTRL(void *ptr){
   while (1){
-    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_A) && flywheelMode == 1){
+    if (((pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_A)) or pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X)) && flywheelMode == 1){
       flywheelMode = 2;
       pros::mainController.print(1, 1, "FW Mode: 2");
       pros::delay(1000);
     }
 
-    else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_A) && flywheelMode == 2){
+    else if (((pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_A)) or pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X)) && flywheelMode == 2){
       flywheelMode = 1;
       pros::mainController.print(1, 1, "FW Mode: 1");
       pros::delay(1000);
