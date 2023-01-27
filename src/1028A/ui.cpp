@@ -320,7 +320,7 @@ void _1028A::ui::uiWatcher(void *ptr){
       hasPrinted = 1;
     }
 
-    if (pros::competition::is_disabled()){
+    if (pros::competition::is_disabled() && pros::competition::is_connected()){
        pros::mainController.print(1, 1, "Auton: %f", autonSelect);
     }
     pros::delay(200);

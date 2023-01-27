@@ -4,7 +4,7 @@
 void _1028A::robot::auton(){
     flywheelMode = 2;
     FWcontinueTask = 1;
-    autonSelect = 10;
+    autonSelect = 2;
     if (autonSelect == 1){
         //Station Side
         time::forward(-127, 100);
@@ -22,20 +22,20 @@ void _1028A::robot::auton(){
     else if (autonSelect == 2){
         //Right Side
         if(flywheelMode == 2){
-            fwtarget = 108;
+            fwtarget = 110;
             task::start("fw", flywheel::startFlywheelTask);
             pros::Intake.move(127);
-            time::forward(45, 850);
-            pros::delay(2300);
+            time::forward(45, 1000);
+            pros::delay(1700);
             pros::Intake.move(-127);
             pros::delay(165);
-            fwtarget = 110;
+            fwtarget = 112;
             pros::Intake.brake();
             pros::delay(1200);
             pros::Intake.move(-127);
             pros::delay(165);
             pros::Intake.brake();
-            fwtarget = 112;
+            fwtarget = 115;
             pros::delay(1400);
             pros::Intake.move(-127);
             pros::delay(165);
@@ -46,20 +46,20 @@ void _1028A::robot::auton(){
             time::forward(-80, 600);
             time::turn(127, 230);
             pros::delay(500);
-            fwtarget = 98;
             time::forward(-100, 150);
-            pros::Intake.move(-127);
-            pros::delay(190);
+            pros::Intake.move(127);
+            pros::delay(300);
             pros::Intake.brake();
             time::forward(100, 150);
             pros::delay(250);
-            time::turn(-127, 201);
+            fwtarget = 100;
+            pid::turn(-74, 127, 1, 1000);
             pros::delay(250);
             pros::Intake.move(127);
             time::forward(127, 700);
             time::forward(40, 1200);
             pros::delay(250);
-            time::turn(127, 283);
+            time::turn(127, 290);
             pros::delay(700);
             pros::Intake.move(-127);
             pros::delay(165);
@@ -94,7 +94,7 @@ void _1028A::robot::auton(){
             time::forward(-80, 600);
             time::turn(127, 250);
             pros::delay(500);
-            fwtarget = 109;
+            fwtarget = 96;
             time::forward(-100, 150);
             pros::Intake.move(-127);
             pros::delay(190);
@@ -163,8 +163,5 @@ void _1028A::robot::auton(){
         pros::Intake.brake();
         pros::delay(500);
         
-    }
-    else if (autonSelect == 10){
-        pid::turn(180, 127, 1, 10000);
     }
 }
