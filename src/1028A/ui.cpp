@@ -51,7 +51,6 @@ static lv_fs_res_t _1028A::ui::pcfs_tell( void * file_p, uint32_t * pos_p){
     return LV_FS_RES_OK;
 }
 
-int done = 0;
 /**
 * @brief 
 *  This function is a callback function for auton selector
@@ -61,7 +60,7 @@ int done = 0;
 
 lv_res_t _1028A::ui::station_sideBtnAction(lv_obj_t *btn){
 	autonSelect = 1;
-  done = 1;
+  selected = true;
 	return LV_RES_OK;
 }
 
@@ -74,7 +73,7 @@ lv_res_t _1028A::ui::station_sideBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::right_sideBtnAction(lv_obj_t *btn){
 	autonSelect = 2;
-  done = 1;
+  selected = true;
 	return LV_RES_OK;
 }
 
@@ -87,7 +86,7 @@ lv_res_t _1028A::ui::right_sideBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::do_nothingBtnAction(lv_obj_t *btn){
 	autonSelect = 0;
-  done = 1;
+  selected = true;
 	return LV_RES_OK;
 }
 
@@ -100,7 +99,7 @@ lv_res_t _1028A::ui::do_nothingBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::soloWPBtnAction(lv_obj_t *btn){
 	autonSelect = 3;
-  done = 1;
+  selected = true;
 	return LV_RES_OK;
 }
 
@@ -113,7 +112,7 @@ lv_res_t _1028A::ui::soloWPBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::skillsBtnAction(lv_obj_t *btn){
 	autonSelect = 8;
-  done = 1;
+  selected = true;
 	return LV_RES_OK;
 }
 

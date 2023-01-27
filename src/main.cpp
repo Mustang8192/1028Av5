@@ -12,7 +12,18 @@ void disabled() {
 }
 
 void competition_initialize() {
-	
+	/*
+	while (1){
+		if(selected){
+			break;
+		}
+		pros::delay(500);
+	}
+
+	pros::delay(3000);
+	pros::Inertial.reset(true);
+	pros::mainController.rumble("--");
+	*/
 }
 
 void autonomous() {
