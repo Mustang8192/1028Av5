@@ -12,7 +12,7 @@ std::map<std::string, std::unique_ptr<pros::Task>> tasks;
 std::atomic<double> v;
 
 //Flywheel
-int FWcontinueTask = 0;
+int FWcontinueTask = 1;
 double fwtarget;
 
 //Odometry

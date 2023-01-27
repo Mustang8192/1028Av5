@@ -2,8 +2,6 @@
 #include "1028A/robot.h"
 
 void _1028A::robot::auton(){
-    flywheelMode = 2;
-    FWcontinueTask = 1;
     autonSelect = 2;
     if (autonSelect == 1){
         //Station Side
@@ -21,6 +19,7 @@ void _1028A::robot::auton(){
     }
     else if (autonSelect == 2){
         //Right Side
+        flywheelMode = 2;
         fwtarget = 110;
         task::start("fw", flywheel::startFlywheelTask);
         pros::Intake.move(127);
