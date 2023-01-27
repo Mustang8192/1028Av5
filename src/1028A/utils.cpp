@@ -423,8 +423,8 @@ void _1028A::pid::turn(double RequestedValue, double spd, double thre, double ti
   float lastError = 0;
 
   float Kp = 2;
-  float Ki = 0;
-  float Kd = 9;
+  float Ki = 2;
+  float Kd = 3;
   double timeExit = 0;
   double startTime = pros::millis();
   while (1) {

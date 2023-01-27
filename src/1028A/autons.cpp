@@ -4,6 +4,7 @@
 void _1028A::robot::auton(){
     flywheelMode = 2;
     FWcontinueTask = 1;
+    autonSelect = 10;
     if (autonSelect == 1){
         //Station Side
         time::forward(-127, 100);
@@ -45,7 +46,7 @@ void _1028A::robot::auton(){
             time::forward(-80, 600);
             time::turn(127, 230);
             pros::delay(500);
-            fwtarget = 96;
+            fwtarget = 98;
             time::forward(-100, 150);
             pros::Intake.move(-127);
             pros::delay(190);
@@ -63,7 +64,7 @@ void _1028A::robot::auton(){
             pros::Intake.move(-127);
             pros::delay(165);
             pros::Intake.brake();
-            fwtarget = 106;
+            fwtarget = 107;
             pros::delay(1200);
             pros::Intake.move(-127);
             pros::delay(165);
@@ -162,5 +163,8 @@ void _1028A::robot::auton(){
         pros::Intake.brake();
         pros::delay(500);
         
+    }
+    else if (autonSelect == 10){
+        pid::turn(180, 127, 1, 10000);
     }
 }
