@@ -76,7 +76,8 @@ bin/1028A/robot.cpp.o: src/1028A/robot.cpp include/1028A/robot.h \
  include/pros/rotation.hpp include/pros/rotation.h include/pros/rtos.hpp \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/pros/link.hpp include/pros/link.h \
- include/1028A/okapi/impl/device/motor/motor.hpp include/api.h \
+ include/pros/api_legacy.h include/api.h \
+ include/1028A/okapi/impl/device/motor/motor.hpp \
  include/1028A/okapi/api/device/motor/abstractMotor.hpp \
  include/1028A/okapi/api/control/controllerOutput.hpp \
  include/1028A/okapi/api/device/rotarysensor/continuousRotarySensor.hpp \
@@ -245,8 +246,9 @@ include/pros/vision.hpp:
 include/pros/vision.h:
 include/pros/link.hpp:
 include/pros/link.h:
-include/1028A/okapi/impl/device/motor/motor.hpp:
+include/pros/api_legacy.h:
 include/api.h:
+include/1028A/okapi/impl/device/motor/motor.hpp:
 include/1028A/okapi/api/device/motor/abstractMotor.hpp:
 include/1028A/okapi/api/control/controllerOutput.hpp:
 include/1028A/okapi/api/device/rotarysensor/continuousRotarySensor.hpp:

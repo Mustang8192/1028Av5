@@ -22,6 +22,8 @@ namespace _1028A{
         void resetDrive();
         void DriveStop();
         void auton();
+        
+        void preMatchCheck();
     }
 
     namespace pid{

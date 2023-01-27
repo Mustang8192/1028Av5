@@ -76,7 +76,8 @@ bin/1028A/grapher.cpp.o: src/1028A/grapher.cpp include/main.h \
  include/pros/rotation.hpp include/pros/rotation.h include/pros/rtos.hpp \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/pros/link.hpp include/pros/link.h \
- include/1028A/init.h include/1028A/okapi/api.hpp \
+ include/pros/api_legacy.h include/api.h include/1028A/init.h \
+ include/1028A/okapi/api.hpp \
  include/1028A/okapi/api/chassis/controller/chassisControllerIntegrated.hpp \
  include/1028A/okapi/api/chassis/controller/chassisController.hpp \
  include/1028A/okapi/api/chassis/controller/chassisScales.hpp \
@@ -84,8 +85,8 @@ bin/1028A/grapher.cpp.o: src/1028A/grapher.cpp include/main.h \
  include/1028A/okapi/api/units/RQuantity.hpp \
  include/1028A/okapi/api/units/QLength.hpp \
  include/1028A/okapi/api/util/logging.hpp \
- include/1028A/okapi/api/coreProsAPI.hpp include/api.h \
- include/pros/apix.h include/pros/serial.h include/pros/serial.hpp \
+ include/1028A/okapi/api/coreProsAPI.hpp include/pros/apix.h \
+ include/pros/serial.h include/pros/serial.hpp \
  include/1028A/okapi/api/util/abstractTimer.hpp \
  include/1028A/okapi/api/units/QFrequency.hpp \
  include/1028A/okapi/api/units/QTime.hpp \
@@ -370,6 +371,8 @@ include/pros/vision.hpp:
 include/pros/vision.h:
 include/pros/link.hpp:
 include/pros/link.h:
+include/pros/api_legacy.h:
+include/api.h:
 include/1028A/init.h:
 include/1028A/okapi/api.hpp:
 include/1028A/okapi/api/chassis/controller/chassisControllerIntegrated.hpp:
@@ -380,7 +383,6 @@ include/1028A/okapi/api/units/RQuantity.hpp:
 include/1028A/okapi/api/units/QLength.hpp:
 include/1028A/okapi/api/util/logging.hpp:
 include/1028A/okapi/api/coreProsAPI.hpp:
-include/api.h:
 include/pros/apix.h:
 include/pros/serial.h:
 include/pros/serial.hpp:

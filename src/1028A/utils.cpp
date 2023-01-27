@@ -25,6 +25,19 @@ void _1028A::robot::resetDrive() {
   pros::HorizontalRotation.reset_position();
 }
 
+void _1028A::robot::preMatchCheck(){
+  while (1){
+		if(selected){
+			break;
+		}
+		pros::delay(500);
+	}
+
+	pros::delay(3000);
+	pros::Inertial.reset(true);
+	pros::mainController.rumble("--");
+}
+
 /**
 * @brief
 *  This function is used to set the target speed of the flywheel with PID during Driver Control
