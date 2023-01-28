@@ -1,8 +1,9 @@
 #include "1028A/init.h"
 #include "1028A/robot.h"
+#include "pros/rtos.h"
 
 void _1028A::robot::auton(){
-    autonSelect = 2;
+    autonSelect = 8;
     if (autonSelect == 1){
         //Station Side
         time::forward(-127, 100);
@@ -72,22 +73,209 @@ void _1028A::robot::auton(){
         //Solo Win Point
     }
     else if (autonSelect == 8){
-        //Skills
-        //Roller Turn
         pros::Intake.move(127);
         time::forward(-100, 100);
-        pros::delay(100);
-        time::forward(127, 500);
         pros::delay(400);
-        //Turn toward 2nd Roller
-        pid::turn(280, 127, 1, 1000);
-        pid::turn(280, 127, 1, 500);
-        pid::turn(280, 127, 1, 100);
-        pid::turn(280, 127, 1, 50);
-        //Spinning 2nd Roller
-        time::forward(-100, 315);
-        pros::delay(175);
+        rightOnly(127, 375);
+        time::forward(70, 550);
+        pid::turn(75, 127, 1, 2000);
+        pid::turn(75, 127, 1, 1000);
+        pid::turn(75, 127, 1, 500);
+        pid::turn(75, 127, 1, 100);
+        time::forward(-127, 535);
+        pros::delay(1000);
         time::forward(127, 200);
+        fwtarget = 95;
+        task::start("fw", flywheel::startFlywheelTask);
+        pid::turn(-12.5, 127, 1, 1000);
+        pid::turn(-12.5, 127, 1, 500);
+        pid::turn(-12.5, 127, 1, 250);
+        pid::turn(-12.5, 127, 1, 100);
+        time::forward(127, 725);
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        fwtarget = 97;
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        fwtarget = 99;
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(1000);
+        time::forward(-127, 600);
+        fwtarget = 95;
+        pid::turn(40, 127, 1, 1000);
+        pid::turn(40, 127, 1, 500);
+        pid::turn(40, 127, 1, 250);
+        pid::turn(40, 127, 1, 100);
+        pros::Intake.move(127);
+        time::forward(38, 3580);
+        pros::delay(2000);
+        pid::turn(-50, 127, 1, 1000);
+        pid::turn(-50, 127, 1, 500);
+        pid::turn(-50, 127, 1, 250);
+        pid::turn(-50, 127, 1, 100);
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        fwtarget = 102;
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        fwtarget = 105;
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(500);
+        pid::turn(7, 127, 1, 1000);
+        pid::turn(7, 127, 1, 500);
+        pid::turn(7, 127, 1, 250);
+        pid::turn(7, 127, 1, 100);
+        fwtarget = 95;
+        pros::Intake.move(127);
+        pros::delay(500);
+        time::forward(25, 6450);
+        pros::delay(2000);
+        pid::turn(-100.5, 127, 1, 1000);
+        pid::turn(-100.5, 127, 1, 500);
+        pid::turn(-100.5, 127, 1, 250);
+        pid::turn(-100.5, 127, 1, 100);
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        fwtarget = 98;
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        fwtarget = 100;
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(500);
+        fwtarget = 103;
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(500);
+        pid::turn(-75, 127, 1, 1000);
+        pid::turn(-75, 127, 1, 500);
+        pid::turn(-75, 127, 1, 250);
+        pid::turn(-75, 127, 1, 100);
+        time::forward(-127, 835);
+        pros::delay(1000);
+        pid::turn(-180, 127, 1, 1000);
+        pid::turn(-180, 127, 1, 500);
+        pid::turn(-180, 127, 1, 250);
+        pid::turn(-180, 127, 1, 100);
+        pros::Intake.move(127);
+        time::forward(-100, 400);
+        pros::delay(400);
+        rightOnly(127, 375);
+        time::forward(70, 550);
+        pid::turn(-75, 127, 1, 1000);
+        pid::turn(-75, 127, 1, 500);
+        pid::turn(-75, 127, 1, 250);
+        pid::turn(-75, 127, 1, 100);
+        time::forward(-127, 535);
+        pros::delay(600);
+        time::forward(127, 200);
+        pid::turn(-150, 127, 1, 1000);
+        pid::turn(-150, 127, 1, 500);
+        pid::turn(-150, 127, 1, 250);
+        pid::turn(-150, 127, 1, 100);
+        pros::expansionMid.set_value(1);
+        pros::expansionLeft.set_value(1);
+        pros::expansionRight.set_value(1);
+
+
+        //Skills
+        //Roller Turn
+        /*
+        pros::Inertial.set_rotation(0);
+        pros::Intake.move(127);
+        time::forward(-100, 100);
+        pros::delay(550);
+        time::forward(127, 500);
+        pros::delay(200);
+        pid::turn(75, 127, 1, 2000);
+        pid::turn(75, 127, 1, 1000);
+        pid::turn(75, 127, 1, 500);
+        pid::turn(75, 127, 1, 100);
+        time::forward(-127, 535);
+        pros::delay(700);
+        time::forward(127, 200);
+        fwtarget = 100;
+        task::start("fw", flywheel::startFlywheelTask);
+        pros::Intake.move(0);
+        pid::turn(-10, 127, 1, 1000);
+        pid::turn(-10, 127, 1, 500);
+        pid::turn(-10, 127, 1, 250);
+        pid::turn(-10, 127, 1, 100);
+        time::forward(127, 725);
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(500);
+        pid::turn(100, 127, 1, 1000);
+        pid::turn(100, 127, 1, 500);
+        pid::turn(100, 127, 1, 250);
+        pid::turn(100, 127, 1, 100);
+        */
+        /*
+        time::forward(-127, 1200);
+        pid::turn(30, 127, 1, 2000);
+        pid::turn(, 127, 1, 1000);
+        pid::turn(75, 127, 1, 500);
+        pid::turn(75, 127, 1, 100);
+        */
+        /*
+        pid::turn(55, 127, 1, 1000);
+        pid::turn(55, 127, 1, 500);
+        pid::turn(55, 127, 1, 250);
+        pid::turn(55, 127, 1, 100);
+        pros::Intake.move(127);
+        time::forward(40, 2300);
+        pid::turn(-55, 127, 1, 1000);
+        pid::turn(-55, 127, 1, 500);
+        pid::turn(-55, 127, 1, 250);
+        pid::turn(-55, 127, 1, 100);
+        pros::delay(1000);
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        */
+        /*
         //Turning toward goal
         fwtarget = 102;
         task::start("fw", flywheel::startFlywheelTask);
@@ -112,6 +300,6 @@ void _1028A::robot::auton(){
         pros::delay(140);
         pros::Intake.brake();
         pros::delay(500);
-        
-    }
+        */
+    }   
 }

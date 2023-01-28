@@ -443,3 +443,5 @@ namespace _1028A{
 
         };
 }
+
+void rightOnly(double spd, double time);
