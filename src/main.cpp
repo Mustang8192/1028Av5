@@ -12,7 +12,7 @@ void disabled() {
 }
 
 void competition_initialize() {
-	//robot::preMatchCheck();
+	
 }
 
 void autonomous() {

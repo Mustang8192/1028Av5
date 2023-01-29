@@ -58,7 +58,7 @@ static lv_fs_res_t _1028A::ui::pcfs_tell( void * file_p, uint32_t * pos_p){
 * @return lv_res_t 
 */
 
-lv_res_t _1028A::ui::station_sideBtnAction(lv_obj_t *btn){
+lv_res_t _1028A::ui::left_sideBtnAction(lv_obj_t *btn){
 	autonSelect = 1;
   selected = true;
 	return LV_RES_OK;
@@ -350,7 +350,7 @@ void _1028A::ui::init(int hue, bool repeated){
 	lv_obj_t *Tab3 = lv_tabview_add_tab(tabview, "Graphs");
     lv_obj_t *Tab4 = lv_tabview_add_tab(tabview, "Misc");
 
-    _1028A::ui::createBtn(Tab1, _1028A::ui::station_sideBtnAction, LV_ALIGN_IN_LEFT_MID, 0,0, 100, 100, "Left_side");
+    _1028A::ui::createBtn(Tab1, _1028A::ui::left_sideBtnAction, LV_ALIGN_IN_LEFT_MID, 0,0, 100, 100, "Left_side");
 	_1028A::ui::createBtn(Tab1, _1028A::ui::right_sideBtnAction, LV_ALIGN_IN_LEFT_MID, 120,0, 100, 100, "Right_side");
 	_1028A::ui::createBtn(Tab1, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 240,0, 100, 100, "_");
 	_1028A::ui::createBtn(Tab1, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 360, 0, 100, 100, "_");

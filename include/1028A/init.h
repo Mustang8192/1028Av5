@@ -22,8 +22,6 @@ namespace _1028A{
         void resetDrive();
         void DriveStop();
         void auton();
-        
-        void preMatchCheck();
     }
 
     namespace pid{
@@ -41,7 +39,7 @@ namespace _1028A{
         static lv_fs_res_t pcfs_read( void * file_p, void * buf, uint32_t btr, uint32_t * br);
         static lv_fs_res_t pcfs_seek( void * file_p, uint32_t pos);
         static lv_fs_res_t pcfs_tell( void * file_p, uint32_t * pos_p);
-        lv_res_t station_sideBtnAction(lv_obj_t *btn);
+        lv_res_t left_sideBtnAction(lv_obj_t *btn);
         lv_res_t right_sideBtnAction(lv_obj_t *btn);
         lv_res_t do_nothingBtnAction(lv_obj_t *btn);
         lv_res_t skillsBtnAction(lv_obj_t *btn);
@@ -62,6 +60,7 @@ namespace _1028A{
     namespace time {
         void forward (double spd, double time);
         void turn (double spd, double time);
+        void rightOnly(double spd, double time);
     }
     namespace driver{
         void checkBrakeType(void *ptr);
@@ -443,5 +442,3 @@ namespace _1028A{
 
         };
 }
-
-void rightOnly(double spd, double time);
