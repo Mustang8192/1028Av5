@@ -147,7 +147,7 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
       } else if (flywheelstate == 2) {
         flywheel::startFlywheel(120);
       } else if (flywheelstate == 3 && !pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(85);
+        flywheel::startFlywheel(95);
       } else if (flywheelstate == 4) {
         flywheel::startFlywheel(77.5);
       }
@@ -620,7 +620,7 @@ void rightOnly(double spd, double time){
   pros::RightFront.brake();
   pros::RightMid.brake();
   pros::RightBack.brake();
-  
+
 }
 
 void _1028A::OdomDebug::resetSens(){

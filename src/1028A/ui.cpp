@@ -298,6 +298,7 @@ void _1028A::ui::createBtn (lv_obj_t *location, lv_res_t callback(lv_obj_t *btn)
 }
 
 void _1028A::ui::uiWatcher(void *ptr){
+  /*
   int hasPrinted = 0;
   while (true){
     if (pros::competition::is_connected() && !pros::competition::is_disabled() && !pros::competition::is_autonomous() && hasPrinted == 0){
@@ -324,6 +325,7 @@ void _1028A::ui::uiWatcher(void *ptr){
     }
     pros::delay(200);
   }
+  */
 }
 
 /**
