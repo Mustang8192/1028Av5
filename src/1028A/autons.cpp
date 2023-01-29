@@ -1,6 +1,5 @@
 #include "1028A/init.h"
 #include "1028A/robot.h"
-#include "pros/rtos.h"
 
 void _1028A::robot::auton(){
     if (autonSelect == 1){
