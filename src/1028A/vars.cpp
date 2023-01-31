@@ -15,9 +15,6 @@ std::atomic<double> v;
 int FWcontinueTask = 1;
 double fwtarget;
 
-//Ui
-bool selected = false;
-
 //Odometry
 okapi::OdomState CurrentPosition;
 std::shared_ptr<okapi::OdomChassisController> chassis;

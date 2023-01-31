@@ -19,9 +19,6 @@ extern std::atomic<double> v;
 extern int FWcontinueTask;
 extern double fwtarget;
 
-//Ui
-extern bool selected;
-
 //Odometry
 extern okapi::OdomState CurrentPosition;
 extern std::shared_ptr<okapi::OdomChassisController> chassis;

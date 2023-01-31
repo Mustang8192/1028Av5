@@ -58,7 +58,6 @@ static lv_fs_res_t _1028A::ui::pcfs_tell( void * file_p, uint32_t * pos_p){
 
 lv_res_t _1028A::ui::left_sideBtnAction(lv_obj_t *btn){
 	autonSelect = 1;
-  selected = true;
 	return LV_RES_OK;
 }
 
@@ -71,7 +70,8 @@ lv_res_t _1028A::ui::left_sideBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::right_sideBtnAction(lv_obj_t *btn){
 	autonSelect = 2;
-  selected = true;
+  lv_obj_t *path = lv_line_create(lv_scr_act(), NULL);
+  lv_line_set_points(path, (lv_point_t[]){{0, 0}, {100, 100}}, 2);
 	return LV_RES_OK;
 }
 
@@ -84,7 +84,6 @@ lv_res_t _1028A::ui::right_sideBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::do_nothingBtnAction(lv_obj_t *btn){
 	autonSelect = 0;
-  selected = true;
 	return LV_RES_OK;
 }
 
@@ -97,7 +96,6 @@ lv_res_t _1028A::ui::do_nothingBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::soloWPBtnAction(lv_obj_t *btn){
 	autonSelect = 3;
-  selected = true;
 	return LV_RES_OK;
 }
 
@@ -110,7 +108,6 @@ lv_res_t _1028A::ui::soloWPBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::skillsBtnAction(lv_obj_t *btn){
 	autonSelect = 8;
-  selected = true;
 	return LV_RES_OK;
 }
 

@@ -216,8 +216,7 @@ bin/1028A/ui.cpp.o: src/1028A/ui.cpp include/1028A/init.h include/main.h \
  include/1028A/okapi/pathfinder/include/pathfinder/modifiers/swerve.h \
  include/1028A/okapi/pathfinder/include/pathfinder/followers/encoder.h \
  include/1028A/okapi/pathfinder/include/pathfinder/followers/distance.h \
- include/1028A/okapi/pathfinder/include/pathfinder/io.h \
- include/pros/misc.hpp
+ include/1028A/okapi/pathfinder/include/pathfinder/io.h
 include/1028A/init.h:
 include/main.h:
 include/api.h:
@@ -520,4 +519,3 @@ include/1028A/okapi/pathfinder/include/pathfinder/modifiers/swerve.h:
 include/1028A/okapi/pathfinder/include/pathfinder/followers/encoder.h:
 include/1028A/okapi/pathfinder/include/pathfinder/followers/distance.h:
 include/1028A/okapi/pathfinder/include/pathfinder/io.h:
-include/pros/misc.hpp:
