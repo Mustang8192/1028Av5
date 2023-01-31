@@ -70,8 +70,6 @@ lv_res_t _1028A::ui::left_sideBtnAction(lv_obj_t *btn){
 
 lv_res_t _1028A::ui::right_sideBtnAction(lv_obj_t *btn){
 	autonSelect = 2;
-  lv_obj_t *path = lv_line_create(lv_scr_act(), NULL);
-  lv_line_set_points(path, (lv_point_t[]){{0, 0}, {100, 100}}, 2);
 	return LV_RES_OK;
 }
 
@@ -300,9 +298,8 @@ void _1028A::ui::createBtn (lv_obj_t *location, lv_res_t callback(lv_obj_t *btn)
 */
 
 void _1028A::ui::init(int hue, bool repeated){
-
 	// lvgl theme
-	lv_theme_t *th = lv_theme_alien_init(hue, NULL); //Set a HUE value and keep font default RED
+	lv_theme_t *th = lv_theme_alien_init(hue, NULL);
 	lv_theme_set_current(th);
 
 	// create a tab view object
