@@ -3,7 +3,6 @@
 *.obj
 
 # Executables
-*.bin
 *.elf
 
 # PROS
