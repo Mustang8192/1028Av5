@@ -309,9 +309,9 @@ void _1028A::ui::init(int hue, bool repeated){
 	lv_obj_t *Tab1 = lv_tabview_add_tab(tabview, "Selector 1");
   lv_obj_t *Tab2 = lv_tabview_add_tab(tabview, "Selector 2");
 	lv_obj_t *Tab3 = lv_tabview_add_tab(tabview, "Graphs");
-    lv_obj_t *Tab4 = lv_tabview_add_tab(tabview, "Misc");
+  lv_obj_t *Tab4 = lv_tabview_add_tab(tabview, "Misc");
 
-    _1028A::ui::createBtn(Tab1, _1028A::ui::left_sideBtnAction, LV_ALIGN_IN_LEFT_MID, 0,0, 100, 100, "Left_side");
+  _1028A::ui::createBtn(Tab1, _1028A::ui::left_sideBtnAction, LV_ALIGN_IN_LEFT_MID, 0,0, 100, 100, "Left_side");
 	_1028A::ui::createBtn(Tab1, _1028A::ui::right_sideBtnAction, LV_ALIGN_IN_LEFT_MID, 120,0, 100, 100, "Right_side");
 	_1028A::ui::createBtn(Tab1, _1028A::ui::soloWPBtnAction, LV_ALIGN_IN_LEFT_MID, 240,0, 100, 100, "Solo_WP");
 	_1028A::ui::createBtn(Tab1, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 360, 0, 100, 100, "_");
@@ -320,11 +320,11 @@ void _1028A::ui::init(int hue, bool repeated){
 	_1028A::ui::createBtn(Tab2, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 240,0, 100, 100, "_");
 	_1028A::ui::createBtn(Tab2, _1028A::ui::skillsBtnAction, LV_ALIGN_IN_LEFT_MID, 360, 0, 100, 100, "Skills");
 	_1028A::ui::createBtn(Tab4, _1028A::ui::Flywheelbeastmode, LV_ALIGN_IN_LEFT_MID, 240,0, 100, 100, "Flywheel \n  Big Boy \n  Mode");
-    _1028A::ui::createBtn(Tab3, _1028A::ui::FlywheelGRCB, LV_ALIGN_IN_LEFT_MID, 0,0, 100, 100, "Flywheel");
+  _1028A::ui::createBtn(Tab3, _1028A::ui::FlywheelGRCB, LV_ALIGN_IN_LEFT_MID, 0,0, 100, 100, "Flywheel");
 	_1028A::ui::createBtn(Tab3, _1028A::ui::IntakeGRCB, LV_ALIGN_IN_LEFT_MID, 120,0, 100, 100, "Intake");
 	_1028A::ui::createBtn(Tab3, _1028A::ui::DriveGRCB, LV_ALIGN_IN_LEFT_MID, 240,0, 100, 100, "Drive");
 	_1028A::ui::createBtn(Tab3, _1028A::ui::BatteryGRCB, LV_ALIGN_IN_LEFT_MID, 360, 0, 100, 100, "Battery");
-    _1028A::ui::createBtn(Tab4, _1028A::ui::OdomDebugAction, LV_ALIGN_IN_LEFT_MID, 0, 0, 100, 100, "Odom \nDebug");
-    _1028A::ui::createBtn(Tab4, _1028A::ui::GrafanaAction, LV_ALIGN_IN_LEFT_MID, 120, 0, 100, 100, "Start \nGrafana");
+  _1028A::ui::createBtn(Tab4, _1028A::ui::OdomDebugAction, LV_ALIGN_IN_LEFT_MID, 0, 0, 100, 100, "Odom \nDebug");
+  _1028A::ui::createBtn(Tab4, _1028A::ui::GrafanaAction, LV_ALIGN_IN_LEFT_MID, 120, 0, 100, 100, "Start \nGrafana");
     
 }
