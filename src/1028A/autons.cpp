@@ -75,7 +75,7 @@ void _1028A::robot::auton(){
         task::start("fw", flywheel::startFlywheelTask);
         pros::Intake.move(127);
         time::forward(-100, 100);
-        pros::delay(550);
+        pros::delay(510);
         time::forward(127, 100);
         pid::turn(-70, 127, 1, 700);
         time::forward(-127, 535);
