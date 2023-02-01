@@ -2,7 +2,6 @@
 #include "1028A/init.h"
 
 using namespace _1028A;
-using namespace okapi;
 
 void initialize() {
 	ui::init();
@@ -28,6 +27,6 @@ void opcontrol() {
 	task::start("ModeCTRL", driver::ModeCTRL);
 	while (true) {
 		
-		pros::delay(20);
+		pros::delay(200);
 	}
 }
