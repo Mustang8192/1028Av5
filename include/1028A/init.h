@@ -15,7 +15,6 @@
 #include "okapi/pathfinder/include/pathfinder.h"
 #include <initializer_list>
 #include <vector>
-#include <cmath>
 
 namespace _1028A{
     namespace robot{
