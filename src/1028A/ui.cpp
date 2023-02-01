@@ -313,7 +313,7 @@ void _1028A::ui::init(int hue, bool repeated){
 
     _1028A::ui::createBtn(Tab1, _1028A::ui::left_sideBtnAction, LV_ALIGN_IN_LEFT_MID, 0,0, 100, 100, "Left_side");
 	_1028A::ui::createBtn(Tab1, _1028A::ui::right_sideBtnAction, LV_ALIGN_IN_LEFT_MID, 120,0, 100, 100, "Right_side");
-	_1028A::ui::createBtn(Tab1, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 240,0, 100, 100, "_");
+	_1028A::ui::createBtn(Tab1, _1028A::ui::soloWPBtnAction, LV_ALIGN_IN_LEFT_MID, 240,0, 100, 100, "Solo_WP");
 	_1028A::ui::createBtn(Tab1, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 360, 0, 100, 100, "_");
   _1028A::ui::createBtn(Tab2, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 0,0, 100, 100, "_");
 	_1028A::ui::createBtn(Tab2, _1028A::ui::do_nothingBtnAction, LV_ALIGN_IN_LEFT_MID, 120,0, 100, 100, "_");

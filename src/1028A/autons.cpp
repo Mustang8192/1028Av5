@@ -19,20 +19,20 @@ void _1028A::robot::auton(){
     else if (autonSelect == 2){
         //Right Side
         flywheelMode = 2;
-        fwtarget = 118;
+        fwtarget = 105;
         task::start("fw", flywheel::startFlywheelTask);
         pros::Intake.move(127);
         time::forward(45, 1000);
         pros::delay(2500);
         pros::Intake.move(-127);
         pros::delay(170);
-        fwtarget = 122;
+        fwtarget = 108;
         pros::Intake.brake();
         pros::delay(1200);
         pros::Intake.move(-127);
         pros::delay(170);
         pros::Intake.brake();
-        fwtarget = 124;
+        fwtarget = 111;
         pros::delay(1400);
         pros::Intake.move(-127);
         pros::delay(170);
@@ -50,13 +50,14 @@ void _1028A::robot::auton(){
         time::forward(100, 150);
         pros::delay(250);
         fwtarget = 100;
-        pid::turn(-74, 127, 1, 1000);
+        pid::turn(-74, 127, 1, 800);
         pros::delay(250);
         pros::Intake.move(127);
         time::forward(127, 600);
         time::forward(40, 1200);
         pros::delay(250);
-        time::turn(127, 330);
+        //time::turn(127, 330);
+        pid::turn(74, 127, 1, 800);
         pros::delay(700);
         pros::Intake.move(-127);
         pros::delay(165);
@@ -69,6 +70,52 @@ void _1028A::robot::auton(){
     }
     else if (autonSelect == 3){
         //Solo Win Point
+        flywheelMode = 2;
+        fwtarget = 100;
+        task::start("fw", flywheel::startFlywheelTask);
+        pros::Intake.move(127);
+        time::forward(-100, 100);
+        pros::delay(550);
+        time::forward(127, 100);
+        pid::turn(-70, 127, 1, 700);
+        time::forward(-127, 535);
+        pid::turn(3, 127, 1, 700);
+        time::forward(127, 550);
+        pid::turn(-37.5, 127, 1, 800);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        fwtarget = 116;
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(500);
+        pid::turn(50, 127, 1, 600);
+        pros::Intake.move(127);
+        time::forward(40, 2280);
+        pros::delay(300);
+        pid::turn(-66.5, 127, 1, 700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        fwtarget = 116;
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(700);
+        pros::Intake.move(-127);
+        pros::delay(165);
+        pros::Intake.brake();
+        pros::delay(500);
+        pid::turn(-136, 127, 1, 700);
+        time::forward(-127, 550);
+        pid::turn(-70, 127, 1, 700);
+        time::forward(-127, 100);
+        pros::Intake.move(127);
+        pros::delay(550);
+        pros::Intake.brake();
     }
     else if (autonSelect == 8){
         //Skills
