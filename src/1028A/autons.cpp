@@ -56,7 +56,6 @@ void _1028A::robot::auton(){
         time::forward(127, 600);
         time::forward(40, 1200);
         pros::delay(250);
-        //time::turn(127, 330);
         pid::turn(74, 127, 1, 800);
         pros::delay(700);
         pros::Intake.move(-127);

@@ -610,6 +610,23 @@ void _1028A::time::rightOnly(double spd, double time){
 
 }
 
+void _1028A::time::leftOnly(double spd, double time){
+  pros::RightFront.brake();
+  pros::RightMid.brake();
+  pros::RightBack.brake();
+
+  pros::LeftFront.move((1 * spd));
+  pros::LeftBack.move((1 * spd));
+  pros::LeftMid.move((-1 * spd));
+
+  pros::delay(time);
+
+  pros::LeftFront.brake();
+  pros::LeftMid.brake();
+  pros::LeftBack.brake();
+
+}
+
 void _1028A::OdomDebug::resetSens(){
   pros::LeftRotation.reset();
   pros::RightRotation.reset();

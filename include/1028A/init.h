@@ -59,6 +59,7 @@ namespace _1028A{
         void forward (double spd, double time);
         void turn (double spd, double time);
         void rightOnly(double spd, double time);
+        void leftOnly(double spd, double time);
     }
     namespace driver{
         void checkBrakeType(void *ptr);
