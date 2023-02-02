@@ -70,8 +70,7 @@ void _1028A::robot::auton(){
     }
     else if (autonSelect == 3){
         //Solo Win Point
-        flywheelMode = 2;
-        fwtarget = 100;
+        fwtarget = 98;
         task::start("fw", flywheel::startFlywheelTask);
         pros::Intake.move(127);
         time::forward(-100, 100);
@@ -81,28 +80,30 @@ void _1028A::robot::auton(){
         time::forward(-127, 535);
         pid::turn(3, 127, 1, 700);
         time::forward(127, 550);
-        pid::turn(-37.5, 127, 1, 800);
+        pid::turn(-40, 127, 1, 800);
         pros::Intake.move(-127);
         pros::delay(165);
         pros::Intake.brake();
-        fwtarget = 116;
+        fwtarget = 106;
         pros::delay(700);
         pros::Intake.move(-127);
         pros::delay(165);
         pros::Intake.brake();
         pros::delay(500);
-        pid::turn(50, 127, 1, 600);
+        pid::turn(46.75, 127, 1, 600);
         pros::Intake.move(127);
         time::forward(40, 2280);
-        pros::delay(300);
-        pid::turn(-66.5, 127, 1, 700);
+        fwtarget = 100;
+        pros::delay(600);
+        pid::turn(-69, 127, 1, 700);
         pros::Intake.move(-127);
         pros::delay(165);
         pros::Intake.brake();
-        fwtarget = 116;
+        fwtarget = 106;
         pros::delay(700);
         pros::Intake.move(-127);
         pros::delay(165);
+        fwtarget = 110;
         pros::Intake.brake();
         pros::delay(700);
         pros::Intake.move(-127);
