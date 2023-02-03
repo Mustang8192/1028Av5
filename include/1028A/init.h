@@ -31,7 +31,7 @@ namespace _1028A{
     }
 
     namespace ui{
-        void init(int hue = 190, bool repeated = false);
+        void init(int hue = 328, bool repeated = false);
         static lv_fs_res_t pcfs_open( void * file_p, const char * fn, lv_fs_mode_t mode);
         static lv_fs_res_t pcfs_close( void * file_p);
         static lv_fs_res_t pcfs_read( void * file_p, void * buf, uint32_t btr, uint32_t * br);
