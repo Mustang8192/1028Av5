@@ -218,7 +218,11 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
         pros::FlyWheel.move(127);
         pros::delay(140);
         pros::Intake.move(0);
-        pros::delay(60);
+        pros::delay(60 + FWoffset);
+        FWoffset += 25;
+      }
+      else{
+        FWoffset = 0;
       }
 
       if(pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN) && (flywheelstate == 3)){

@@ -13,6 +13,7 @@ std::atomic<double> v;
 
 //Flywheel
 int FWcontinueTask = 1;
+int FWoffset = 0;
 double fwtarget;
 
 //Odometry

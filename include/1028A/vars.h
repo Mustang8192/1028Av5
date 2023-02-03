@@ -17,6 +17,7 @@ extern std::atomic<double> v;
 
 //Flywheel
 extern int FWcontinueTask;
+extern int FWoffset;
 extern double fwtarget;
 
 //Odometry

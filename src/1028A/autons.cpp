@@ -70,7 +70,7 @@ void _1028A::robot::auton(){
     }
     else if (autonSelect == 3){
         //Solo Win Point
-        fwtarget = 98;
+        fwtarget = 105;
         task::start("fw", flywheel::startFlywheelTask);
         pros::Intake.move(127);
         time::forward(-100, 100);
@@ -84,7 +84,7 @@ void _1028A::robot::auton(){
         pros::Intake.move(-127);
         pros::delay(165);
         pros::Intake.brake();
-        fwtarget = 106;
+        fwtarget = 108;
         pros::delay(700);
         pros::Intake.move(-127);
         pros::delay(165);
@@ -93,17 +93,17 @@ void _1028A::robot::auton(){
         pid::turn(46.75, 127, 1, 600);
         pros::Intake.move(127);
         time::forward(40, 2280);
-        fwtarget = 100;
+        fwtarget = 104;
         pros::delay(600);
         pid::turn(-69, 127, 1, 700);
         pros::Intake.move(-127);
         pros::delay(165);
         pros::Intake.brake();
-        fwtarget = 106;
+        fwtarget = 110;
         pros::delay(700);
         pros::Intake.move(-127);
         pros::delay(165);
-        fwtarget = 110;
+        fwtarget = 114;
         pros::Intake.brake();
         pros::delay(700);
         pros::Intake.move(-127);
