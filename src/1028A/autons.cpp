@@ -3,7 +3,6 @@
 
 void _1028A::robot::auton(){
     pros::Inertial.set_rotation(0);
-    autonSelect = 8;
     if (autonSelect == 1){
         //Left Side
         time::forward(-127, 100);
@@ -96,7 +95,7 @@ void _1028A::robot::auton(){
         time::forward(40, 2280);
         fwtarget = 104;
         pros::delay(600);
-        pid::turn(-69, 127, 1, 700);
+        pid::turn(-73, 127, 1, 800);
         pros::Intake.move(-127);
         pros::delay(165);
         pros::Intake.brake();
