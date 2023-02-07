@@ -1,22 +1,22 @@
 #include "1028A/vars.h"
 
-//Robot Options
+// Robot Options
 int autonSelect = 0;
 int flywheelMode = 1;
 
-//Drive
+// Drive
 int flywheelstate = 0;
 
-//Tasks
+// Tasks
 std::map<std::string, std::unique_ptr<pros::Task>> tasks;
 std::atomic<double> v;
 
-//Flywheel
+// Flywheel
 int FWcontinueTask = 1;
 int FWoffset = 0;
 double fwtarget;
 
-//Odometry
+// Odometry
 okapi::OdomState CurrentPosition;
 std::shared_ptr<okapi::OdomChassisController> chassis;
 std::atomic<double> y = 0;

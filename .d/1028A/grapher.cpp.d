@@ -1,5 +1,5 @@
-bin/1028A/grapher.cpp.o: src/1028A/grapher.cpp include/main.h \
- include/api.h include/pros/adi.h include/pros/colors.h \
+bin/1028A/grapher.cpp.o: src/1028A/grapher.cpp include/1028A/init.h \
+ include/main.h include/api.h include/pros/adi.h include/pros/colors.h \
  include/pros/distance.h include/pros/error.h include/pros/ext_adi.h \
  include/pros/adi.h include/pros/adi.h include/pros/gps.h \
  include/pros/imu.h include/pros/link.h include/pros/llemu.h \
@@ -76,8 +76,7 @@ bin/1028A/grapher.cpp.o: src/1028A/grapher.cpp include/main.h \
  include/pros/rotation.hpp include/pros/rotation.h include/pros/rtos.hpp \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/pros/link.hpp include/pros/link.h \
- include/pros/api_legacy.h include/api.h include/1028A/init.h \
- include/1028A/okapi/api.hpp \
+ include/pros/api_legacy.h include/api.h include/1028A/okapi/api.hpp \
  include/1028A/okapi/api/chassis/controller/chassisControllerIntegrated.hpp \
  include/1028A/okapi/api/chassis/controller/chassisController.hpp \
  include/1028A/okapi/api/chassis/controller/chassisScales.hpp \
@@ -218,6 +217,7 @@ bin/1028A/grapher.cpp.o: src/1028A/grapher.cpp include/main.h \
  include/1028A/okapi/pathfinder/include/pathfinder/followers/encoder.h \
  include/1028A/okapi/pathfinder/include/pathfinder/followers/distance.h \
  include/1028A/okapi/pathfinder/include/pathfinder/io.h
+include/1028A/init.h:
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -373,7 +373,6 @@ include/pros/link.hpp:
 include/pros/link.h:
 include/pros/api_legacy.h:
 include/api.h:
-include/1028A/init.h:
 include/1028A/okapi/api.hpp:
 include/1028A/okapi/api/chassis/controller/chassisControllerIntegrated.hpp:
 include/1028A/okapi/api/chassis/controller/chassisController.hpp:

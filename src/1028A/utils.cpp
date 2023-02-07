@@ -3,7 +3,7 @@
 #include "pros/misc.h"
 
 /**
- * @brief 
+ * @brief
  *    This function is used to stop all motors of the robot
  */
 void _1028A::robot::DriveStop() {
@@ -16,9 +16,9 @@ void _1028A::robot::DriveStop() {
 }
 
 /**
- * @brief 
+ * @brief
  *    This function is used to reset the drive encoders
-*/
+ */
 void _1028A::robot::resetDrive() {
   pros::LeftRotation.reset_position();
   pros::RightRotation.reset_position();
@@ -26,39 +26,39 @@ void _1028A::robot::resetDrive() {
 }
 
 /**
-* @brief
-*  This function is used to set the target speed of the flywheel with PID during Driver Control
-*/
+ * @brief
+ *  This function is used to set the target speed of the flywheel with PID
+ * during Driver Control
+ */
 
-void _1028A::flywheel::startFlywheel(double target){
-  if (flywheelstate != 3){
+void _1028A::flywheel::startFlywheel(double target) {
+  if (flywheelstate != 3) {
     double error = (target - pros::FlyWheel.get_actual_velocity());
-    if (error > 10){
+    if (error > 10) {
       pros::FlyWheel.move(127);
-    }
-    else if (error <= 10){
+    } else if (error <= 10) {
       pros::FlyWheel.move(target);
     }
-  }
-  else if (flywheelstate == 3){
+  } else if (flywheelstate == 3) {
     pros::FlyWheel.move(target);
 
-    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)){
+    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
       pros::delay(100);
       pros::FlyWheel.move(127);
     }
   }
 }
 
-void _1028A::flywheel::startFlywheelTask(void *ptr){
-  while (FWcontinueTask){
+void _1028A::flywheel::startFlywheelTask(void *ptr) {
+  while (FWcontinueTask) {
     startFlywheel(fwtarget);
     pros::delay(20);
   }
 }
 /**
- * @brief 
- *  This function checks the brake type and changes it if it is not set right during Driver Control
+ * @brief
+ *  This function checks the brake type and changes it if it is not set right
+ * during Driver Control
  */
 
 void _1028A::driver::checkBrakeType(void *ptr) {
@@ -81,24 +81,28 @@ void _1028A::driver::checkBrakeType(void *ptr) {
 }
 
 /**
-* @brief 
-*  This function is used to control the flywheel during Driver Control
-*/
+ * @brief
+ *  This function is used to control the flywheel during Driver Control
+ */
 
 void _1028A::driver::FlywheelCTRL(void *ptr) {
   FWcontinueTask = 0;
   while (1) {
     if (flywheelMode == 1) {
-      
+
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
         flywheelstate = 1;
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_A)) {
         flywheelstate = 2;
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_B)) {
         flywheelstate = 3;
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_Y)) {
         flywheelstate = 4;
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_R2)) {
         flywheelstate = 0;
       }
 
@@ -108,22 +112,26 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
         flywheel::startFlywheel(127);
       } else if (flywheelstate == 2) {
         flywheel::startFlywheel(115);
-      } else if (flywheelstate == 3 && !pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+      } else if (flywheelstate == 3 && !pros::mainController.get_digital(
+                                           pros::E_CONTROLLER_DIGITAL_L1)) {
         flywheel::startFlywheel(100);
       } else if (flywheelstate == 4) {
         flywheel::startFlywheel(77.5);
       }
-    }
-    else if (flywheelMode == 2){
-        if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+    } else if (flywheelMode == 2) {
+      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
         flywheelstate = 1;
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_A)) {
         flywheelstate = 2;
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_B)) {
         flywheelstate = 3;
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_Y)) {
         flywheelstate = 4;
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_R2)) {
         flywheelstate = 0;
       }
 
@@ -133,20 +141,21 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
         flywheel::startFlywheel(127);
       } else if (flywheelstate == 2) {
         flywheel::startFlywheel(120);
-      } else if (flywheelstate == 3 && !pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+      } else if (flywheelstate == 3 && !pros::mainController.get_digital(
+                                           pros::E_CONTROLLER_DIGITAL_L1)) {
         flywheel::startFlywheel(95);
       } else if (flywheelstate == 4) {
         flywheel::startFlywheel(77.5);
       }
     }
-  pros::delay(20);
+    pros::delay(20);
   }
 }
 
 /**
-* @brief 
-*  This function is used to control the Drive train during Driver Control 
-*/
+ * @brief
+ *  This function is used to control the Drive train during Driver Control
+ */
 
 void _1028A::driver::DriveCTRL(void *ptr) {
   while (1) {
@@ -166,22 +175,25 @@ void _1028A::driver::DriveCTRL(void *ptr) {
 }
 
 /**
-* @brief 
-*  This function is used to control the intake during Driver Control
-*/
+ * @brief
+ *  This function is used to control the intake during Driver Control
+ */
 
 void _1028A::driver::IntakeCTRL(void *ptr) {
   while (1) {
-    if(flywheelMode == 1){
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && (flywheelstate != 3)) {
+    if (flywheelMode == 1) {
+      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
+          (flywheelstate != 3)) {
         pros::Intake.move(-127);
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_L2)) {
         pros::Intake.move(127);
       } else {
         pros::Intake.move(0);
       }
 
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && (flywheelstate == 3)){
+      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
+          (flywheelstate == 3)) {
         pros::Intake.move(-127);
         pros::FlyWheel.move(127);
         pros::delay(140);
@@ -189,50 +201,53 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
         pros::delay(320);
       }
 
-      if(pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN) && (flywheelstate == 3)){
+      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN) &&
+          (flywheelstate == 3)) {
         pros::FlyWheel.move(127);
         pros::Intake.move(-106);
-      }
-      else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)){
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_DOWN)) {
         pros::Intake.move(-127);
-      }
-      else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)){
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_LEFT)) {
         pros::Intake.move(-127);
         pros::delay(300);
         pros::Intake.move(0);
         pros::delay(250);
       }
-    }
-    else if (flywheelMode == 2){
+    } else if (flywheelMode == 2) {
 
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && (flywheelstate != 3)) {
+      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
+          (flywheelstate != 3)) {
         pros::Intake.move(-127);
-      } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_L2)) {
         pros::Intake.move(127);
       } else {
         pros::Intake.move(0);
       }
 
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && (flywheelstate == 3)){
+      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
+          (flywheelstate == 3)) {
         pros::Intake.move(-127);
         pros::FlyWheel.move(127);
         pros::delay(140);
         pros::Intake.move(0);
         pros::delay(60 + FWoffset);
         FWoffset += 25;
-      }
-      else{
+      } else {
         FWoffset = 0;
       }
 
-      if(pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN) && (flywheelstate == 3)){
+      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN) &&
+          (flywheelstate == 3)) {
         pros::FlyWheel.move(127);
         pros::Intake.move(-106);
-      }
-      else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)){
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_DOWN)) {
         pros::Intake.move(-127);
-      }
-      else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)){
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_LEFT)) {
         pros::Intake.move(-127);
         pros::delay(300);
         pros::Intake.move(0);
@@ -243,15 +258,32 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
   }
 }
 
-void _1028A::driver::ModeCTRL(void *ptr){
-  while (1){
-    if (((pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_A)) or pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X)) && flywheelMode == 1){
+void _1028A::driver::ModeCTRL(void *ptr) {
+  while (1) {
+    if (((pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1) &&
+          pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) &&
+          pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
+          pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2) &&
+          pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_A)) or
+         pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X)) &&
+        flywheelMode == 1) {
       flywheelMode = 2;
       pros::mainController.print(1, 1, "FW Mode: 2");
       pros::delay(1000);
     }
 
-    else if (((pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_A)) or pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X)) && flywheelMode == 2){
+    else if (((pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_R1) &&
+               pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_R2) &&
+               pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_L1) &&
+               pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_L2) &&
+               pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_A)) or
+              pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X)) &&
+             flywheelMode == 2) {
       flywheelMode = 1;
       pros::mainController.print(1, 1, "FW Mode: 1");
       pros::delay(1000);
@@ -261,40 +293,42 @@ void _1028A::driver::ModeCTRL(void *ptr){
 }
 
 /**
- * @brief 
+ * @brief
  *  This function is used to control the expansion during Driver Control
  */
-void _1028A::driver::ExpansionCTRL(void *ptr){
-  while(1){
+void _1028A::driver::ExpansionCTRL(void *ptr) {
+  while (1) {
     if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT) &&
         pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT) &&
-        pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)){
-        pros::expansionLeft.set_value(1);
-        pros::expansionMid.set_value(1);
-        pros::expansionRight.set_value(1);
-    }
-    else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT) &&
         pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-        pros::expansionLeft.set_value(1);
-        pros::expansionMid.set_value(1);
+      pros::expansionLeft.set_value(1);
+      pros::expansionMid.set_value(1);
+      pros::expansionRight.set_value(1);
+    } else if (pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_LEFT) &&
+               pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_DOWN)) {
+      pros::expansionLeft.set_value(1);
+      pros::expansionMid.set_value(1);
+    } else if (pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_RIGHT) &&
+               pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_DOWN)) {
+      pros::expansionRight.set_value(1);
+      pros::expansionMid.set_value(1);
     }
-    else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT) &&
-        pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)){
-          pros::expansionRight.set_value(1);
-          pros::expansionMid.set_value(1);
-        }
     pros::delay(10);
   }
 }
 
 /**
-* @brief
-*  This function is used to start a task
-* @param name
-*  The name of the task
-* @param func
-*  The function that the task will run
-*/
+ * @brief
+ *  This function is used to start a task
+ * @param name
+ *  The name of the task
+ * @param func
+ *  The function that the task will run
+ */
 
 void _1028A::task::start(std::string name, void (*func)(void *)) {
   if (!exists(name)) {
@@ -306,19 +340,21 @@ void _1028A::task::start(std::string name, void (*func)(void *)) {
 }
 
 /**
- * @brief 
+ * @brief
  *  This function is used to check if a task exists
- * @param name 
- * @return true 
- * @return false 
+ * @param name
+ * @return true
+ * @return false
  */
 
-bool _1028A::task::exists(std::string name) { return tasks.find(name) != tasks.end(); }
+bool _1028A::task::exists(std::string name) {
+  return tasks.find(name) != tasks.end();
+}
 
 /**
- * @brief 
+ * @brief
  *  This function is used to kill a task
- * @param name 
+ * @param name
  *  The name of the task
  */
 
@@ -329,25 +365,25 @@ void _1028A::task::kill(std::string name) {
 }
 
 /**
-* @brief
-*   This function is used to calculate the PID Power Values
-* @param Error
-*  The error between the requested value and the current value
-* @param lastError
-*  The error from the last loop
-* @param Kp
-*  The Kp value
-* @param Ki
-*  The Ki value
-* @param Kd
-*  The Kd value
-* @param maxSpd
-*  The maximum speed of the motor
-* @return
-*  The power value
-*/
-int _1028A::pid::math(float Error, float lastError, float Kp, float Ki, float Kd,
-            double maxSpd) {
+ * @brief
+ *   This function is used to calculate the PID Power Values
+ * @param Error
+ *  The error between the requested value and the current value
+ * @param lastError
+ *  The error from the last loop
+ * @param Kp
+ *  The Kp value
+ * @param Ki
+ *  The Ki value
+ * @param Kd
+ *  The Kd value
+ * @param maxSpd
+ *  The maximum speed of the motor
+ * @return
+ *  The power value
+ */
+int _1028A::pid::math(float Error, float lastError, float Kp, float Ki,
+                      float Kd, double maxSpd) {
   float P;
   float D;
   float Drive;
@@ -374,24 +410,24 @@ int _1028A::pid::math(float Error, float lastError, float Kp, float Ki, float Kd
 }
 
 /**
-* @brief 
-*  This function is used to exit the PID loop
-* 
-* @param Error
-*   The error between the requested value and the current value 
-* @param Threshold 
-*   The threshold of the error
-* @param currTime 
-*   The current time
-* @param startTime 
-*   The start time
-* @param timeExit
-*   The time to exit the loop 
-* @return true 
-* @return false 
-*/
-bool _1028A::pid::exit(float Error, float Threshold, float currTime, float startTime,
-                float timeExit) {
+ * @brief
+ *  This function is used to exit the PID loop
+ *
+ * @param Error
+ *   The error between the requested value and the current value
+ * @param Threshold
+ *   The threshold of the error
+ * @param currTime
+ *   The current time
+ * @param startTime
+ *   The start time
+ * @param timeExit
+ *   The time to exit the loop
+ * @return true
+ * @return false
+ */
+bool _1028A::pid::exit(float Error, float Threshold, float currTime,
+                       float startTime, float timeExit) {
   if ((Error < Threshold and Error > -Threshold)) {
     return true;
   } else if (currTime - startTime >= timeExit) {
@@ -402,19 +438,20 @@ bool _1028A::pid::exit(float Error, float Threshold, float currTime, float start
 }
 
 /**
-* @brief 
-*  This function is used to turn on the PID controller
-* 
-* @param RequestedValue 
-*  The target value
-* @param spd 
-*  The maximum speed of the motor
-* @param thre 
-*  The threshold of the error
-* @param time 
-*  The time to exit the loop
-*/
-void _1028A::pid::turn(double RequestedValue, double spd, double thre, double time) {
+ * @brief
+ *  This function is used to turn on the PID controller
+ *
+ * @param RequestedValue
+ *  The target value
+ * @param spd
+ *  The maximum speed of the motor
+ * @param thre
+ *  The threshold of the error
+ * @param time
+ *  The time to exit the loop
+ */
+void _1028A::pid::turn(double RequestedValue, double spd, double thre,
+                       double time) {
   float SensorCurrentValue;
   float error;
   float lastError = 0;
@@ -442,13 +479,13 @@ void _1028A::pid::turn(double RequestedValue, double spd, double thre, double ti
       pros::RightFront.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       pros::RightMid.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       pros::RightBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-      
+
       pros::LeftFront.brake();
       pros::LeftBack.brake();
       pros::RightFront.brake();
       pros::RightBack.brake();
       break;
-    } 
+    }
 
     // Move Motors with PID
     pros::LeftFront.move((0 * powerValue) + (-1 * powerValue));
@@ -472,19 +509,20 @@ void _1028A::pid::turn(double RequestedValue, double spd, double thre, double ti
 }
 
 /**
-* @brief 
-*  This function is used to move the robot forward using the PID controller
-* 
-* @param RequestedValue 
-*  The target value
-* @param spd 
-*  The maximum speed of the motor
-* @param thre 
-*  The threshold of the error
-* @param time 
-*  The time to exit the loop
-*/
-void _1028A::pid::forward(double RequestedValue, double spd, double thre, double time) {
+ * @brief
+ *  This function is used to move the robot forward using the PID controller
+ *
+ * @param RequestedValue
+ *  The target value
+ * @param spd
+ *  The maximum speed of the motor
+ * @param thre
+ *  The threshold of the error
+ * @param time
+ *  The time to exit the loop
+ */
+void _1028A::pid::forward(double RequestedValue, double spd, double thre,
+                          double time) {
   spd = ((spd / 100) * 127);
   float SensorCurrentValue;
   float Error;
@@ -499,7 +537,8 @@ void _1028A::pid::forward(double RequestedValue, double spd, double thre, double
   double start = pros::LeftRotation.get_position();
   while (1) {
     // Reads the sensor value and scale
-    SensorCurrentValue = (start / 100) - (pros::LeftRotation.get_position() / 100.0);
+    SensorCurrentValue =
+        (start / 100) - (pros::LeftRotation.get_position() / 100.0);
     double currentTime = pros::millis();
 
     // calculates error
@@ -516,7 +555,7 @@ void _1028A::pid::forward(double RequestedValue, double spd, double thre, double
       pros::RightFront.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       pros::RightMid.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       pros::RightBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-      
+
       pros::LeftFront.brake();
       pros::LeftMid.brake();
       pros::LeftBack.brake();
@@ -546,58 +585,58 @@ void _1028A::pid::forward(double RequestedValue, double spd, double thre, double
   pros::RightBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
 }
 
-void _1028A::time::turn(double spd, double time){
-    pros::LeftFront.move((0 * spd) + (-1 * spd));
-    pros::LeftBack.move((0 * spd) + (-1 * spd));
-    pros::LeftMid.move((0 * spd) + (1 * spd));
+void _1028A::time::turn(double spd, double time) {
+  pros::LeftFront.move((0 * spd) + (-1 * spd));
+  pros::LeftBack.move((0 * spd) + (-1 * spd));
+  pros::LeftMid.move((0 * spd) + (1 * spd));
 
-    pros::RightFront.move((0 * spd) + (-1 * spd));
-    pros::RightBack.move((0 * spd) + (-1 * spd));
-    pros::RightMid.move((0 * spd) + (1 * spd));
+  pros::RightFront.move((0 * spd) + (-1 * spd));
+  pros::RightBack.move((0 * spd) + (-1 * spd));
+  pros::RightMid.move((0 * spd) + (1 * spd));
 
-    pros::LeftFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-    pros::LeftMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-    pros::LeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-    pros::RightFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-    pros::RightMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-    pros::RightBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::LeftFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::LeftMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::LeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::RightFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::RightMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::RightBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
 
-    pros::delay(time);
+  pros::delay(time);
 
-    pros::LeftFront.brake();
-    pros::LeftMid.brake();
-    pros::LeftBack.brake();
-    pros::RightFront.brake();
-    pros::RightMid.brake();
-    pros::RightBack.brake();
+  pros::LeftFront.brake();
+  pros::LeftMid.brake();
+  pros::LeftBack.brake();
+  pros::RightFront.brake();
+  pros::RightMid.brake();
+  pros::RightBack.brake();
 }
 
-void _1028A::time::forward(double spd, double time){
-    pros::LeftFront.move((-1 * spd) + (0 * spd));
-    pros::LeftBack.move((-1 * spd) + (0 * spd));
-    pros::LeftMid.move((1 * spd) + (0 * spd));
+void _1028A::time::forward(double spd, double time) {
+  pros::LeftFront.move((-1 * spd) + (0 * spd));
+  pros::LeftBack.move((-1 * spd) + (0 * spd));
+  pros::LeftMid.move((1 * spd) + (0 * spd));
 
-    pros::RightFront.move((1 * spd) + (0 * spd));
-    pros::RightBack.move((1 * spd) + (0 * spd));
-    pros::RightMid.move((-1 * spd) + (0 * spd));
+  pros::RightFront.move((1 * spd) + (0 * spd));
+  pros::RightBack.move((1 * spd) + (0 * spd));
+  pros::RightMid.move((-1 * spd) + (0 * spd));
 
-    pros::LeftFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-    pros::LeftMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-    pros::LeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-    pros::RightFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-    pros::RightMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
-    pros::RightBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::LeftFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::LeftMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::LeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::RightFront.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::RightMid.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+  pros::RightBack.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
 
-    pros::delay(time);
-    pros::LeftFront.brake();
-    pros::LeftMid.brake();
-    pros::LeftBack.brake();
-    pros::RightFront.brake();
-    pros::RightMid.brake();
-    pros::RightBack.brake();
+  pros::delay(time);
+  pros::LeftFront.brake();
+  pros::LeftMid.brake();
+  pros::LeftBack.brake();
+  pros::RightFront.brake();
+  pros::RightMid.brake();
+  pros::RightBack.brake();
 }
 
-void _1028A::time::rightOnly(double spd, double time){
+void _1028A::time::rightOnly(double spd, double time) {
   pros::LeftFront.brake();
   pros::LeftMid.brake();
   pros::LeftBack.brake();
@@ -611,10 +650,9 @@ void _1028A::time::rightOnly(double spd, double time){
   pros::RightFront.brake();
   pros::RightMid.brake();
   pros::RightBack.brake();
-
 }
 
-void _1028A::time::leftOnly(double spd, double time){
+void _1028A::time::leftOnly(double spd, double time) {
   pros::RightFront.brake();
   pros::RightMid.brake();
   pros::RightBack.brake();
@@ -628,21 +666,24 @@ void _1028A::time::leftOnly(double spd, double time){
   pros::LeftFront.brake();
   pros::LeftMid.brake();
   pros::LeftBack.brake();
-
 }
 
-void _1028A::OdomDebug::resetSens(){
+void _1028A::OdomDebug::resetSens() {
   pros::LeftRotation.reset();
   pros::RightRotation.reset();
   pros::HorizontalRotation.reset();
 }
 
-void _1028A::OdomDebug::startOdomDebug(void *ptr){
+void _1028A::OdomDebug::startOdomDebug(void *ptr) {
   _1028A::OdomDebug display(lv_scr_act(), LV_COLOR_ORANGE);
   display.setResetCallback(resetSens);
 
-  while (1){
-    display.setData({CurrentPosition.x, CurrentPosition.y, CurrentPosition.theta}, {double(pros::LeftRotation.get_position()/100.0), double(pros::RightRotation.get_position()/100.0), double(pros::HorizontalRotation.get_position()/100.0)});
+  while (1) {
+    display.setData(
+        {CurrentPosition.x, CurrentPosition.y, CurrentPosition.theta},
+        {double(pros::LeftRotation.get_position() / 100.0),
+         double(pros::RightRotation.get_position() / 100.0),
+         double(pros::HorizontalRotation.get_position() / 100.0)});
     pros::delay(20);
   }
 }
