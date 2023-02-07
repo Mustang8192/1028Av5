@@ -42,15 +42,3 @@ namespace okapi{
   Motor Flywheelok (Flywheelpt);
   Motor Intakeok (Intakept);
 };
-/*
-namespace sylib{
-  Motor LeftFrontsy(LeftFrontpt);
-  Motor LeftMidsy (LeftMidpt);
-  Motor LeftBacksy (LeftBackpt);
-  Motor RightFrontsy (RightFrontpt);
-  Motor RightMidsy (RightMidpt);
-  Motor RightBacksy (RightBackpt);
-  Motor Flywheelsy (Flywheelpt);
-  Motor Intakesy (Intakept);
-};
-*/
