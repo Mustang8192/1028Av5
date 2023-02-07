@@ -30,6 +30,12 @@ namespace _1028A{
         bool exit(float Error, float Threshold, float currTime, float startTime, float timeExit);
     }
 
+    namespace odom{
+        void set_physical_distances(float ForwardTracker_center_distance, float SidewaysTracker_center_distance);
+        void set_position(float X_position, float Y_position, float orientation_deg, float ForwardTracker_position, float SidewaysTracker_position);
+        void update_position(float ForwardTracker_position, float SidewaysTracker_position, float orientation_deg);
+    }
+
     namespace ui{
         void init(int hue = 328, bool repeated = false);
         static lv_fs_res_t pcfs_open( void * file_p, const char * fn, lv_fs_mode_t mode);
