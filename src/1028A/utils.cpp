@@ -159,8 +159,10 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
 
 void _1028A::driver::DriveCTRL(void *ptr) {
   while (1) {
-    double power = pros::mainController.get_analog(ANALOG_LEFT_Y);
-    double turn = pros::mainController.get_analog(ANALOG_RIGHT_X);
+    double power =
+        pros::mainController.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+    double turn =
+        pros::mainController.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
     pros::LeftFront.move((-1 * power) + (-1 * turn));
     pros::LeftBack.move((-1 * power) + (-1 * turn));

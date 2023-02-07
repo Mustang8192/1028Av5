@@ -77,6 +77,7 @@ bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/pros/link.hpp include/pros/link.h \
  include/pros/api_legacy.h include/api.h include/1028A/init.h \
+ include/1028A/gifdec.h include/1028A/json.hpp \
  include/1028A/okapi/api.hpp \
  include/1028A/okapi/api/chassis/controller/chassisControllerIntegrated.hpp \
  include/1028A/okapi/api/chassis/controller/chassisController.hpp \
@@ -204,9 +205,8 @@ bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
  include/1028A/okapi/api/units/QTorque.hpp \
  include/1028A/okapi/api/units/QVolume.hpp \
  include/1028A/okapi/impl/util/configurableTimeUtilFactory.hpp \
- include/1028A/okapi/impl/util/rate.hpp include/1028A/gifdec.h \
- include/1028A/vars.h include/1028A/robot.h include/1028A/json.hpp \
- include/1028A/okapi/pathfinder/include/pathfinder.h \
+ include/1028A/okapi/impl/util/rate.hpp include/1028A/robot.h \
+ include/1028A/vars.h include/1028A/okapi/pathfinder/include/pathfinder.h \
  include/1028A/okapi/pathfinder/include/pathfinder/mathutil.h \
  include/1028A/okapi/pathfinder/include/pathfinder/lib.h \
  include/1028A/okapi/pathfinder/include/pathfinder/structs.h \
@@ -374,6 +374,8 @@ include/pros/link.h:
 include/pros/api_legacy.h:
 include/api.h:
 include/1028A/init.h:
+include/1028A/gifdec.h:
+include/1028A/json.hpp:
 include/1028A/okapi/api.hpp:
 include/1028A/okapi/api/chassis/controller/chassisControllerIntegrated.hpp:
 include/1028A/okapi/api/chassis/controller/chassisController.hpp:
@@ -504,10 +506,8 @@ include/1028A/okapi/api/units/QTorque.hpp:
 include/1028A/okapi/api/units/QVolume.hpp:
 include/1028A/okapi/impl/util/configurableTimeUtilFactory.hpp:
 include/1028A/okapi/impl/util/rate.hpp:
-include/1028A/gifdec.h:
-include/1028A/vars.h:
 include/1028A/robot.h:
-include/1028A/json.hpp:
+include/1028A/vars.h:
 include/1028A/okapi/pathfinder/include/pathfinder.h:
 include/1028A/okapi/pathfinder/include/pathfinder/mathutil.h:
 include/1028A/okapi/pathfinder/include/pathfinder/lib.h:

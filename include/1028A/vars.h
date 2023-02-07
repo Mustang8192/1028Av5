@@ -4,23 +4,23 @@
 #include <deque>
 #include <map>
 
-//Ui
+// Ui
 extern int autonSelect;
 extern int flywheelMode;
 
-//Drive
+// Drive
 extern int flywheelstate;
 
-//Tasks
+// Tasks
 extern std::map<std::string, std::unique_ptr<pros::Task>> tasks;
 extern std::atomic<double> v;
 
-//Flywheel
+// Flywheel
 extern int FWcontinueTask;
 extern int FWoffset;
 extern double fwtarget;
 
-//Odometry
+// Odometry
 extern okapi::OdomState CurrentPosition;
 extern std::shared_ptr<okapi::OdomChassisController> chassis;
 extern std::atomic<double> y;
