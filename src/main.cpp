@@ -19,7 +19,6 @@ void opcontrol() {
   task::start("checkBrakeType", driver::checkBrakeType);
   task::start("ModeCTRL", driver::ModeCTRL);
   while (true) {
-
     pros::delay(200);
   }
 }
