@@ -6,9 +6,11 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Builds Code
         uses: fishsticks89/pros-build@v1
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
