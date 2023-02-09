@@ -10,11 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-steps:
-    - name: Check out repository code
-      uses: actions/checkout@v3
-    - name: Builds Code
-      uses: fishsticks89/pros-build@v1
 - script: |
     make
   displayName: 'make'
