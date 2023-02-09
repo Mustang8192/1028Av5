@@ -3,6 +3,7 @@
 
 void _1028A::robot::auton() {
   pros::Inertial.set_rotation(0);
+  autonSelect = 8;
   if (autonSelect == 1) {
     // Left Side
     time::forward(-127, 100);
