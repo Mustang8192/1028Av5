@@ -10,5 +10,14 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
+        continue-on-error: true
       - name: Builds Code
         uses: fishsticks89/pros-build@v1
+        continue-on-error: true
+      - name: Discord notification on fail
+        if: steps.hello.outcome == 'success'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has failed to build.'
