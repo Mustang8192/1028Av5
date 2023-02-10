@@ -15,9 +15,8 @@ jobs:
         uses: fishsticks89/pros-build@v1
         continue-on-error: true
       - name: Discord notification on fail
-        if: steps.Builds.outcome == 'success'
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: "The project {{ EVENT_PAYLOAD.repository.full_name }} has failed to build."
+          args: "The project {{ EVENT_PAYLOAD.repository.full_name }} has finished build task."
