@@ -10,11 +10,9 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-        continue-on-error: true
       - name: Builds
         uses: fishsticks89/pros-build@v1
-        continue-on-error: true
-      - name: Discord notification on fail
+      - name: Discord notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
