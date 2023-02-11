@@ -1,6 +1,8 @@
 #include "1028A/init.h"
 #include "1028A/robot.h"
 #include "1028A/vars.h"
+#include "pros/misc.hpp"
+#include "pros/rtos.hpp"
 
 typedef FILE *pc_file_t;
 static lv_fs_res_t _1028A::ui::pcfs_open(void *file_p, const char *fn,
@@ -309,6 +311,33 @@ void _1028A::ui::createBtn(lv_obj_t *location, lv_res_t callback(lv_obj_t *btn),
   lv_label_set_text(BtnLbl, text.c_str());
 }
 
+void _1028A::ui::uiLockout(void *ptr) {
+  int imageDrawn = 0;
+  while (1) {
+    if (!pros::competition::is_disabled() &&
+        !pros::competition::is_autonomous() && autonSelect != 0 &&
+        imageDrawn == 1) {
+      lv_fs_drv_t pcfs_drv;
+      memset(&pcfs_drv, 0, sizeof(lv_fs_drv_t));
+
+      pcfs_drv.file_size = sizeof(pc_file_t);
+      pcfs_drv.letter = 'S';
+      pcfs_drv.open = pcfs_open;
+      pcfs_drv.close = pcfs_close;
+      pcfs_drv.read = pcfs_read;
+      pcfs_drv.seek = pcfs_seek;
+      pcfs_drv.tell = pcfs_tell;
+      lv_fs_add_drv(&pcfs_drv);
+
+      lv_obj_t *img_var = lv_img_create(lv_scr_act(), NULL);
+      lv_img_set_src(img_var, "S:/usd/BT1.bin");
+      lv_obj_set_pos(img_var, 0, 0);
+      imageDrawn = 1;
+    }
+    pros::delay(1000);
+  }
+}
+
 /**
  * @brief
  *  This function starts the Ui
@@ -361,4 +390,6 @@ void _1028A::ui::init(int hue, bool repeated) {
                         0, 0, 100, 100, "Odom \nDebug");
   _1028A::ui::createBtn(Tab4, _1028A::ui::GrafanaAction, LV_ALIGN_IN_LEFT_MID,
                         120, 0, 100, 100, "Start \nGrafana");
+
+  _1028A::task::start("uiLockout", _1028A::ui::uiLockout);
 }
