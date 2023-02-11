@@ -3,6 +3,7 @@
 
 void _1028A::robot::auton() {
   pros::Inertial.set_rotation(0);
+  autonSelect = 3;
   if (autonSelect == 1) {
     // Left Side
     time::forward(-127, 100);
@@ -78,7 +79,7 @@ void _1028A::robot::auton() {
     time::forward(-127, 535);
     pid::turn(3, 127, 1, 700);
     time::forward(127, 550);
-    pid::turn(-40, 127, 1, 800);
+    pid::turn(-38, 127, 1, 800);
     pros::Intake.move(-127);
     pros::delay(165);
     pros::Intake.brake();
@@ -89,20 +90,20 @@ void _1028A::robot::auton() {
     pros::Intake.brake();
     fwtarget = 118;
     pros::delay(500);
-    pid::turn(46.75, 127, 1, 600);
+    pid::turn(47, 127, 1, 600);
     pros::Intake.move(127);
-    time::forward(40, 2280);
-    fwtarget = 109;
+    time::forward(40, 2600);
+    fwtarget = 115;
     pros::delay(600);
-    pid::turn(-73, 127, 1, 800);
+    pid::turn(-70, 127, 1, 800);
     pros::Intake.move(-127);
     pros::delay(165);
     pros::Intake.brake();
-    fwtarget = 112;
+    fwtarget = 119;
     pros::delay(700);
     pros::Intake.move(-127);
     pros::delay(165);
-    fwtarget = 118;
+    fwtarget = 125;
     pros::Intake.brake();
     pros::delay(700);
     pros::Intake.move(-127);
@@ -112,7 +113,7 @@ void _1028A::robot::auton() {
     pid::turn(-136, 127, 1, 700);
     time::forward(-127, 550);
     pid::turn(-70, 127, 1, 700);
-    time::forward(-127, 100);
+    time::forward(-127, 400);
     pros::Intake.move(127);
     pros::delay(550);
     pros::Intake.brake();
