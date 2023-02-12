@@ -22,6 +22,8 @@ extern Controller mainController;
 extern ADIDigitalOut expansionLeft;
 extern ADIDigitalOut expansionRight;
 extern ADIDigitalOut expansionMid;
+// extern ADILed UnderglowLeft;
+// extern ADILed UnderglowRight;
 }; // namespace pros
 namespace okapi {
 extern Motor LeftFrontok;

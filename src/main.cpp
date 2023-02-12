@@ -3,7 +3,10 @@
 
 using namespace _1028A;
 
-void initialize() { ui::init(); }
+void initialize() {
+  // robot::underglowInit();
+  ui::init();
+}
 
 void disabled() {}
 

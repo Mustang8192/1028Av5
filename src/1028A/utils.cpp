@@ -1,5 +1,6 @@
 #include "1028A/init.h"
 #include "1028A/robot.h"
+#include "pros/colors.h"
 #include "pros/misc.h"
 
 /**
@@ -24,6 +25,12 @@ void _1028A::robot::resetDrive() {
   pros::RightRotation.reset_position();
   pros::HorizontalRotation.reset_position();
 }
+/*
+void _1028A::robot::underglowInit() {
+  pros::UnderglowLeft.set_all(COLOR_PINK);
+  pros::UnderglowRight.set_all(COLOR_PINK);
+}
+*/
 
 /**
  * @brief

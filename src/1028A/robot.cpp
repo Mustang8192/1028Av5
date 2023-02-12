@@ -30,6 +30,8 @@ Controller mainController(CONTROLLER_MASTER);
 ADIDigitalOut expansionLeft('a');
 ADIDigitalOut expansionRight('c');
 ADIDigitalOut expansionMid('b');
+// ADILed UnderglowLeft('d', 25);
+// ADILed UnderglowRight('e', 25);
 }; // namespace pros
 
 namespace okapi {

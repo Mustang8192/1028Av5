@@ -20,6 +20,7 @@ namespace robot {
 void resetDrive();
 void DriveStop();
 void auton();
+// void underglowInit();
 } // namespace robot
 
 namespace pid {
