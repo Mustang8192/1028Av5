@@ -308,27 +308,38 @@ void _1028A::driver::ModeCTRL(void *ptr) {
  * @brief
  *  This function is used to control the expansion during Driver Control
  */
-void _1028A::driver::ExpansionCTRL(void *ptr) {
+void _1028A::driver::AdiCTRL(void *ptr) {
   while (1) {
     if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT) &&
         pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT) &&
         pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      pros::expansionLeft.set_value(1);
+      pros::expansionSide.set_value(1);
       pros::expansionMid.set_value(1);
-      pros::expansionRight.set_value(1);
     } else if (pros::mainController.get_digital(
                    pros::E_CONTROLLER_DIGITAL_LEFT) &&
                pros::mainController.get_digital(
                    pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      pros::expansionLeft.set_value(1);
-      pros::expansionMid.set_value(1);
+      pros::expansionSide.set_value(1);
+      // pros::expansionMid.set_value(1);
     } else if (pros::mainController.get_digital(
                    pros::E_CONTROLLER_DIGITAL_RIGHT) &&
                pros::mainController.get_digital(
                    pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      pros::expansionRight.set_value(1);
+      // pros::expansionSide.set_value(1);
       pros::expansionMid.set_value(1);
     }
+
+    int Angle = 0;
+    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
+        Angle == 0) {
+      pros::angle.set_value(1);
+      Angle = 1;
+    } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
+               Angle == 1) {
+      pros::angle.set_value(0);
+      Angle = 0;
+    }
+
     pros::delay(10);
   }
 }

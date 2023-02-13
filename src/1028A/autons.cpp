@@ -273,7 +273,6 @@ void _1028A::robot::auton() {
     pid::turn(-145, 127, 1, 700);
     */
     pros::expansionMid.set_value(1);
-    pros::expansionLeft.set_value(1);
-    pros::expansionRight.set_value(1);
+    pros::expansionSide.set_value(1);
   }
 }
