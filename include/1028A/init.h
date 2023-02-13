@@ -84,7 +84,8 @@ void checkBrakeType(void *ptr);
 void FlywheelCTRL(void *ptr);
 void DriveCTRL(void *ptr);
 void IntakeCTRL(void *ptr);
-void AdiCTRL(void *ptr);
+void ExpansionCTRL(void *ptr);
+void AngleCTRL(void *ptr);
 void ModeCTRL(void *ptr);
 } // namespace driver
 

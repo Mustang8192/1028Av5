@@ -18,7 +18,8 @@ void opcontrol() {
   task::start("FlywheelCTRL", driver::FlywheelCTRL);
   task::start("DriveCTRL", driver::DriveCTRL);
   task::start("IntakeCTRL", driver::IntakeCTRL);
-  task::start("AdiCTRL", driver::AdiCTRL);
+  task::start("ExpansionCTRL", driver::ExpansionCTRL);
+  task::start("AngleCTRL", driver::AngleCTRL);
   task::start("checkBrakeType", driver::checkBrakeType);
   task::start("ModeCTRL", driver::ModeCTRL);
   while (true) {

@@ -2,6 +2,7 @@
 #include "1028A/robot.h"
 #include "pros/colors.h"
 #include "pros/misc.h"
+#include "pros/rtos.hpp"
 
 /**
  * @brief
@@ -304,11 +305,29 @@ void _1028A::driver::ModeCTRL(void *ptr) {
   }
 }
 
+void _1028A::driver::AngleCTRL(void *ptr) {
+  while (1) {
+    int Angle = 0;
+    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
+        Angle == 0) {
+      pros::angle.set_value(1);
+      Angle = 1;
+      pros::delay(1000);
+    } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
+               Angle == 1) {
+      pros::angle.set_value(0);
+      Angle = 0;
+      pros::delay(1000);
+    }
+
+    pros::delay(10);
+  }
+}
 /**
  * @brief
  *  This function is used to control the expansion during Driver Control
  */
-void _1028A::driver::AdiCTRL(void *ptr) {
+void _1028A::driver::ExpansionCTRL(void *ptr) {
   while (1) {
     if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT) &&
         pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT) &&
@@ -328,18 +347,6 @@ void _1028A::driver::AdiCTRL(void *ptr) {
       // pros::expansionSide.set_value(1);
       pros::expansionMid.set_value(1);
     }
-
-    int Angle = 0;
-    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
-        Angle == 0) {
-      pros::angle.set_value(1);
-      Angle = 1;
-    } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
-               Angle == 1) {
-      pros::angle.set_value(0);
-      Angle = 0;
-    }
-
     pros::delay(10);
   }
 }
