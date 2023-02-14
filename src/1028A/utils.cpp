@@ -481,14 +481,14 @@ bool _1028A::pid::exit(float Error, float Threshold, float currTime,
  *  The time to exit the loop
  */
 void _1028A::pid::turn(double RequestedValue, double spd, double thre,
-                       double time) {
+                       double time, double kpOffset, double kdOffset) {
   float SensorCurrentValue;
   float error;
   float lastError = 0;
 
-  float Kp = 1.5;
+  float Kp = 1.5 + kpOffset;
   float Ki = 0;
-  float Kd = 5;
+  float Kd = 5 + kdOffset;
   double timeExit = 0;
   double startTime = pros::millis();
   while (1) {
@@ -552,15 +552,15 @@ void _1028A::pid::turn(double RequestedValue, double spd, double thre,
  *  The time to exit the loop
  */
 void _1028A::pid::forward(double RequestedValue, double spd, double thre,
-                          double time) {
+                          double time, double kpOffset, double kdOffset) {
   spd = ((spd / 100) * 127);
   float SensorCurrentValue;
   float Error;
   float lastError = 0;
 
-  float Kp = 0.3;
+  float Kp = 0.3 + kpOffset;
   float Ki = 0.6;
-  float Kd = 1;
+  float Kd = 1 + kdOffset;
 
   double startTime = pros::millis();
   double timeExit = 0;

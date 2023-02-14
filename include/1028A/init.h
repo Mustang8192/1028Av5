@@ -24,8 +24,10 @@ void auton();
 } // namespace robot
 
 namespace pid {
-void turn(double RequestedValue, double spd, double thre, double time);
-void forward(double RequestedValue, double spd, double thre, double time);
+void turn(double RequestedValue, double spd, double thre, double time,
+          double kpOffset = 0, double kdOffset = 0);
+void forward(double RequestedValue, double spd, double thre, double time,
+             double kpOffset = 0, double kdOffset = 0);
 int math(float Error, float lastError, float Kp, float Ki, float Kd,
          double maxSpd);
 bool exit(float Error, float Threshold, float currTime, float startTime,
