@@ -169,10 +169,11 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
       } else if (flywheelstate == 1) {
         flywheel::startFlywheel(127);
       } else if (flywheelstate == 2) {
-        flywheel::startFlywheel(95);
+        flywheel::startFlywheel(80 && !pros::mainController.get_digital(
+                                          pros::E_CONTROLLER_DIGITAL_L1));
       } else if (flywheelstate == 3 && !pros::mainController.get_digital(
                                            pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(105);
+        flywheel::startFlywheel(95);
       }
     } else if (flywheelMode == 2) {
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
@@ -192,11 +193,12 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
         pros::FlyWheel.brake();
       } else if (flywheelstate == 1) {
         flywheel::startFlywheel(127);
-      } else if (flywheelstate == 2) {
-        flywheel::startFlywheel(95);
+      } else if (flywheelstate == 2 && !pros::mainController.get_digital(
+                                           pros::E_CONTROLLER_DIGITAL_L1)) {
+        flywheel::startFlywheel(80);
       } else if (flywheelstate == 3 && !pros::mainController.get_digital(
                                            pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(105);
+        flywheel::startFlywheel(95);
       }
     }
     pros::delay(5);
@@ -236,7 +238,7 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
   while (1) {
     if (flywheelMode == 1) {
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
-          (flywheelstate != 3)) {
+          (flywheelstate != 3 or flywheelstate != 2)) {
         pros::Intake.move(-127);
       } else if (pros::mainController.get_digital(
                      pros::E_CONTROLLER_DIGITAL_L2)) {
@@ -246,7 +248,7 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
       }
 
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
-          (flywheelstate == 3)) {
+          (flywheelstate == 3 or flywheelstate == 2)) {
         pros::Intake.move(-127);
         pros::FlyWheel.move(127);
         pros::delay(140);
@@ -261,29 +263,14 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
         pros::delay(140);
         pros::Intake.move(0);
         pros::delay(90 + FWoffset);
-        FWoffset += 300;
+        FWoffset += 150;
       } else {
         FWoffset = 0;
-      }
-
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN) &&
-          (flywheelstate == 3)) {
-        pros::FlyWheel.move(127);
-        pros::Intake.move(-106);
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_DOWN)) {
-        pros::Intake.move(-127);
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_LEFT)) {
-        pros::Intake.move(-127);
-        pros::delay(300);
-        pros::Intake.move(0);
-        pros::delay(250);
       }
     } else if (flywheelMode == 2) {
 
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
-          (flywheelstate != 3)) {
+          (flywheelstate != 3 or flywheelstate != 2)) {
         pros::Intake.move(-127);
       } else if (pros::mainController.get_digital(
                      pros::E_CONTROLLER_DIGITAL_L2)) {
@@ -293,7 +280,7 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
       }
 
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
-          (flywheelstate == 3)) {
+          (flywheelstate == 3 or flywheelstate == 2)) {
         pros::Intake.move(-127);
         pros::FlyWheel.move(127);
         pros::delay(140);
@@ -308,24 +295,9 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
         pros::delay(140);
         pros::Intake.move(0);
         pros::delay(90 + FWoffset);
-        FWoffset += 300;
+        FWoffset += 150;
       } else {
         FWoffset = 0;
-      }
-
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN) &&
-          (flywheelstate == 3)) {
-        pros::FlyWheel.move(127);
-        pros::Intake.move(-106);
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_DOWN)) {
-        pros::Intake.move(-127);
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_LEFT)) {
-        pros::Intake.move(-127);
-        pros::delay(300);
-        pros::Intake.move(0);
-        pros::delay(250);
       }
     }
     pros::delay(10);

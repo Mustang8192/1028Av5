@@ -7,7 +7,7 @@
 #define RightMidpt 18
 #define LeftBackpt 16
 #define RightBackpt 15
-#define Rotationpt 2
+#define Rotationpt 12
 #define Flywheelpt 14
 #define Intakept 21
 #define Inertialpt 11
