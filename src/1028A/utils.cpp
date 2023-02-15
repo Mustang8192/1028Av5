@@ -107,9 +107,6 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
                      pros::E_CONTROLLER_DIGITAL_B)) {
         flywheelstate = 3;
       } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_Y)) {
-        flywheelstate = 4;
-      } else if (pros::mainController.get_digital(
                      pros::E_CONTROLLER_DIGITAL_R2)) {
         flywheelstate = 0;
       }
@@ -119,12 +116,10 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
       } else if (flywheelstate == 1) {
         flywheel::startFlywheel(127);
       } else if (flywheelstate == 2) {
-        flywheel::startFlywheel(115);
+        flywheel::startFlywheel(95);
       } else if (flywheelstate == 3 && !pros::mainController.get_digital(
                                            pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(102);
-      } else if (flywheelstate == 4) {
-        flywheel::startFlywheel(77.5);
+        flywheel::startFlywheel(105);
       }
     } else if (flywheelMode == 2) {
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
@@ -136,9 +131,6 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
                      pros::E_CONTROLLER_DIGITAL_B)) {
         flywheelstate = 3;
       } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_Y)) {
-        flywheelstate = 4;
-      } else if (pros::mainController.get_digital(
                      pros::E_CONTROLLER_DIGITAL_R2)) {
         flywheelstate = 0;
       }
@@ -148,15 +140,13 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
       } else if (flywheelstate == 1) {
         flywheel::startFlywheel(127);
       } else if (flywheelstate == 2) {
-        flywheel::startFlywheel(120);
+        flywheel::startFlywheel(95);
       } else if (flywheelstate == 3 && !pros::mainController.get_digital(
                                            pros::E_CONTROLLER_DIGITAL_L1)) {
         flywheel::startFlywheel(105);
-      } else if (flywheelstate == 4) {
-        flywheel::startFlywheel(77.5);
       }
     }
-    pros::delay(20);
+    pros::delay(5);
   }
 }
 
@@ -210,6 +200,15 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
         pros::Intake.move(0);
         pros::delay(90 + FWoffset);
         FWoffset += 120;
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_L1) &&
+                 (flywheelstate == 2)) {
+        pros::Intake.move(-127);
+        pros::FlyWheel.move(127);
+        pros::delay(140);
+        pros::Intake.move(0);
+        pros::delay(90 + FWoffset);
+        FWoffset += 300;
       } else {
         FWoffset = 0;
       }
@@ -248,6 +247,15 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
         pros::Intake.move(0);
         pros::delay(60 + FWoffset);
         FWoffset += 80;
+      } else if (pros::mainController.get_digital(
+                     pros::E_CONTROLLER_DIGITAL_L1) &&
+                 (flywheelstate == 2)) {
+        pros::Intake.move(-127);
+        pros::FlyWheel.move(127);
+        pros::delay(140);
+        pros::Intake.move(0);
+        pros::delay(90 + FWoffset);
+        FWoffset += 300;
       } else {
         FWoffset = 0;
       }
@@ -306,21 +314,22 @@ void _1028A::driver::ModeCTRL(void *ptr) {
 }
 
 void _1028A::driver::AngleCTRL(void *ptr) {
+  int Angle = 0;
   while (1) {
-    int Angle = 0;
-    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
+    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
         Angle == 0) {
       pros::angle.set_value(1);
       Angle = 1;
-      pros::delay(1000);
-    } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
-               Angle == 1) {
+      pros::delay(500);
+    }
+    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
+        Angle == 1) {
       pros::angle.set_value(0);
       Angle = 0;
-      pros::delay(1000);
+      pros::delay(500);
     }
 
-    pros::delay(10);
+    pros::delay(5);
   }
 }
 /**
@@ -347,7 +356,7 @@ void _1028A::driver::ExpansionCTRL(void *ptr) {
       // pros::expansionSide.set_value(1);
       pros::expansionMid.set_value(1);
     }
-    pros::delay(10);
+    pros::delay(5);
   }
 }
 
