@@ -1,6 +1,17 @@
 #include "main.h"
 #include "okapi/impl/device/motor/motor.hpp"
 
+#define LeftFrontpt 19
+#define RightFrontpt 20
+#define LeftMidpt 17
+#define RightMidpt 18
+#define LeftBackpt 16
+#define RightBackpt 15
+#define Rotationpt 2
+#define Flywheelpt 14
+#define Intakept 21
+#define Inertialpt 11
+
 #ifndef Config
 #define Config
 
@@ -14,9 +25,7 @@ extern Motor RightBack;
 extern Motor FlyWheel;
 extern Motor Intake;
 extern Imu Inertial;
-extern Rotation LeftRotation;
-extern Rotation RightRotation;
-extern Rotation HorizontalRotation;
+extern Rotation Rotation;
 extern GPS GPS1;
 extern Controller mainController;
 extern ADIDigitalOut angle;

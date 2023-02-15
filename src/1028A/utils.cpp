@@ -1,5 +1,6 @@
 #include "1028A/init.h"
 #include "1028A/robot.h"
+#include "pros/apix.h"
 #include "pros/colors.h"
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
@@ -21,11 +22,7 @@ void _1028A::robot::DriveStop() {
  * @brief
  *    This function is used to reset the drive encoders
  */
-void _1028A::robot::resetDrive() {
-  pros::LeftRotation.reset_position();
-  pros::RightRotation.reset_position();
-  pros::HorizontalRotation.reset_position();
-}
+void _1028A::robot::resetDrive() { pros::Rotation.reset_position(); }
 /*
 void _1028A::robot::underglowInit() {
   pros::UnderglowLeft.set_all(COLOR_PINK);
@@ -33,6 +30,62 @@ void _1028A::robot::underglowInit() {
 }
 */
 
+void _1028A::robot::preMatchChecks() {
+  pros::c::v5_device_e_t LeftFrontcheck =
+      pros::c::registry_get_plugged_type((LeftFrontpt - 1));
+  pros::c::v5_device_e_t LeftMidcheck =
+      pros::c::registry_get_plugged_type((LeftMidpt - 1));
+  pros::c::v5_device_e_t LeftBackcheck =
+      pros::c::registry_get_plugged_type((LeftBackpt - 1));
+  pros::c::v5_device_e_t RightFrontcheck =
+      pros::c::registry_get_plugged_type((RightFrontpt - 1));
+  pros::c::v5_device_e_t RightMidcheck =
+      pros::c::registry_get_plugged_type((RightMidpt - 1));
+  pros::c::v5_device_e_t RightBackcheck =
+      pros::c::registry_get_plugged_type((RightBackpt - 1));
+  pros::c::v5_device_e_t Flywheelcheck =
+      pros::c::registry_get_plugged_type((Flywheelpt - 1));
+  pros::c::v5_device_e_t Intakecheck =
+      pros::c::registry_get_plugged_type((Intakept - 1));
+  pros::c::v5_device_e_t Inertialcheck =
+      pros::c::registry_get_plugged_type((Inertialpt - 1));
+  pros::c::v5_device_e_t Rotationcheck =
+      pros::c::registry_get_plugged_type((Rotationpt - 1));
+
+  if (LeftFrontcheck != pros::c::E_DEVICE_MOTOR) {
+    pros::mainController.print(1, 1, "Left Front Motor Error");
+  }
+  if (LeftMidcheck != pros::c::E_DEVICE_MOTOR) {
+    pros::mainController.print(1, 1, "Left Mid Motor Error");
+  }
+  if (LeftBackcheck != pros::c::E_DEVICE_MOTOR) {
+    pros::mainController.print(1, 1, "Left Back Motor Error");
+  }
+  if (RightFrontcheck != pros::c::E_DEVICE_MOTOR) {
+    pros::mainController.print(1, 1, "Right Front Motor Error");
+  }
+  if (RightMidcheck != pros::c::E_DEVICE_MOTOR) {
+    pros::mainController.print(1, 1, "Right Mid Motor Error");
+  }
+  if (RightBackcheck != pros::c::E_DEVICE_MOTOR) {
+    pros::mainController.print(1, 1, "Right Back Motor Error");
+  }
+  if (RightFrontcheck != pros::c::E_DEVICE_MOTOR) {
+    pros::mainController.print(1, 1, "Right Front Motor Error");
+  }
+  if (Flywheelcheck != pros::c::E_DEVICE_MOTOR) {
+    pros::mainController.print(1, 1, "Flywheel Motor Error");
+  }
+  if (Intakecheck != pros::c::E_DEVICE_MOTOR) {
+    pros::mainController.print(1, 1, "Intake Motor Error");
+  }
+  if (Inertialcheck != pros::c::E_DEVICE_IMU) {
+    pros::mainController.print(1, 1, "Inertial Sensor Error");
+  }
+  if (Rotationcheck != pros::c::E_DEVICE_ROTATION) {
+    pros::mainController.print(1, 1, "Rotation Sensor Error");
+  }
+}
 /**
  * @brief
  *  This function is used to set the target speed of the flywheel with PID
@@ -573,11 +626,11 @@ void _1028A::pid::forward(double RequestedValue, double spd, double thre,
 
   double startTime = pros::millis();
   double timeExit = 0;
-  double start = pros::LeftRotation.get_position();
+  double start = pros::Rotation.get_position();
   while (1) {
     // Reads the sensor value and scale
     SensorCurrentValue =
-        (start / 100) - (pros::LeftRotation.get_position() / 100.0);
+        (start / 100) - (pros::Rotation.get_position() / 100.0);
     double currentTime = pros::millis();
 
     // calculates error
@@ -707,11 +760,7 @@ void _1028A::time::leftOnly(double spd, double time) {
   pros::LeftBack.brake();
 }
 
-void _1028A::OdomDebug::resetSens() {
-  pros::LeftRotation.reset();
-  pros::RightRotation.reset();
-  pros::HorizontalRotation.reset();
-}
+void _1028A::OdomDebug::resetSens() { pros::Rotation.reset(); }
 
 void _1028A::OdomDebug::startOdomDebug(void *ptr) {
   _1028A::OdomDebug display(lv_scr_act(), LV_COLOR_ORANGE);
@@ -720,9 +769,9 @@ void _1028A::OdomDebug::startOdomDebug(void *ptr) {
   while (1) {
     display.setData(
         {CurrentPosition.x, CurrentPosition.y, CurrentPosition.theta},
-        {double(pros::LeftRotation.get_position() / 100.0),
-         double(pros::RightRotation.get_position() / 100.0),
-         double(pros::HorizontalRotation.get_position() / 100.0)});
+        {double(pros::Rotation.get_position() / 100.0),
+         double(pros::Rotation.get_position() / 100.0),
+         double(pros::Rotation.get_position() / 100.0)});
     pros::delay(20);
   }
 }

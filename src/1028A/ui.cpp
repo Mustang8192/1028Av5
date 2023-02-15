@@ -156,7 +156,8 @@ lv_res_t _1028A::ui::OdomDebugAction(lv_obj_t *btn) {
   return LV_RES_OK;
 }
 
-void motorTester() {
+lv_res_t motorTesterAction(lv_obj_t *btn) {
+  lv_obj_clean(lv_scr_act());
   /* Find our motor port and sensor port */
   int motor_port = -1;
   int sensor_port = -1;
@@ -183,7 +184,6 @@ void motorTester() {
     gterm_print("Found motor %d but #ff0000 could not find sensor#",
                 motor_port);
     gterm_print("#ff8000 Please connect sensor and restart program#");
-    return;
   } else if (sensor_port > 0) {
     LOG_ERROR(
         "Found sensor %d but could not find motor, please connect and restart",
@@ -191,12 +191,10 @@ void motorTester() {
     gterm_print("Found sensor %d but #ff0000 could not find motor#",
                 sensor_port);
     gterm_print("#ff8000 Please connect motor and restart program#");
-    return;
   } else {
     LOG_ERROR("Could not find motor or sensor, please connect and restart");
     gterm_print("#ff0000 Could not find motor or sensor#");
     gterm_print("#ff8000 Please connect both and restart program#");
-    return;
   }
 
   /* Now run self-test programs whenever a motor is connected */

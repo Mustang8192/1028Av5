@@ -21,6 +21,7 @@ void resetDrive();
 void DriveStop();
 void auton();
 // void underglowInit();
+void preMatchChecks();
 } // namespace robot
 
 namespace pid {
@@ -61,6 +62,7 @@ lv_res_t soloWPBtnAction(lv_obj_t *btn);
 lv_res_t Flywheelbeastmode(lv_obj_t *btn);
 lv_res_t OdomDebugAction(lv_obj_t *btn);
 lv_res_t GrafanaAction(lv_obj_t *btn);
+lv_res_t motorTesterAction(lv_obj_t *btn);
 lv_res_t FlywheelGRCB(lv_obj_t *btn);
 lv_res_t IntakeGRCB(lv_obj_t *btn);
 lv_res_t DriveGRCB(lv_obj_t *btn);
