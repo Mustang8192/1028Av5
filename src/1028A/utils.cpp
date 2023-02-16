@@ -52,6 +52,17 @@ void _1028A::robot::preMatchChecks() {
   pros::c::v5_device_e_t Rotationcheck =
       pros::c::registry_get_plugged_type((Rotationpt - 1));
 
+  pros::c::registry_bind_port((LeftFrontpt - 1), LeftFrontcheck);
+  pros::c::registry_bind_port((LeftMidpt - 1), LeftMidcheck);
+  pros::c::registry_bind_port((LeftBackpt - 1), LeftBackcheck);
+  pros::c::registry_bind_port((RightFrontpt - 1), RightFrontcheck);
+  pros::c::registry_bind_port((RightMidpt - 1), RightMidcheck);
+  pros::c::registry_bind_port((RightBackpt - 1), RightBackcheck);
+  pros::c::registry_bind_port((Flywheelpt - 1), Flywheelcheck);
+  pros::c::registry_bind_port((Intakept - 1), Intakecheck);
+  pros::c::registry_bind_port((Inertialpt - 1), Inertialcheck);
+  pros::c::registry_bind_port((Rotationpt - 1), Rotationcheck);
+
   if (LeftFrontcheck != pros::c::E_DEVICE_MOTOR) {
     pros::mainController.print(1, 1, "Left Front Motor Error");
   }
