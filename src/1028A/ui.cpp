@@ -157,6 +157,7 @@ lv_res_t _1028A::ui::OdomDebugAction(lv_obj_t *btn) {
 }
 
 lv_res_t _1028A::ui::motorTesterAction(lv_obj_t *btn) {
+  pros::delay(2000);
   lv_obj_clean(lv_scr_act());
   /* Find our motor port and sensor port */
   int motor_port = -1;
@@ -529,7 +530,7 @@ void _1028A::ui::init(int hue, bool repeated) {
   _1028A::ui::createBtn(Tab4, _1028A::ui::GrafanaAction, LV_ALIGN_IN_LEFT_MID,
                         120, 0, 100, 100, "Start \nGrafana");
   _1028A::ui::createBtn(Tab4, _1028A::ui::motorTesterAction,
-                        LV_ALIGN_IN_LEFT_MID, 240, 0, 100, 100,
+                        LV_ALIGN_IN_LEFT_MID, 360, 0, 100, 100,
                         "Start \nMotor \nTester");
 
   _1028A::task::start("uiLockout", _1028A::ui::uiLockout);

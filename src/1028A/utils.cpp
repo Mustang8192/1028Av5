@@ -587,26 +587,24 @@ void _1028A::pid::turn(double RequestedValue, double spd, double thre,
  */
 void _1028A::pid::forward(double RequestedValue, double spd, double thre,
                           double time, double kpOffset, double kdOffset) {
-  spd = ((spd / 100) * 127);
   float SensorCurrentValue;
   float Error;
   float lastError = 0;
 
-  float Kp = 0.3 + kpOffset;
-  float Ki = 0.6;
-  float Kd = 1 + kdOffset;
+  float Kp = 0.2 + kpOffset;
+  float Ki = 0;
+  float Kd = 0.8 + kdOffset;
 
   double startTime = pros::millis();
   double timeExit = 0;
-  double start = pros::Rotation.get_position();
   while (1) {
     // Reads the sensor value and scale
-    SensorCurrentValue =
-        (start / 100) - (pros::Rotation.get_position() / 100.0);
+    SensorCurrentValue = (pros::Rotation.get_position() / 100.0);
     double currentTime = pros::millis();
 
     // calculates error
     Error = (RequestedValue - SensorCurrentValue);
+    printf("%f", Error);
 
     // calculate drive PID
     // pros::screen::print(TEXT_SMALL, 1,3,"test");
