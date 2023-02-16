@@ -3,6 +3,7 @@
 #include "pros/apix.h"
 #include "pros/colors.h"
 #include "pros/misc.h"
+#include "pros/motors.h"
 #include "pros/rtos.hpp"
 
 /**

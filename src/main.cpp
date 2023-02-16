@@ -23,6 +23,7 @@ void opcontrol() {
   task::start("AngleCTRL", driver::AngleCTRL);
   task::start("checkBrakeType", driver::checkBrakeType);
   task::start("ModeCTRL", driver::ModeCTRL);
+  task::start("faultDetection", driver::faultDetection);
   while (true) {
     pros::delay(200);
   }
