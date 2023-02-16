@@ -32,7 +32,7 @@ void forward(double RequestedValue, double spd, double thre, double time,
 int math(float Error, float lastError, float Kp, float Ki, float Kd,
          double maxSpd);
 bool exit(float Error, float Threshold, float currTime, float startTime,
-          float timeExit);
+          float timeExit, float powerValue);
 } // namespace pid
 
 namespace odom {

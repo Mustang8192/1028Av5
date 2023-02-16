@@ -3,6 +3,7 @@
 #include "1028A/log.h"
 #include "1028A/robot.h"
 #include "1028A/vars.h"
+#include "display/lv_core/lv_obj.h"
 #include "display/lv_objx/lv_tabview.h"
 #include "pros/misc.hpp"
 #include "pros/rtos.hpp"
@@ -159,8 +160,10 @@ lv_res_t _1028A::ui::OdomDebugAction(lv_obj_t *btn) {
 }
 
 lv_res_t _1028A::ui::motorTesterAction(lv_obj_t *btn) {
-  pros::delay(2000);
+  pros::delay(1000);
+  lv_obj_clean(tabview);
   lv_obj_clean(lv_scr_act());
+  pros::delay(1000);
   /* Find our motor port and sensor port */
   int motor_port = -1;
   int sensor_port = -2;

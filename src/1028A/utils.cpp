@@ -235,8 +235,8 @@ int _1028A::pid::math(float Error, float lastError, float Kp, float Ki,
  * @return false
  */
 bool _1028A::pid::exit(float Error, float Threshold, float currTime,
-                       float startTime, float timeExit) {
-  if ((Error < Threshold and Error > -Threshold)) {
+                       float startTime, float timeExit, float powerValue) {
+  if ((Error < Threshold and Error > -Threshold) && powerValue <= 10) {
     return true;
   } else if (currTime - startTime >= timeExit) {
     return true;
@@ -280,7 +280,7 @@ void _1028A::pid::turn(double RequestedValue, double spd, double thre,
     // calculate drive PID
     float powerValue = math(error, lastError, Kp, Ki, Kd, spd);
 
-    if (exit(error, thre, currentTime, startTime, time)) {
+    if (exit(error, thre, currentTime, startTime, time, powerValue)) {
       pros::LeftFront.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       pros::LeftMid.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       pros::LeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
@@ -354,7 +354,7 @@ void _1028A::pid::forward(double RequestedValue, double spd, double thre,
     // pros::screen::print(TEXT_SMALL, 1,3,"test");
     float powerValue = math(Error, lastError, Kp, Ki, Kd, spd);
 
-    if (exit(Error, thre, currentTime, startTime, time)) {
+    if (exit(Error, thre, currentTime, startTime, time, powerValue)) {
       pros::LeftFront.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       pros::LeftMid.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
       pros::LeftBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
