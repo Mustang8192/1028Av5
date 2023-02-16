@@ -43,6 +43,39 @@ void set_position(float X_position, float Y_position, float orientation_deg,
                   float SidewaysTracker_position);
 void update_position(float ForwardTracker_position,
                      float SidewaysTracker_position, float orientation_deg);
+void Record(void *ptr);
+
+void Refresh(void *ptr);
+
+int sign(double x);
+
+double get_degrees(std::vector<double> p1, std::vector<double> p2);
+
+double distance(std::vector<double> p1, std::vector<double> p2);
+
+void Drive(int power, int turn);
+
+std::vector<double> get_intersection(std::vector<double> start,
+                                     std::vector<double> end,
+                                     std::vector<double> cur, double radius);
+
+void move_to(std::vector<double> pose, double stop_threshold, bool pure_pursuit,
+             std::vector<double> speeds);
+
+void move_to_pure_pursuit(std::vector<std::vector<double>> points,
+                          std::vector<double> final_point,
+                          std::vector<double> speeds);
+
+int sign(int num);
+
+double find_min_angle(double target_angle, double current_heading);
+
+std::vector<std::vector<double>>
+smoothing(std::vector<std::vector<double>> path, double weight_data,
+          double weight_smooth, double tolerance);
+
+std::vector<std::vector<double>>
+auto_smooth(std::vector<std::vector<double>> path, double max_angle);
 } // namespace odom
 
 namespace ui {
@@ -339,124 +372,5 @@ private:
   void _render();
 
   static void _render_task(void *arg);
-};
-
-struct Pose {
-  okapi::QLength x;
-  okapi::QLength y;
-  okapi::QAngle yaw;
-};
-
-struct InternalPose {
-  double x;
-  double y;
-  double yaw;
-};
-
-struct PurePursuitTriangle {
-  InternalPose currentPose;
-  InternalPose localGoalPose;
-  double l;
-  double r;
-};
-
-struct InternalPoseIndexed {
-  InternalPose pose;
-  int index;
-};
-
-struct InternalDistancePoseIndexed {
-  InternalPose pose;
-  int index;
-  double distance;
-};
-
-struct PosePath {
-  std::string id;
-  std::vector<InternalPose> path;
-};
-
-struct IndexedPosePath {
-  std::string id;
-  std::vector<InternalPoseIndexed> path;
-};
-
-struct IndexedDistancePosePath {
-  std::string id;
-  std::vector<InternalDistancePoseIndexed> path;
-};
-
-class PathGenerator {
-
-public:
-  PathGenerator(const okapi::PathfinderLimits &ilimits);
-
-  void generatePath(const std::initializer_list<Pose> &iwaypoints,
-                    const std::string &iid);
-
-  void generatePath(const std::initializer_list<Pose> &iwaypoints,
-                    const std::string &iid,
-                    const okapi::PathfinderLimits &ilimits);
-  void showPath();
-
-  std::vector<IndexedDistancePosePath> &getPaths();
-
-protected:
-  std::vector<IndexedDistancePosePath> paths;
-  std::shared_ptr<okapi::Logger> logger;
-  okapi::PathfinderLimits limits;
-};
-
-class PurePursuit {
-public:
-  PurePursuit(const std::vector<IndexedDistancePosePath> &ipaths,
-              const okapi::QLength &ilookaheadDistance);
-
-  PurePursuitTriangle run(const okapi::OdomState &ipose,
-                          const std::string &iid);
-  PurePursuitTriangle run(const Pose &ipose, const std::string &iid);
-
-  static void updateChassis(
-      const double &reqVelocity, const PurePursuitTriangle &triangle,
-      const std::shared_ptr<okapi::OdomChassisController> &controller);
-
-  static double findDistanceBetweenStateAndPose(const okapi::OdomState &state,
-                                                const InternalPose &pose2) {
-    InternalPose pose1{state.x.convert(okapi::meter),
-                       state.y.convert(okapi::meter),
-                       state.theta.convert(okapi::radian)};
-    return findDistanceBetweenPoses(pose1, pose2);
-  }
-
-  InternalPose getLastPoseInPath(const std::string &id) {
-    for (const auto &ipath : paths) {
-      if (ipath.id == id) {
-        return ipath.path.at(ipath.path.size() - 1).pose;
-      }
-    }
-  }
-
-protected:
-  const std::vector<IndexedDistancePosePath> paths;
-  IndexedDistancePosePath path;
-  double avgDistanceBetweenPoses;
-
-  IndexedDistancePosePath nearestPoses;
-  PosePath currentPoses;
-  IndexedPosePath goalPoses;
-  std::vector<PurePursuitTriangle> triangles;
-
-  double lookaheadDistance;
-
-  void findPath(const std::string &);
-  void findNearestPose(const Pose &);
-  static double findDistanceBetweenPoses(const InternalPose &,
-                                         const InternalPose &);
-
-  void findGoalPose();
-  PurePursuitTriangle findPurePursuitTriangle();
-  bool isPoseWithinCircle(const InternalPose &point,
-                          const InternalPose &centerPose,
-                          const double &lookaheadDistance);
 };
 } // namespace _1028A
