@@ -3,6 +3,7 @@
 #include "1028A/log.h"
 #include "1028A/robot.h"
 #include "1028A/vars.h"
+#include "display/lv_objx/lv_tabview.h"
 #include "pros/misc.hpp"
 #include "pros/rtos.hpp"
 
@@ -150,8 +151,9 @@ lv_res_t _1028A::ui::GrafanaAction(lv_obj_t *btn) {
  */
 
 lv_res_t _1028A::ui::OdomDebugAction(lv_obj_t *btn) {
-  lv_obj_clean(lv_scr_act());
-  _1028A::OdomDebug Display(lv_scr_act(), LV_COLOR_ORANGE);
+  lv_obj_t *Tab5 = lv_tabview_add_tab(tabview, "Misc");
+  lv_tabview_set_tab_act(tabview, 5, true);
+  _1028A::OdomDebug Display(Tab5, LV_COLOR_BLACK);
   _1028A::task::start("OdomDebug", Display.startOdomDebug);
   return LV_RES_OK;
 }
@@ -161,7 +163,7 @@ lv_res_t _1028A::ui::motorTesterAction(lv_obj_t *btn) {
   lv_obj_clean(lv_scr_act());
   /* Find our motor port and sensor port */
   int motor_port = -1;
-  int sensor_port = -1;
+  int sensor_port = -2;
 
   for (int i = 0; i < 21; i++) {
     pros::c::v5_device_e_t type = pros::c::registry_get_plugged_type(i);
@@ -490,7 +492,7 @@ void _1028A::ui::init(int hue, bool repeated) {
   lv_theme_set_current(th);
 
   // create a tab view object
-  lv_obj_t *tabview = lv_tabview_create(lv_scr_act(), NULL);
+  tabview = lv_tabview_create(lv_scr_act(), NULL);
 
   // add 3 tabs (the tabs are page (lv_page) and can be scrolled
   lv_obj_t *Tab1 = lv_tabview_add_tab(tabview, "Selector 1");

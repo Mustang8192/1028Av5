@@ -11,6 +11,9 @@ int flywheelstate = 0;
 std::map<std::string, std::unique_ptr<pros::Task>> tasks;
 std::atomic<double> v;
 
+// Ui
+lv_obj_t *tabview;
+
 // Flywheel
 int FWcontinueTask = 1;
 int FWoffset = 0;

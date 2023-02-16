@@ -15,6 +15,9 @@ extern int flywheelstate;
 extern std::map<std::string, std::unique_ptr<pros::Task>> tasks;
 extern std::atomic<double> v;
 
+// Ui
+extern lv_obj_t *tabview;
+
 // Flywheel
 extern int FWcontinueTask;
 extern int FWoffset;
