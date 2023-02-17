@@ -156,7 +156,7 @@ void _1028A::robot::auton() {
     pros::Intake.move(-127);
     pros::delay(300);
     pros::Intake.brake();
-    pros::delay(200);
+    pros::delay(1000);
     pid::turn(-8, 127, 1, 500);
     pid::turn(-8, 127, 1, 250);
     pid::turn(-8, 127, 1, 100);
@@ -174,7 +174,7 @@ void _1028A::robot::auton() {
     // time::forward(38, 3100);
     pros::Rotation.reset_position();
     pid::forward(3200, 38, 1, 3500);
-    pros::delay(500);
+    pros::delay(2000);
     pid::turn(-56, 127, 1, 1000);
     pid::turn(-56, 127, 1, 500);
     pid::turn(-56, 127, 1, 250);
@@ -201,7 +201,7 @@ void _1028A::robot::auton() {
     fwtarget = 95;
     pros::Intake.move(127);
     pros::delay(500);
-    time::forward(25, 5500);
+    time::forward(25, 6500);
     pros::delay(1000);
     pid::turn(-108, 127, 1, 1000);
     pid::turn(-108, 127, 1, 500);
@@ -257,27 +257,6 @@ void _1028A::robot::auton() {
     pid::turn(-140, 127, 1, 500);
     pid::turn(-140, 127, 1, 250);
     pid::turn(-140, 127, 1, 100);
-    pros::Intake.move(127);
-    time::forward(40, 3800);
-    fwtarget = 95;
-    pid::turn(-245, 127, 1, 1000);
-    pid::turn(-245, 127, 1, 500);
-    pid::turn(-245, 127, 1, 250);
-    pid::turn(-245, 127, 1, 100);
-    pros::delay(700);
-    pros::Intake.move(-127);
-    pros::delay(140);
-    fwtarget = 100;
-    pros::Intake.brake();
-    pros::delay(700);
-    pros::Intake.move(-127);
-    pros::delay(140);
-    fwtarget = 103;
-    pros::Intake.brake();
-    pros::delay(700);
-    pros::Intake.move(-127);
-    pros::delay(140);
-    pros::Intake.brake();
 
     /*
     pros::Intake.move(127);
