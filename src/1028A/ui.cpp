@@ -159,11 +159,10 @@ lv_res_t _1028A::ui::OdomDebugAction(lv_obj_t *btn) {
   return LV_RES_OK;
 }
 
-lv_res_t _1028A::ui::motorTesterAction(lv_obj_t *btn) {
-  pros::delay(1000);
+void motorTester(void *ptr) {
+  pros::delay(3000);
   lv_obj_clean(tabview);
   lv_obj_clean(lv_scr_act());
-  pros::delay(1000);
   /* Find our motor port and sensor port */
   int motor_port = -1;
   int sensor_port = -2;
@@ -297,6 +296,12 @@ lv_res_t _1028A::ui::motorTesterAction(lv_obj_t *btn) {
     /* Delay 10 seconds before attempting another test */
     pros::delay(10000);
   }
+}
+
+lv_res_t _1028A::ui::motorTesterAction(lv_obj_t *btn) {
+  pros::delay(1000);
+  task::start("motorTester", motorTester);
+  return LV_RES_OK;
 }
 /**
  * @brief
