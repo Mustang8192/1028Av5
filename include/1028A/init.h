@@ -91,6 +91,7 @@ lv_res_t left_sideBtnAction(lv_obj_t *btn);
 lv_res_t right_sideBtnAction(lv_obj_t *btn);
 lv_res_t do_nothingBtnAction(lv_obj_t *btn);
 lv_res_t skillsBtnAction(lv_obj_t *btn);
+lv_res_t skills2BtnAction(lv_obj_t *btn);
 lv_res_t soloWPBtnAction(lv_obj_t *btn);
 lv_res_t Flywheelbeastmode(lv_obj_t *btn);
 lv_res_t OdomDebugAction(lv_obj_t *btn);

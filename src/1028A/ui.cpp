@@ -120,6 +120,10 @@ lv_res_t _1028A::ui::skillsBtnAction(lv_obj_t *btn) {
   return LV_RES_OK;
 }
 
+lv_res_t _1028A::ui::skills2BtnAction(lv_obj_t *btn) {
+  autonSelect = 9;
+  return LV_RES_OK;
+}
 /**
  * @brief
  *  This function is a callback function for auton selector
@@ -520,10 +524,10 @@ void _1028A::ui::init(int hue, bool repeated) {
                         LV_ALIGN_IN_LEFT_MID, 0, 0, 100, 100, "_");
   _1028A::ui::createBtn(Tab2, _1028A::ui::do_nothingBtnAction,
                         LV_ALIGN_IN_LEFT_MID, 120, 0, 100, 100, "_");
-  _1028A::ui::createBtn(Tab2, _1028A::ui::do_nothingBtnAction,
-                        LV_ALIGN_IN_LEFT_MID, 240, 0, 100, 100, "_");
   _1028A::ui::createBtn(Tab2, _1028A::ui::skillsBtnAction, LV_ALIGN_IN_LEFT_MID,
-                        360, 0, 100, 100, "Skills");
+                        360, 0, 100, 100, "Skills 1");
+  _1028A::ui::createBtn(Tab2, _1028A::ui::skills2BtnAction,
+                        LV_ALIGN_IN_LEFT_MID, 240, 0, 100, 100, "Skills 2");
   _1028A::ui::createBtn(Tab4, _1028A::ui::Flywheelbeastmode,
                         LV_ALIGN_IN_LEFT_MID, 240, 0, 100, 100,
                         "Flywheel \n  Big Boy \n  Mode");

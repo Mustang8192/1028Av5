@@ -53,9 +53,9 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
         pros::FlyWheel.brake();
       } else if (flywheelstate == 1) {
         flywheel::startFlywheel(127);
-      } else if (flywheelstate == 2) {
-        flywheel::startFlywheel(80 && !pros::mainController.get_digital(
-                                          pros::E_CONTROLLER_DIGITAL_L1));
+      } else if (flywheelstate == 2 && !pros::mainController.get_digital(
+                                           pros::E_CONTROLLER_DIGITAL_L1)) {
+        flywheel::startFlywheel(80);
       } else if (flywheelstate == 3 && !pros::mainController.get_digital(
                                            pros::E_CONTROLLER_DIGITAL_L1)) {
         flywheel::startFlywheel(95);
