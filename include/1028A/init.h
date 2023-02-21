@@ -125,7 +125,6 @@ void IntakeCTRL(void *ptr);
 void ExpansionCTRL(void *ptr);
 void AngleCTRL(void *ptr);
 void ModeCTRL(void *ptr);
-void faultDetection(void *ptr);
 } // namespace driver
 
 namespace task {
