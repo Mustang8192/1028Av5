@@ -16,8 +16,6 @@ Controller mainController(CONTROLLER_MASTER);
 ADIDigitalOut angle('a');
 ADIDigitalOut expansionSide('c');
 ADIDigitalOut expansionMid('b');
-// ADILed UnderglowLeft('d', 25);
-// ADILed UnderglowRight('e', 25);
 }; // namespace pros
 
 namespace okapi {
@@ -30,3 +28,7 @@ Motor RightBackok(RightBackpt);
 Motor Flywheelok(Flywheelpt);
 Motor Intakeok(Intakept);
 }; // namespace okapi
+
+namespace sylib {
+Addrled led = sylib::Addrled(21, 3, 6);
+}

@@ -24,12 +24,8 @@ void _1028A::robot::DriveStop() {
  *    This function is used to reset the drive encoders
  */
 void _1028A::robot::resetDrive() { pros::Rotation.reset_position(); }
-/*
-void _1028A::robot::underglowInit() {
-  pros::UnderglowLeft.set_all(COLOR_PINK);
-  pros::UnderglowRight.set_all(COLOR_PINK);
-}
-*/
+
+void _1028A::robot::underglowInit() { sylib::led.set_all(0xE62169); }
 
 void _1028A::robot::preMatchChecks() {
   pros::c::v5_device_e_t LeftFrontcheck =

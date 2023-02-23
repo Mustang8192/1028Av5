@@ -35,11 +35,13 @@
 #define PROS_USE_LITERALS
 
 #include "api.h"
+#include "sylib/sylib.hpp"
 
 /**
  * You should add more #includes here
  */
-#include "pros/api_legacy.h"
+//#include "okapi/api.hpp"
+//#include "pros/api_legacy.h"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do

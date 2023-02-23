@@ -6,7 +6,7 @@ using namespace _1028A;
 void initialize() {
   ui::init();
   robot::preMatchChecks();
-  // robot::underglowInit();
+  robot::underglowInit();
 }
 
 void disabled() {}

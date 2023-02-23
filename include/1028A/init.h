@@ -20,7 +20,7 @@ namespace robot {
 void resetDrive();
 void DriveStop();
 void auton();
-// void underglowInit();
+void underglowInit();
 void preMatchChecks();
 } // namespace robot
 

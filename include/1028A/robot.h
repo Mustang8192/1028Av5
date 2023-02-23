@@ -45,4 +45,7 @@ extern Motor Flywheelok;
 extern Motor Intakeok;
 }; // namespace okapi
 
+namespace sylib {
+extern Addrled led;
+}; // namespace sylib
 #endif
