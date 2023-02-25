@@ -120,6 +120,7 @@ void _1028A::driver::DriveCTRL(void *ptr) {
  */
 
 void _1028A::driver::IntakeCTRL(void *ptr) {
+  int number = 0;
   while (1) {
     if (flywheelMode == 1) {
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&

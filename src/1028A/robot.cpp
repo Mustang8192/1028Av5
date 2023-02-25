@@ -28,7 +28,3 @@ Motor RightBackok(RightBackpt);
 Motor Flywheelok(Flywheelpt);
 Motor Intakeok(Intakept);
 }; // namespace okapi
-
-namespace sylib {
-Addrled led = sylib::Addrled(21, 3, 6);
-}

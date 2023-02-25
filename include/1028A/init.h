@@ -374,4 +374,9 @@ private:
 
   static void _render_task(void *arg);
 };
+extern "C" {
+// private addressable LED API
+int32_t vexAdiAddrLedSet(uint32_t index, uint32_t port, uint32_t *pData,
+                         uint32_t nOffset, uint32_t nLength, uint32_t options);
+}
 } // namespace _1028A

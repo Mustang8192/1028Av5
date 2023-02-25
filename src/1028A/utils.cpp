@@ -1,5 +1,6 @@
 #include "1028A/init.h"
 #include "1028A/robot.h"
+#include "pros/adi.hpp"
 #include "pros/apix.h"
 #include "pros/colors.h"
 #include "pros/misc.h"
@@ -25,7 +26,11 @@ void _1028A::robot::DriveStop() {
  */
 void _1028A::robot::resetDrive() { pros::Rotation.reset_position(); }
 
-void _1028A::robot::underglowInit() { sylib::led.set_all(0xE62169); }
+void _1028A::robot::underglowInit() {
+  // pros::ADILED led('c', 5);
+  // led.set_all(0x808080);
+  // led.update();
+}
 
 void _1028A::robot::preMatchChecks() {
   pros::c::v5_device_e_t LeftFrontcheck =
