@@ -3,7 +3,6 @@
 
 void _1028A::robot::auton() {
   pros::Inertial.set_rotation(0);
-  autonSelect = 9;
   if (autonSelect == 1) {
     // Left Side
     time::forward(-127, 100);
@@ -20,20 +19,20 @@ void _1028A::robot::auton() {
   } else if (autonSelect == 2) {
     // Right Side
     flywheelMode = 2;
-    fwtarget = 104;
+    fwtarget = 115;
     task::start("fw", flywheel::startFlywheelTask);
     pros::Intake.move(127);
     time::forward(45, 1250);
     pros::delay(1800);
     pros::Intake.move(-127);
     pros::delay(140);
-    fwtarget = 110;
+    fwtarget = 120;
     pros::Intake.brake();
     pros::delay(700);
     pros::Intake.move(-127);
     pros::delay(140);
     pros::Intake.brake();
-    fwtarget = 115;
+    fwtarget = 123;
     pros::delay(800);
     pros::Intake.move(-127);
     pros::delay(140);
