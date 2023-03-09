@@ -93,36 +93,6 @@ void _1028A::comp::preauton::preMatchChecks() {
     pros::mainController.print(1, 1, "Rotation Sensor Error");
   }
 }
-/**
- * @brief
- *  This function is used to set the target speed of the flywheel with PID
- * during Driver Control
- */
-
-void _1028A::flywheel::startFlywheel(double target) {
-  if (flywheelstate != 3) {
-    double error = (target - pros::FlyWheel.get_actual_velocity());
-    if (error > 10) {
-      pros::FlyWheel.move(127);
-    } else if (error <= 10) {
-      pros::FlyWheel.move(target);
-    }
-  } else if (flywheelstate == 3) {
-    pros::FlyWheel.move(target);
-
-    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      pros::delay(100);
-      pros::FlyWheel.move(127);
-    }
-  }
-}
-
-void _1028A::flywheel::startFlywheelTask(void *ptr) {
-  while (FWcontinueTask) {
-    startFlywheel(fwtarget);
-    pros::delay(20);
-  }
-}
 
 /**
  * @brief

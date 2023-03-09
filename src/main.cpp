@@ -18,10 +18,7 @@ void opcontrol() {
   task::start("FlywheelCTRL", comp::driver::FlywheelCTRL);
   task::start("DriveCTRL", comp::driver::DriveCTRL);
   task::start("IntakeCTRL", comp::driver::IntakeCTRL);
-  task::start("ExpansionCTRL", comp::driver::ExpansionCTRL);
-  task::start("AngleCTRL", comp::driver::AngleCTRL);
   task::start("checkBrakeType", comp::driver::checkBrakeType);
-  task::start("ModeCTRL", comp::driver::ModeCTRL);
   while (true) {
     pros::delay(200);
   }
