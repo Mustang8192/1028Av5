@@ -11,7 +11,7 @@
  * @brief
  *    This function is used to stop all motors of the robot
  */
-void _1028A::robot::DriveStop() {
+void _1028A::chassis::stop() {
   pros::LeftFront.brake();
   pros::LeftMid.brake();
   pros::LeftBack.brake();
@@ -24,15 +24,9 @@ void _1028A::robot::DriveStop() {
  * @brief
  *    This function is used to reset the drive encoders
  */
-void _1028A::robot::resetDrive() { pros::Rotation.reset_position(); }
+void _1028A::chassis::reset() { pros::Rotation.reset_position(); }
 
-void _1028A::robot::underglowInit() {
-  // pros::ADILED led('c', 5);
-  // led.set_all(0x808080);
-  // led.update();
-}
-
-void _1028A::robot::preMatchChecks() {
+void _1028A::comp::preauton::preMatchChecks() {
   pros::c::v5_device_e_t LeftFrontcheck =
       pros::c::registry_get_plugged_type((LeftFrontpt - 1));
   pros::c::v5_device_e_t LeftMidcheck =

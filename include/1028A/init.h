@@ -16,14 +16,32 @@
 #include <vector>
 
 namespace _1028A {
-namespace robot {
-void resetDrive();
-void DriveStop();
+namespace chassis {
+void reset();
+void stop();
+} // namespace chassis
+namespace comp {
+namespace driver {
+void checkBrakeType(void *ptr);
+void FlywheelCTRL(void *ptr);
+void DriveCTRL(void *ptr);
+void IntakeCTRL(void *ptr);
+void ExpansionCTRL(void *ptr);
+void AngleCTRL(void *ptr);
+void ModeCTRL(void *ptr);
+} // namespace driver
+namespace auton {
 void auton();
-void underglowInit();
+void leftSide();
+void rightSide();
+void winPoint();
+void skills();
+} // namespace auton
+namespace preauton {
 void preMatchChecks();
-} // namespace robot
-
+void portInit();
+} // namespace preauton
+} // namespace comp
 namespace pid {
 void turn(double RequestedValue, double spd, double thre, double time,
           double kpOffset = 0, double kdOffset = 0);
@@ -117,15 +135,6 @@ void turn(double spd, double time);
 void rightOnly(double spd, double time);
 void leftOnly(double spd, double time);
 } // namespace time
-namespace driver {
-void checkBrakeType(void *ptr);
-void FlywheelCTRL(void *ptr);
-void DriveCTRL(void *ptr);
-void IntakeCTRL(void *ptr);
-void ExpansionCTRL(void *ptr);
-void AngleCTRL(void *ptr);
-void ModeCTRL(void *ptr);
-} // namespace driver
 
 namespace task {
 void start(std::string name, void (*func)(void *));

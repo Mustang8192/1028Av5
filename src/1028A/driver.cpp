@@ -7,7 +7,7 @@
  * during Driver Control
  */
 
-void _1028A::driver::checkBrakeType(void *ptr) {
+void _1028A::comp::driver::checkBrakeType(void *ptr) {
   while (1) {
     if ((pros::LeftFront.get_brake_mode() != pros::E_MOTOR_BRAKE_BRAKE) or
         (pros::LeftMid.get_brake_mode() != pros::E_MOTOR_BRAKE_BRAKE) or
@@ -31,7 +31,7 @@ void _1028A::driver::checkBrakeType(void *ptr) {
  *  This function is used to control the flywheel during Driver Control
  */
 
-void _1028A::driver::FlywheelCTRL(void *ptr) {
+void _1028A::comp::driver::FlywheelCTRL(void *ptr) {
   FWcontinueTask = 0;
   while (1) {
     if (flywheelMode == 1) {
@@ -95,7 +95,7 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
  *  This function is used to control the Drive train during Driver Control
  */
 
-void _1028A::driver::DriveCTRL(void *ptr) {
+void _1028A::comp::driver::DriveCTRL(void *ptr) {
   while (1) {
     double power =
         pros::mainController.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
@@ -119,7 +119,7 @@ void _1028A::driver::DriveCTRL(void *ptr) {
  *  This function is used to control the intake during Driver Control
  */
 
-void _1028A::driver::IntakeCTRL(void *ptr) {
+void _1028A::comp::driver::IntakeCTRL(void *ptr) {
   int number = 0;
   while (1) {
     if (flywheelMode == 1) {
@@ -190,7 +190,7 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
   }
 }
 
-void _1028A::driver::ModeCTRL(void *ptr) {
+void _1028A::comp::driver::ModeCTRL(void *ptr) {
   while (1) {
     if (((pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1) &&
           pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) &&
@@ -224,7 +224,7 @@ void _1028A::driver::ModeCTRL(void *ptr) {
   }
 }
 
-void _1028A::driver::AngleCTRL(void *ptr) {
+void _1028A::comp::driver::AngleCTRL(void *ptr) {
   int Angle = 0;
   while (1) {
     if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
@@ -247,7 +247,7 @@ void _1028A::driver::AngleCTRL(void *ptr) {
  * @brief
  *  This function is used to control the expansion during Driver Control
  */
-void _1028A::driver::ExpansionCTRL(void *ptr) {
+void _1028A::comp::driver::ExpansionCTRL(void *ptr) {
   while (1) {
     if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT) &&
         pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT) &&

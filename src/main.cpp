@@ -5,24 +5,23 @@ using namespace _1028A;
 
 void initialize() {
   ui::init();
-  robot::preMatchChecks();
-  robot::underglowInit();
+  comp::preauton::preMatchChecks();
 }
 
 void disabled() {}
 
 void competition_initialize() {}
 
-void autonomous() { robot::auton(); }
+void autonomous() { comp::auton::auton(); }
 
 void opcontrol() {
-  task::start("FlywheelCTRL", driver::FlywheelCTRL);
-  task::start("DriveCTRL", driver::DriveCTRL);
-  task::start("IntakeCTRL", driver::IntakeCTRL);
-  task::start("ExpansionCTRL", driver::ExpansionCTRL);
-  task::start("AngleCTRL", driver::AngleCTRL);
-  task::start("checkBrakeType", driver::checkBrakeType);
-  task::start("ModeCTRL", driver::ModeCTRL);
+  task::start("FlywheelCTRL", comp::driver::FlywheelCTRL);
+  task::start("DriveCTRL", comp::driver::DriveCTRL);
+  task::start("IntakeCTRL", comp::driver::IntakeCTRL);
+  task::start("ExpansionCTRL", comp::driver::ExpansionCTRL);
+  task::start("AngleCTRL", comp::driver::AngleCTRL);
+  task::start("checkBrakeType", comp::driver::checkBrakeType);
+  task::start("ModeCTRL", comp::driver::ModeCTRL);
   while (true) {
     pros::delay(200);
   }

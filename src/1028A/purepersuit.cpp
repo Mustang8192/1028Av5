@@ -1,5 +1,6 @@
 #include "1028A/init.h"
 #include "1028A/robot.h"
+#include "1028A/vars.h"
 
 #define SQD(n) pow(n, 2)
 #define TO_RAD(n) n *M_PI / 180
@@ -16,7 +17,7 @@ void _1028A::odom::Record(void *ptr) {
 
 void _1028A::odom::Refresh(void *ptr) {
   while (1) {
-    CurrentPosition = chassis->getState();
+    // CurrentPosition = chassis.getState();
     x = CurrentPosition.x.convert(okapi::inch);
     y = CurrentPosition.y.convert(okapi::inch);
     pros::delay(10);
@@ -155,7 +156,7 @@ void _1028A::odom::move_to(std::vector<double> pose, double stop_threshold,
     lastPowerError = powerError;
     lastTurnError = turnError;
   }
-  _1028A::robot::DriveStop();
+  _1028A::chassis::stop();
 }
 
 void _1028A::odom::move_to_pure_pursuit(std::vector<std::vector<double>> points,
@@ -175,7 +176,7 @@ void _1028A::odom::move_to_pure_pursuit(std::vector<std::vector<double>> points,
     }
   }
   move_to(final_point, 0.15, true, speeds);
-  _1028A::robot::DriveStop();
+  _1028A::chassis::stop();
 }
 
 int _1028A::odom::sign(int num) {

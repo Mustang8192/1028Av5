@@ -34,14 +34,4 @@ extern ADIDigitalOut expansionMid;
 // extern ADILed UnderglowLeft;
 // extern ADILed UnderglowRight;
 }; // namespace pros
-namespace okapi {
-extern Motor LeftFrontok;
-extern Motor LeftMidok;
-extern Motor LeftBackok;
-extern Motor RightFrontok;
-extern Motor RightMidok;
-extern Motor RightBackok;
-extern Motor Flywheelok;
-extern Motor Intakeok;
-}; // namespace okapi
 #endif
