@@ -14,8 +14,10 @@ class Rotation Rotation(Rotationpt);
 GPS GPS1(1);
 Controller mainController(CONTROLLER_MASTER);
 ADIDigitalOut angle('a');
-ADIDigitalOut expansionSide('c');
-ADIDigitalOut expansionMid('b');
+ADIDigitalOut expansionLeft('c');
+ADIDigitalOut expansionRight('b');
+ADIDigitalOut expansionMid('d');
+ADIDigitalOut expansionSide('e');
 }; // namespace pros
 
 namespace okapi {

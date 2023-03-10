@@ -1,4 +1,5 @@
 #include "1028A/init.h"
+#include "pros/misc.h"
 #include "pros/rtos.hpp"
 
 /**
@@ -254,17 +255,27 @@ void _1028A::driver::ExpansionCTRL(void *ptr) {
         pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
       pros::expansionSide.set_value(1);
       pros::expansionMid.set_value(1);
+      pros::expansionLeft.set_value(1);
+      pros::expansionRight.set_value(1);
     } else if (pros::mainController.get_digital(
                    pros::E_CONTROLLER_DIGITAL_LEFT) &&
                pros::mainController.get_digital(
                    pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      pros::expansionSide.set_value(1);
-      // pros::expansionMid.set_value(1);
+      pros::expansionLeft.set_value(1);
     } else if (pros::mainController.get_digital(
                    pros::E_CONTROLLER_DIGITAL_RIGHT) &&
                pros::mainController.get_digital(
                    pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      // pros::expansionSide.set_value(1);
+      pros::expansionRight.set_value(1);
+    } else if (pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_LEFT) &&
+               pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_UP)) {
+      pros::expansionSide.set_value(1);
+    } else if (pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_RIGHT) &&
+               pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_UP)) {
       pros::expansionMid.set_value(1);
     }
     pros::delay(5);

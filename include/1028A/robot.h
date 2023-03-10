@@ -1,5 +1,6 @@
 #include "main.h"
 #include "okapi/impl/device/motor/motor.hpp"
+#include "pros/adi.hpp"
 
 #define LeftFrontpt 19
 #define RightFrontpt 20
@@ -29,8 +30,10 @@ extern Rotation Rotation;
 extern GPS GPS1;
 extern Controller mainController;
 extern ADIDigitalOut angle;
-extern ADIDigitalOut expansionSide;
+extern ADIDigitalOut expansionLeft;
+extern ADIDigitalOut expansionRight;
 extern ADIDigitalOut expansionMid;
+extern ADIDigitalOut expansionSide;
 // extern ADILed UnderglowLeft;
 // extern ADILed UnderglowRight;
 }; // namespace pros
