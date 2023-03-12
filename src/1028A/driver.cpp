@@ -59,7 +59,7 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
         flywheel::startFlywheel(80);
       } else if (flywheelstate == 3 && !pros::mainController.get_digital(
                                            pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(95);
+        flywheel::startFlywheel(85);
       }
     } else if (flywheelMode == 2) {
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
@@ -81,10 +81,10 @@ void _1028A::driver::FlywheelCTRL(void *ptr) {
         flywheel::startFlywheel(127);
       } else if (flywheelstate == 2 && !pros::mainController.get_digital(
                                            pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(80);
+        flywheel::startFlywheel(78);
       } else if (flywheelstate == 3 && !pros::mainController.get_digital(
                                            pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(95);
+        flywheel::startFlywheel(90);
       }
     }
     pros::delay(5);
