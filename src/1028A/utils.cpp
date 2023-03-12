@@ -51,6 +51,10 @@ void _1028A::robot::preMatchChecks() {
       pros::c::registry_get_plugged_type((Inertialpt - 1));
   pros::c::v5_device_e_t Rotationcheck =
       pros::c::registry_get_plugged_type((Rotationpt - 1));
+  pros::c::v5_device_e_t cataRotationcheck =
+      pros::c::registry_get_plugged_type((Catapositionpt - 1));
+  pros::c::v5_device_e_t catacheck =
+      pros::c::registry_get_plugged_type((Catapt - 1));
 
   pros::c::registry_bind_port((LeftFrontpt - 1), LeftFrontcheck);
   pros::c::registry_bind_port((LeftMidpt - 1), LeftMidcheck);
@@ -61,6 +65,8 @@ void _1028A::robot::preMatchChecks() {
   pros::c::registry_bind_port((Intakept - 1), Intakecheck);
   pros::c::registry_bind_port((Inertialpt - 1), Inertialcheck);
   pros::c::registry_bind_port((Rotationpt - 1), Rotationcheck);
+  pros::c::registry_bind_port((Catapositionpt - 1), cataRotationcheck);
+  pros::c::registry_bind_port((Catapt - 1), catacheck);
 
   if (LeftFrontcheck != pros::c::E_DEVICE_MOTOR) {
     pros::mainController.print(1, 1, "Left Front Motor Error");
@@ -91,6 +97,12 @@ void _1028A::robot::preMatchChecks() {
   }
   if (Rotationcheck != pros::c::E_DEVICE_ROTATION) {
     pros::mainController.print(1, 1, "Rotation Sensor Error");
+  }
+  if (cataRotationcheck != pros::c::E_DEVICE_ROTATION) {
+    pros::mainController.print(1, 1, "Cata Rotation Sensor Error");
+  }
+  if (catacheck != pros::c::E_DEVICE_MOTOR) {
+    pros::mainController.print(1, 1, "Cata Motor Error");
   }
 }
 

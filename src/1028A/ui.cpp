@@ -356,13 +356,13 @@ void _1028A::Grafana::grafanaInit(void *ptr) {
 
 lv_res_t _1028A::ui::FlywheelGRCB(lv_obj_t *btn) {
   std::shared_ptr<_1028A::AsyncGrapher> grapher(
-      new _1028A::AsyncGrapher("Flywheel Velocity vs. Time"));
+      new _1028A::AsyncGrapher("Cata Velocity vs. Time"));
   grapher->addDataType("Actual Vel", COLOR_AQUAMARINE);
   grapher->addDataType("Desired Vel", COLOR_ORANGE);
   grapher->startTask();
   while (1) {
     grapher->update("Desired Vel", 1);
-    grapher->update("Actual Vel", pros::FlyWheel.get_actual_velocity() / 200);
+    grapher->update("Actual Vel", pros::Cata.get_actual_velocity() / 200);
     pros::delay(10);
   }
   return LV_RES_OK;
