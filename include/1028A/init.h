@@ -119,11 +119,9 @@ void leftOnly(double spd, double time);
 } // namespace time
 namespace driver {
 void checkBrakeType(void *ptr);
-void FlywheelCTRL(void *ptr);
 void DriveCTRL(void *ptr);
 void IntakeCTRL(void *ptr);
 void ExpansionCTRL(void *ptr);
-void AngleCTRL(void *ptr);
 void ModeCTRL(void *ptr);
 } // namespace driver
 
@@ -132,11 +130,6 @@ void start(std::string name, void (*func)(void *));
 bool exists(std::string name);
 void kill(std::string name);
 } // namespace task
-
-namespace flywheel {
-void startFlywheel(double target);
-void startFlywheelTask(void *ptr);
-} // namespace flywheel
 
 class OdomDebug {
 public:

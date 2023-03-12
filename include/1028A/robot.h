@@ -9,7 +9,6 @@
 #define LeftBackpt 16
 #define RightBackpt 15
 #define Rotationpt 9
-#define Flywheelpt 14
 #define Intakept 21
 #define Inertialpt 11
 
@@ -23,13 +22,11 @@ extern Motor LeftBack;
 extern Motor RightFront;
 extern Motor RightMid;
 extern Motor RightBack;
-extern Motor FlyWheel;
 extern Motor Intake;
 extern Imu Inertial;
 extern Rotation Rotation;
 extern GPS GPS1;
 extern Controller mainController;
-extern ADIDigitalOut angle;
 extern ADIDigitalOut expansionLeft;
 extern ADIDigitalOut expansionRight;
 extern ADIDigitalOut expansionMid;

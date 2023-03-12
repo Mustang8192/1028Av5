@@ -29,70 +29,6 @@ void _1028A::driver::checkBrakeType(void *ptr) {
 
 /**
  * @brief
- *  This function is used to control the flywheel during Driver Control
- */
-
-void _1028A::driver::FlywheelCTRL(void *ptr) {
-  FWcontinueTask = 0;
-  while (1) {
-    if (flywheelMode == 1) {
-
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-        flywheelstate = 1;
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_A)) {
-        flywheelstate = 2;
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_B)) {
-        flywheelstate = 3;
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_R2)) {
-        flywheelstate = 0;
-      }
-
-      if (flywheelstate == 0) {
-        pros::FlyWheel.brake();
-      } else if (flywheelstate == 1) {
-        flywheel::startFlywheel(127);
-      } else if (flywheelstate == 2 && !pros::mainController.get_digital(
-                                           pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(80);
-      } else if (flywheelstate == 3 && !pros::mainController.get_digital(
-                                           pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(85);
-      }
-    } else if (flywheelMode == 2) {
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-        flywheelstate = 1;
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_A)) {
-        flywheelstate = 2;
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_B)) {
-        flywheelstate = 3;
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_R2)) {
-        flywheelstate = 0;
-      }
-
-      if (flywheelstate == 0) {
-        pros::FlyWheel.brake();
-      } else if (flywheelstate == 1) {
-        flywheel::startFlywheel(127);
-      } else if (flywheelstate == 2 && !pros::mainController.get_digital(
-                                           pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(78);
-      } else if (flywheelstate == 3 && !pros::mainController.get_digital(
-                                           pros::E_CONTROLLER_DIGITAL_L1)) {
-        flywheel::startFlywheel(90);
-      }
-    }
-    pros::delay(5);
-  }
-}
-
-/**
- * @brief
  *  This function is used to control the Drive train during Driver Control
  */
 
@@ -137,7 +73,6 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
           (flywheelstate == 3 or flywheelstate == 2)) {
         pros::Intake.move(-127);
-        pros::FlyWheel.move(127);
         pros::delay(140);
         pros::Intake.move(0);
         pros::delay(90 + FWoffset);
@@ -146,7 +81,6 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
                      pros::E_CONTROLLER_DIGITAL_L1) &&
                  (flywheelstate == 2)) {
         pros::Intake.move(-127);
-        pros::FlyWheel.move(127);
         pros::delay(140);
         pros::Intake.move(0);
         pros::delay(90 + FWoffset);
@@ -169,7 +103,6 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
       if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
           (flywheelstate == 3 or flywheelstate == 2)) {
         pros::Intake.move(-127);
-        pros::FlyWheel.move(127);
         pros::delay(140);
         pros::Intake.move(0);
         pros::delay(60 + FWoffset);
@@ -178,7 +111,6 @@ void _1028A::driver::IntakeCTRL(void *ptr) {
                      pros::E_CONTROLLER_DIGITAL_L1) &&
                  (flywheelstate == 2)) {
         pros::Intake.move(-127);
-        pros::FlyWheel.move(127);
         pros::delay(140);
         pros::Intake.move(0);
         pros::delay(90 + FWoffset);
@@ -222,26 +154,6 @@ void _1028A::driver::ModeCTRL(void *ptr) {
       pros::delay(1000);
     }
     pros::delay(10);
-  }
-}
-
-void _1028A::driver::AngleCTRL(void *ptr) {
-  int Angle = 0;
-  while (1) {
-    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-        Angle == 0) {
-      pros::angle.set_value(1);
-      Angle = 1;
-      pros::delay(500);
-    }
-    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-        Angle == 1) {
-      pros::angle.set_value(0);
-      Angle = 0;
-      pros::delay(500);
-    }
-
-    pros::delay(5);
   }
 }
 /**

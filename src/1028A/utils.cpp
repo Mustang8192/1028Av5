@@ -45,8 +45,6 @@ void _1028A::robot::preMatchChecks() {
       pros::c::registry_get_plugged_type((RightMidpt - 1));
   pros::c::v5_device_e_t RightBackcheck =
       pros::c::registry_get_plugged_type((RightBackpt - 1));
-  pros::c::v5_device_e_t Flywheelcheck =
-      pros::c::registry_get_plugged_type((Flywheelpt - 1));
   pros::c::v5_device_e_t Intakecheck =
       pros::c::registry_get_plugged_type((Intakept - 1));
   pros::c::v5_device_e_t Inertialcheck =
@@ -60,7 +58,6 @@ void _1028A::robot::preMatchChecks() {
   pros::c::registry_bind_port((RightFrontpt - 1), RightFrontcheck);
   pros::c::registry_bind_port((RightMidpt - 1), RightMidcheck);
   pros::c::registry_bind_port((RightBackpt - 1), RightBackcheck);
-  pros::c::registry_bind_port((Flywheelpt - 1), Flywheelcheck);
   pros::c::registry_bind_port((Intakept - 1), Intakecheck);
   pros::c::registry_bind_port((Inertialpt - 1), Inertialcheck);
   pros::c::registry_bind_port((Rotationpt - 1), Rotationcheck);
@@ -86,9 +83,6 @@ void _1028A::robot::preMatchChecks() {
   if (RightFrontcheck != pros::c::E_DEVICE_MOTOR) {
     pros::mainController.print(1, 1, "Right Front Motor Error");
   }
-  if (Flywheelcheck != pros::c::E_DEVICE_MOTOR) {
-    pros::mainController.print(1, 1, "Flywheel Motor Error");
-  }
   if (Intakecheck != pros::c::E_DEVICE_MOTOR) {
     pros::mainController.print(1, 1, "Intake Motor Error");
   }
@@ -97,36 +91,6 @@ void _1028A::robot::preMatchChecks() {
   }
   if (Rotationcheck != pros::c::E_DEVICE_ROTATION) {
     pros::mainController.print(1, 1, "Rotation Sensor Error");
-  }
-}
-/**
- * @brief
- *  This function is used to set the target speed of the flywheel with PID
- * during Driver Control
- */
-
-void _1028A::flywheel::startFlywheel(double target) {
-  if (flywheelstate != 3) {
-    double error = (target - pros::FlyWheel.get_actual_velocity());
-    if (error > 10) {
-      pros::FlyWheel.move(127);
-    } else if (error <= 10) {
-      pros::FlyWheel.move(target);
-    }
-  } else if (flywheelstate == 3) {
-    pros::FlyWheel.move(target);
-
-    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      pros::delay(100);
-      pros::FlyWheel.move(127);
-    }
-  }
-}
-
-void _1028A::flywheel::startFlywheelTask(void *ptr) {
-  while (FWcontinueTask) {
-    startFlywheel(fwtarget);
-    pros::delay(20);
   }
 }
 

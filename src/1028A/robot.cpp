@@ -7,7 +7,6 @@ Motor LeftBack(LeftBackpt);
 Motor RightFront(RightFrontpt);
 Motor RightMid(RightMidpt);
 Motor RightBack(RightBackpt);
-Motor FlyWheel(Flywheelpt);
 Motor Intake(Intakept);
 Imu Inertial(Inertialpt);
 class Rotation Rotation(Rotationpt);
@@ -27,6 +26,5 @@ Motor LeftBackok(LeftBackpt);
 Motor RightFrontok(RightFrontpt);
 Motor RightMidok(RightMidpt);
 Motor RightBackok(RightBackpt);
-Motor Flywheelok(Flywheelpt);
 Motor Intakeok(Intakept);
 }; // namespace okapi
