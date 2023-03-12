@@ -14,11 +14,6 @@ std::atomic<double> v;
 // Ui
 lv_obj_t *tabview;
 
-// Flywheel
-int FWcontinueTask = 1;
-int FWoffset = 0;
-double fwtarget;
-
 // Odometry
 okapi::OdomState CurrentPosition;
 std::shared_ptr<okapi::OdomChassisController> chassis;

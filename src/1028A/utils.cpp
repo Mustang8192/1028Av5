@@ -454,3 +454,26 @@ void _1028A::OdomDebug::startOdomDebug(void *ptr) {
     pros::delay(20);
   }
 }
+
+void _1028A::cata::arm(void *ptr) {
+  double lastError;
+  double error;
+  double kp = 0.1;
+  double ki = 0.0001;
+  double kd = 0.1;
+  double sensorValue;
+  double powerValue;
+  while (1) {
+    sensorValue = pros::CataPosition.get_angle();
+    error = 0 - sensorValue;
+    powerValue = pid::math(error, lastError, kp, ki, kd, 127);
+    pros::Cata.move(powerValue);
+    lastError = error;
+    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) or
+        fabs(error <= 1)) {
+      pros::Cata.move(0);
+      break;
+    }
+    pros::delay(5);
+  }
+}

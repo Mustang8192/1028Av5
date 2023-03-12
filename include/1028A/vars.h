@@ -18,11 +18,6 @@ extern std::atomic<double> v;
 // Ui
 extern lv_obj_t *tabview;
 
-// Flywheel
-extern int FWcontinueTask;
-extern int FWoffset;
-extern double fwtarget;
-
 // Odometry
 extern okapi::OdomState CurrentPosition;
 extern std::shared_ptr<okapi::OdomChassisController> chassis;

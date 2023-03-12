@@ -57,103 +57,13 @@ void _1028A::driver::DriveCTRL(void *ptr) {
  */
 
 void _1028A::driver::IntakeCTRL(void *ptr) {
-  int number = 0;
   while (1) {
-    if (flywheelMode == 1) {
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
-          (flywheelstate != 3 or flywheelstate != 2)) {
-        pros::Intake.move(-127);
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_L2)) {
-        pros::Intake.move(127);
-      } else {
-        pros::Intake.move(0);
-      }
-
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
-          (flywheelstate == 3 or flywheelstate == 2)) {
-        pros::Intake.move(-127);
-        pros::delay(140);
-        pros::Intake.move(0);
-        pros::delay(90 + FWoffset);
-        FWoffset += 120;
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_L1) &&
-                 (flywheelstate == 2)) {
-        pros::Intake.move(-127);
-        pros::delay(140);
-        pros::Intake.move(0);
-        pros::delay(90 + FWoffset);
-        FWoffset += 150;
-      } else {
-        FWoffset = 0;
-      }
-    } else if (flywheelMode == 2) {
-
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
-          (flywheelstate != 3 or flywheelstate != 2)) {
-        pros::Intake.move(-127);
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_L2)) {
-        pros::Intake.move(127);
-      } else {
-        pros::Intake.move(0);
-      }
-
-      if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
-          (flywheelstate == 3 or flywheelstate == 2)) {
-        pros::Intake.move(-127);
-        pros::delay(140);
-        pros::Intake.move(0);
-        pros::delay(60 + FWoffset);
-        FWoffset += 80;
-      } else if (pros::mainController.get_digital(
-                     pros::E_CONTROLLER_DIGITAL_L1) &&
-                 (flywheelstate == 2)) {
-        pros::Intake.move(-127);
-        pros::delay(140);
-        pros::Intake.move(0);
-        pros::delay(90 + FWoffset);
-        FWoffset += 150;
-      } else {
-        FWoffset = 0;
-      }
+    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+      pros::Intake.move(127);
+    } else if (pros::mainController.get_digital(
+                   pros::E_CONTROLLER_DIGITAL_L2)) {
+      pros::Intake.move(-127);
     }
-    pros::delay(10);
-  }
-}
-
-void _1028A::driver::ModeCTRL(void *ptr) {
-  while (1) {
-    if (((pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1) &&
-          pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) &&
-          pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L1) &&
-          pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_L2) &&
-          pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_A)) or
-         pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X)) &&
-        flywheelMode == 1) {
-      flywheelMode = 2;
-      pros::mainController.print(1, 1, "FW Mode: 2");
-      pros::delay(1000);
-    }
-
-    else if (((pros::mainController.get_digital(
-                   pros::E_CONTROLLER_DIGITAL_R1) &&
-               pros::mainController.get_digital(
-                   pros::E_CONTROLLER_DIGITAL_R2) &&
-               pros::mainController.get_digital(
-                   pros::E_CONTROLLER_DIGITAL_L1) &&
-               pros::mainController.get_digital(
-                   pros::E_CONTROLLER_DIGITAL_L2) &&
-               pros::mainController.get_digital(
-                   pros::E_CONTROLLER_DIGITAL_A)) or
-              pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X)) &&
-             flywheelMode == 2) {
-      flywheelMode = 1;
-      pros::mainController.print(1, 1, "FW Mode: 1");
-      pros::delay(1000);
-    }
-    pros::delay(10);
   }
 }
 /**
@@ -189,6 +99,52 @@ void _1028A::driver::ExpansionCTRL(void *ptr) {
                pros::mainController.get_digital(
                    pros::E_CONTROLLER_DIGITAL_UP)) {
       pros::expansionMid.set_value(1);
+    }
+    pros::delay(5);
+  }
+}
+
+void _1028A::driver::CataCTRL(void *ptr) {
+  while (1) {
+    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+      pros::Cata.move(127);
+      pros::delay(500);
+      double lastError;
+      double error;
+      double kp = 0.1;
+      double ki = 0.0001;
+      double kd = 0.1;
+      double sensorValue;
+      double powerValue;
+      while (1) {
+        sensorValue = pros::CataPosition.get_angle();
+        error = 0 - sensorValue;
+        powerValue = pid::math(error, lastError, kp, ki, kd, 127);
+        pros::Cata.move(powerValue);
+        lastError = error;
+        if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_R2) or
+            fabs(error <= 1)) {
+          pros::Cata.move(0);
+          break;
+        }
+        pros::delay(5);
+      }
+    }
+    pros::delay(5);
+  }
+}
+
+void _1028A::driver::CataAssistCTRL(void *ptr) {
+  int assist = 0;
+  while (1) {
+    if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
+        assist == 0) {
+      pros::cataAssist.set_value(1);
+      assist = 1;
+    } else if (pros::mainController.get_digital(pros::E_CONTROLLER_DIGITAL_X) &&
+               assist == 1) {
+      pros::cataAssist.set_value(0);
+      assist = 0;
     }
     pros::delay(5);
   }

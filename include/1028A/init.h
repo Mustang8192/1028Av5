@@ -122,9 +122,13 @@ void checkBrakeType(void *ptr);
 void DriveCTRL(void *ptr);
 void IntakeCTRL(void *ptr);
 void ExpansionCTRL(void *ptr);
-void ModeCTRL(void *ptr);
+void CataCTRL(void *ptr);
+void CataAssistCTRL(void *ptr);
 } // namespace driver
 
+namespace cata {
+void arm(void *ptr);
+}
 namespace task {
 void start(std::string name, void (*func)(void *));
 bool exists(std::string name);
